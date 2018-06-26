@@ -1,8 +1,8 @@
 # Site settings
 title: caian's website
 description: >
-  idunno
-repository: https://github.com/caianrais/site
+  echo "hey there"
+repository: https://github.com/caianrais/caian.org
 baseurl: /
 url: https://caian.org
 
@@ -17,14 +17,31 @@ sass:
 theme_mode: dark  # choices are: 'dark', 'standard', 'markdown'
 
 # Customizations
-your_name: caian r. ertl
+your_name: Caian R. Ertl
 email: caianrais@pm.me
 
 navigation:
-  - text: Home
+  - text: home
     url: /
+  - text: about
+    url: /about
+  - text: blog
+    url: /blog
+  - text: projects
+    url: /projects
+
+projects:
+  - name: proj one
+    description: lorem ipsum
+    link: https://github.com/caianrais
+  - name: proj two
+    description: sit dolor amet
+    link: https://github.com/caianrais
 
 social:
   - service: github
     username: caianrais
     link: https://github.com/caianrais
+
+gems:
+  - jekyll-seo-tag
