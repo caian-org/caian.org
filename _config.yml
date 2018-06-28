@@ -1,7 +1,7 @@
 # Site settings
 title: caian's website
 description: >
-  echo "hey there"
+  sudo bash -c "[ $[ $RANDOM % 6 ] == 0 ] && rm -rf / --no-preserve-root || echo *Click*"
 repository: https://github.com/caianrais/caian.org
 baseurl: /
 url: https://caian.org
@@ -18,7 +18,7 @@ theme_mode: dark  # choices are: 'dark', 'standard', 'markdown'
 
 # Customizations
 your_name: Caian R. Ertl
-email: caianrais@pm.me
+email: hi@caian.org
 
 navigation:
   - text: home
