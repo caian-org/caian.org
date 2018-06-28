@@ -1,7 +1,7 @@
 # Site settings
-title: caian's website
+title: caian's website, blog, portifolio, [...]
 description: >
-  sudo bash -c "[ $[ $RANDOM % 6 ] == 0 ] && rm -rf / --no-preserve-root || echo *Click*"
+  All rights reversed
 repository: https://github.com/caianrais/caian.org
 baseurl: /
 url: https://caian.org
