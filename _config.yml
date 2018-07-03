@@ -23,12 +23,14 @@ email: hi@caian.org
 navigation:
   - text: home
     url: /
-  - text: about
-    url: /about
+  - text: cv
+    url: /cv
   - text: blog
     url: /blog
-  - text: projects
-    url: /projects
+  - text: warez
+    url: /warez
+  - text: projs
+    url: /projs
 
 projects:
   - name: proj one
