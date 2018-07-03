@@ -1,8 +1,8 @@
 ---
 layout: default
-permalink: about
+permalink: cv
 ---
 
-# Docs
+# cv
 
 *under construction*
