@@ -3,6 +3,22 @@ layout: default
 permalink: cv
 ---
 
-# cv
+# curriculum vitae
 
-*under construction*
+lorem ipsum
+
+## heading one
+
+sit dolor amet
+
+### subheading a
+
+text text text
+
+### subheading b
+
+more text
+
+## heading two
+
+end
