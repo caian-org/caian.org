@@ -7,18 +7,7 @@ permalink: cv
 
 lorem ipsum
 
-## heading one
 
-sit dolor amet
+## experience
 
-### subheading a
-
-text text text
-
-### subheading b
-
-more text
-
-## heading two
-
-end
+### text [link](github.com) text
