@@ -5,7 +5,8 @@ permalink: cv
 
 # curriculum vitae
 
-I'm also on [LinkedIn](linkedin.com/in/caianert), btw.
+This is my CV in it's full extension. For a short (one page) version, click
+[here](#). Want [LinkedIn](linkedin.com/in/caianert) instead? No problem.
 
 
 ## summary
@@ -22,30 +23,30 @@ online chat using batch scripts and a FTP server on a Windows XP machine
 
 ### [(rivendel)](rivendel.com.br) monitoring & automation intern
 
-**Feb. 2018** - **Present**.
+*Feb. 2018* - *Present*.
 
 ### [(alest)](alest.com.br) solutions engineer
 
-**Nov. 2016** - **Apr. 2017**.
+*Nov. 2016* - *Apr. 2017*.
 
 ### [(alest)](alest.com.br) deployment engineer
 
-**Mar. 2016** - **Oct. 2016**.
+*Mar. 2016* - *Oct. 2016*.
 
 ### [(alest)](alest.com.br) technical support intern
 
-**Mar. 2015** - **Feb. 2016**.
+*Mar. 2015* - *Feb. 2016*.
 
 
 ## education
 
 ### [(uam)](anhembi.br) bsc cis
 
-**Jan. 2015** - **Dec. 2018**.
+*Jan. 2015* - *Dec. 2018*.
 
 ### [(etec)](vestibulinhoetec.com.br) it technician
 
-**Jan. 2013** - **Jul. 2014**.
+*Jan. 2013* - *Jul. 2014*.
 
 
 
