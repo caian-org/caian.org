@@ -5,11 +5,17 @@ permalink: cv
 
 # curriculum vitae
 
-I'm a bachelor's student in computer information systems at the Anhembi Morumbi
-university, working in the field since 2015, mainly with cloud computing
-solutions and software development. Computers and coding have been my main
-interest since the elementary school; my very first program was a online chat
-using batch scripts and a FTP server on a Windows XP machine (seriously).
+I'm also on [LinkedIn](linkedin.com/in/caianert), btw.
+
+
+## summary
+
+I'm a bachelor's student in computer information systems at the [Anhembi
+Morumbi university](anhembi.br), working in the field since 2015, mainly with
+cloud computing solutions and software development. Computers and coding have
+been my main interest since the elementary school; my very first program was an
+online chat using batch scripts and a FTP server on a Windows XP machine
+(seriously).
 
 
 ## experience
