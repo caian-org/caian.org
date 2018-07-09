@@ -6,13 +6,13 @@ permalink: cv
 # curriculum vitae
 
 This is my CV in it's full extension. For a short (one page) version, click
-[here](#). Want [LinkedIn](linkedin.com/in/caianert) instead? No problem.
+[here](#). Want [LinkedIn](https://www.linkedin.com/in/caianertl) instead? No problem.
 
 
 ## summary
 
 I'm a bachelor's student in computer information systems at the [Anhembi
-Morumbi University](anhembi.br), working in the field since 2015, mainly with
+Morumbi University](http://portal.anhembi.br), working in the field since 2015, mainly with
 cloud computing solutions and software development. Computers and coding have
 been my main interest since the elementary school; my very first program was an
 online chat using batch scripts and a FTP server on a Windows XP machine
@@ -21,11 +21,11 @@ online chat using batch scripts and a FTP server on a Windows XP machine
 
 ## experience
 
-### [(rivendel)](rivendel.com.br) monitoring & automation intern
+### [(rivendel)](https://rivendel.com.br) monitoring & automation intern
 
 Feb, 2018 - Present.
 
-### [(alest)](alest.com.br) solutions engineer
+### [(alest)](http://www.alest.com.br) solutions engineer
 
 Nov, 2016 - Apr, 2017 (6 months).
 
@@ -44,7 +44,7 @@ Key responsibilities:
  - Integration of services via public APIs;
  - Web app development with Google AppMaker.
 
-### [(alest)](alest.com.br) deployment engineer
+### [(alest)](http://www.alest.com.br) deployment engineer
 
 Mar, 2016 - Oct, 2016 (8 months).
 
@@ -61,7 +61,7 @@ Key responsibilities:
  - Legacy data transitioning and workflow adaptations;
  - Customized routines, macros and applications with Google Apps Script.
 
-### [(alest)](alest.com.br) technical support intern
+### [(alest)](http://www.alest.com.br) technical support intern
 
 Mar, 2015 - Feb, 2016 (1 year).
 
@@ -82,7 +82,7 @@ Key responsibilities:
 
 ## education
 
-### [(uam)](portal.anhembi.br/graduacao/cursos/sistemas-de-informacao) bsc cis
+### [(uam)](http://portal.anhembi.br/graduacao/cursos/sistemas-de-informacao) bsc cis
 
 Jan, 2015 - Dec, 2018.
 
@@ -102,10 +102,10 @@ details of load transportations, in a auction-like system, where the smalest
 bid wins the deal.
 
 The unfinished version of the project's REST API could be seen
-[here](github.com/caianrais/mcore).
+[here](https://github.com/caianrais/mcore).
 
 
-### [(etec)](vestibulinhoetec.com.br/unidades-cursos/curso.asp?c=702) it technician
+### [(etec)](https://www.vestibulinhoetec.com.br/unidades-cursos/curso.asp?c=702) it technician
 
 Jan, 2013 - Jul, 2014.
 
@@ -146,4 +146,4 @@ guests. Our project received the highest evaluation from it.
 ## pet projects
 
 I have a few pet projects I've been maintaining in my spare time since 2017 or
-so. Most of them are halfway finished. You can se some of them [here](caian.org/projs).
+so. Most of them are halfway finished. You can se some of them [here](/projs).
