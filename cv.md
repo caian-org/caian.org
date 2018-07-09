@@ -125,27 +125,20 @@ guests. Our project received the highest evaluation from it.
 
 ## skills
 
-### gnu/linux
+ - os: gnu/linux (debian, ubuntu, rhel, centos), windows 10.
 
-### python
+ - programming & scripting: python, node.js, vanilla js, c#.net, java,
+     (posix) shell script, batch script.
 
-### node.js
+ - markup languages: json, xml, yaml, markdown, restructuredtext.
 
-### sql
-
-### gcp & gas
-
-### aws
-
-### c#.net
-
-### html & css
+ - frameworks & libraries: flask, express.js, jekyll.
 
 
 ## (human) languages
 
  - `pt-BR`: Native speaker.
- - `en-US`: Not fluent yet (working on that).
+ - `en-US`: Reading, writing and speaking competence.
 
 
 ## pet projects
