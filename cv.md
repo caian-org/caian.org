@@ -123,16 +123,17 @@ based on a real business case, presenting it to a panel of professors and other
 guests. Our project received the highest evaluation from it.
 
 
-## skills
+## technical skills
 
- - os: gnu/linux (debian, ubuntu, rhel, centos), windows 10.
+ - strong: gnu/linux (debian, centos), python, node.js, shell script, batch
+     script, markup (json, xml, yaml), flask, socket.io, google apps script,
+     heroku, git, travis-ci, vim/neovim, g suite, trello.
 
- - programming & scripting: python, node.js, vanilla js, c#.net, java,
-     (posix) shell script, batch script.
+ - knowledgeable: html, vanilla js, jquery, express.js, c#.net, java, redis,
+     jekyll, amazon web services, google cloud plataform, apache, nginx,
+     hashicorp vault, docker, jira, asana.
 
- - markup languages: json, xml, yaml, markdown, restructuredtext.
-
- - frameworks & libraries: flask, express.js, jekyll.
+ - in progress: golang, powershell, prometheus, ansible, terraform, grafana.
 
 
 ## (human) languages
