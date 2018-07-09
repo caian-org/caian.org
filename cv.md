@@ -6,7 +6,9 @@ permalink: cv
 # curriculum vitae
 
 This is my CV in it's full extension. For a short (one page) version, click
-[here](#). Want [LinkedIn](https://www.linkedin.com/in/caianertl) instead? No problem.
+[here](#).
+
+[Email](mailto:hi@caian.org) | [LinkedIn](https://www.linkedin.com/in/caianertl) | [GitHub](https://github.com/caianrais)
 
 
 ## summary
@@ -33,7 +35,7 @@ My role within the team was to sketch, develop and test case-specific solutions
 based on the requirements and criterias previously defined by our customers
 (POs) and the scrum master. Those solutions have ranged from custom made web
 services and mobile applications to the deployment and pipeline of workflow
-management softwares. I've take part in three projects, namely one online
+management softwares. I've taken part in three projects, namely one online
 corporate university for a brazilian finance institution. As an agile,
 scrum-based team, we routinely worked alongside our customer's analysts and
 project managers.
