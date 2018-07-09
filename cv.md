@@ -31,7 +31,7 @@ Nov, 2016 - Apr, 2017 (6 months).
 
 My role within the team was to sketch, develop and test case-specific solutions
 based on the requirements and criterias previously defined by our customers
-(POs) and scrum master. Those solutions have ranged from custom made web
+(POs) and the scrum master. Those solutions have ranged from custom made web
 services and mobile applications to the deployment and pipeline of workflow
 management softwares. I've take part in three projects, namely one online
 corporate university for a brazilian finance institution. As an agile,
@@ -82,14 +82,40 @@ Key responsibilities:
 
 ## education
 
-### [(uam)](anhembi.br) bsc cis
+### [(uam)](portal.anhembi.br/graduacao/cursos/sistemas-de-informacao) bsc cis
 
 Jan, 2015 - Dec, 2018.
 
-### [(etec)](vestibulinhoetec.com.br) it technician
+An eight semester computer information systems bachelor course, with a forecast
+end to december of 2018. A broad-wide course that covers from the computer
+science foundations, to practical technology applications, levereging
+organizations and companies to obtain more efficiency and fastness in their
+processes and operations. Subjects goes from mathematics, calculus, software
+engineering and development to human resources, marketing, business and
+communications.
+
+The university final paper was an one semester practical project, focused in
+business applications. Our team of four people presented to the panel of
+professores and coordinators a proof of concept of a cloud-based, RESTful
+service that provides a way for companies and truck drivers to negociate the
+details of load transportations, in a auction-like system, where the smalest
+bid wins the deal.
+
+The unfinished version of the project's REST API could be seen
+[here](github.com/caianrais/mcore).
+
+
+### [(etec)](vestibulinhoetec.com.br/unidades-cursos/curso.asp?c=702) it technician
 
 Jan, 2013 - Jul, 2014.
 
+A three semester technical course that focus in software architecture and
+development (from the basics of binary logic to web and desktop applications),
+relational databases and their management and overall system administration.
+
+At the end of the course, each group (two to six people) developed a solution
+based on a real business case, presenting it to a panel of professors and other
+guests. Our project received the highest evaluation from it.
 
 
 ## skills
