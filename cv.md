@@ -14,9 +14,6 @@ Contact:
  - linkedin: [/caianertl](https://www.linkedin.com/in/caianertl)
 
 
-## basic info
-
-
 ## summary
 
 I'm a 21 years old bachelor's student in computer information systems at the
