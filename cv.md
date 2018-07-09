@@ -8,17 +8,23 @@ permalink: cv
 This is my CV in it's full extension. For a short (one page) version, click
 [here](#).
 
-[Email](mailto:hi@caian.org) | [LinkedIn](https://www.linkedin.com/in/caianertl) | [GitHub](https://github.com/caianrais)
+Contact:
+ - email: [hi@caian.org](mailto:hi@caian.org)
+ - github: [/caianrais](https://github.com/caianrais)
+ - linkedin: [/caianertl](https://www.linkedin.com/in/caianertl)
+
+
+## basic info
 
 
 ## summary
 
-I'm a bachelor's student in computer information systems at the [Anhembi
-Morumbi University](http://portal.anhembi.br), working in the field since 2015, mainly with
-cloud computing solutions and software development. Computers and coding have
-been my main interest since the elementary school; my very first program was an
-online chat using batch scripts and a FTP server on a Windows XP machine
-(seriously).
+I'm a 21 years old bachelor's student in computer information systems at the
+[Anhembi Morumbi University](http://portal.anhembi.br), working in the field
+since 2015, mainly with cloud computing solutions and software development.
+Computers and coding have been my main interest since the elementary school; my
+very first program was an online chat using batch scripts and a FTP server on a
+Windows XP machine (seriously).
 
 
 ## experience
