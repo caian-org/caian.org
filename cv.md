@@ -21,18 +21,18 @@ I'm a 21 years old bachelor's student in computer information systems at the
 since 2015, mainly with cloud computing solutions and software development.
 Computers and coding have been my main interest since the elementary school; my
 very first program was an online chat using batch scripts and a FTP server on a
-Windows XP machine (seriously).
+Windows XP machine (**seriously**).
 
 
 ## experience
 
 ### [(rivendel)](https://rivendel.com.br) monitoring & automation intern
 
-Feb, 2018 - Present.
+feb, 2018 - present.
 
 ### [(alest)](http://www.alest.com.br) solutions engineer
 
-Nov, 2016 - Apr, 2017 (6 months).
+nov, 2016 - apr, 2017 (6 months).
 
 My role within the team was to sketch, develop and test case-specific solutions
 based on the requirements and criterias previously defined by our customers
@@ -51,7 +51,7 @@ Key responsibilities:
 
 ### [(alest)](http://www.alest.com.br) deployment engineer
 
-Mar, 2016 - Oct, 2016 (8 months).
+mar, 2016 - oct, 2016 (8 months).
 
 I've migrated over twenty medium-large businesses from on-premise, legacy
 and/or non-digital solutions to the cloud with G Suite, helping teams to work
@@ -68,7 +68,7 @@ Key responsibilities:
 
 ### [(alest)](http://www.alest.com.br) technical support intern
 
-Mar, 2015 - Feb, 2016 (1 year).
+mar, 2015 - feb, 2016 (1 year).
 
 As a technical support intern, my biggest goal was to help our customers to
 take full advantage of the G Suite (formerly known as Google Apps for Work)
@@ -89,7 +89,7 @@ Key responsibilities:
 
 ### [(uam)](http://portal.anhembi.br/graduacao/cursos/sistemas-de-informacao) bsc cis
 
-Jan, 2015 - Dec, 2018.
+jan, 2015 - dec, 2018.
 
 An eight semester computer information systems bachelor course, with a forecast
 end to december of 2018. A broad-wide course that covers from the computer
@@ -112,7 +112,7 @@ The unfinished version of the project's REST API could be seen
 
 ### [(etec)](https://www.vestibulinhoetec.com.br/unidades-cursos/curso.asp?c=702) it technician
 
-Jan, 2013 - Jul, 2014.
+jan, 2013 - jul, 2014.
 
 A three semester technical course that focus in software architecture and
 development (from the basics of binary logic to web and desktop applications),
@@ -125,21 +125,21 @@ guests. Our project received the highest evaluation from it.
 
 ## technical skills
 
- - **strong**: gnu/linux (debian, centos), python, node.js, shell script, batch
+ - **Strong**: gnu/linux (debian, centos), python, node.js, shell script, batch
      script, markup (json, xml, yaml), flask, socket.io, google apps script,
      heroku, travis-ci, git, vim/neovim, g suite, trello.
 
- - **knowledgeable**: html, vanilla js, jquery, express.js, c#.net, java, redis,
+ - **Knowledgeable**: html, vanilla js, jquery, express.js, c#.net, java, redis,
      jekyll, amazon web services, google cloud plataform, apache, nginx,
      hashicorp vault, docker, jira, asana.
 
- - **in progress**: golang, powershell, prometheus, ansible, terraform, grafana.
+ - **In progress**: golang, powershell, prometheus, ansible, terraform, grafana.
 
 
 ## (human) languages
 
- - `pt-BR` (portuguese): Native speaker.
- - `en-US` (english): Reading, writing and speaking competence.
+ - `pt-BR` **(Portuguese)**: Native speaker.
+ - `en-US` **(English)**: Reading, writing and speaking competence.
 
 
 ## pet projects
