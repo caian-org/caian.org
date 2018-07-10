@@ -27,7 +27,7 @@
                 font-family:Courier New,monospace,serif;
             }
 
-            .div {
+            .centered {
                 position: fixed;
                 top: 50%;
                 left: 50%;
@@ -38,7 +38,9 @@
 
 
     <body>
-        {{ content }}
+        <div class="centered">
+            {{ content }}
+        </div>
 
         <!-- Prism.js -->
         <script src="https://npmcdn.com/prismjs@1.5.1/prism.js"></script>
