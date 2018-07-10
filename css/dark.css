@@ -11,6 +11,9 @@
 .dark pre code{
     color:#00bcd4
 }
+.dark h1,.dark h2,.dark h3,.dark h4,.dark h5{
+    color:#fff
+}
 .dark h1 a,.dark h2 a,.dark h3 a,.dark h4 a,.dark h5 a{
     color:#fff
 }
