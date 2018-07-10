@@ -1,5 +1,5 @@
 .dark{
-    color:#ccc
+    color:#bbb
 }
 .dark,.dark pre{
     background-color:#000
@@ -12,10 +12,10 @@
     color:#00bcd4
 }
 .dark h1 a,.dark h2 a,.dark h3 a,.dark h4 a,.dark h5 a{
-    color:#ccc
+    color:#fff
 }
 .dark code,.dark strong{
-    color:#fff
+    color:#ddd
 }
 .dark code{
     font-weight:100
