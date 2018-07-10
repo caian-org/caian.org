@@ -125,21 +125,21 @@ guests. Our project received the highest evaluation from it.
 
 ## technical skills
 
- - strong: gnu/linux (debian, centos), python, node.js, shell script, batch
+ - **strong**: gnu/linux (debian, centos), python, node.js, shell script, batch
      script, markup (json, xml, yaml), flask, socket.io, google apps script,
-     heroku, git, travis-ci, vim/neovim, g suite, trello.
+     heroku, travis-ci, git, vim/neovim, g suite, trello.
 
- - knowledgeable: html, vanilla js, jquery, express.js, c#.net, java, redis,
+ - **knowledgeable**: html, vanilla js, jquery, express.js, c#.net, java, redis,
      jekyll, amazon web services, google cloud plataform, apache, nginx,
      hashicorp vault, docker, jira, asana.
 
- - in progress: golang, powershell, prometheus, ansible, terraform, grafana.
+ - **in progress**: golang, powershell, prometheus, ansible, terraform, grafana.
 
 
 ## (human) languages
 
- - `pt-BR`: Native speaker.
- - `en-US`: Reading, writing and speaking competence.
+ - `pt-BR` (portuguese): Native speaker.
+ - `en-US` (english): Reading, writing and speaking competence.
 
 
 ## pet projects
