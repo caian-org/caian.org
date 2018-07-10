@@ -10,27 +10,38 @@
         ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
     -->
 
-  {% include head.html %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Favicon -->
+        <link rel="icon" href="{{ "/favicon.png" | prepend: site.baseurl }}">
+
+        <!-- Meta information -->
+        <title>caian.org</title>
+
+        <style type="text/css">
+            body {
+                background-color: #111;
+                font-family:Courier New,monospace,serif;
+            }
+
+            .div {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+    </head>
 
 
-  {% if site.theme_mode == 'markdown' %}
-  <body class="hack">
-  {% elsif site.theme_mode == 'standard' %}
-  <body class="standard">
-  {% elsif site.theme_mode == 'dark' %}
-  <body class="hack dark">
-  {% endif %}
+    <body>
+        {{ content }}
 
-    <div class="container">
-      <div class="grid">
-        <main class="cell -9of12">
-          {{ content }}
-        </main>
-      </div>
-    </div>
-
-    <!-- Prism.js -->
-    <script src="https://npmcdn.com/prismjs@1.5.1/prism.js"></script>
-  </body>
+        <!-- Prism.js -->
+        <script src="https://npmcdn.com/prismjs@1.5.1/prism.js"></script>
+    </body>
 
 </html>
