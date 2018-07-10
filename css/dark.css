@@ -1,9 +1,9 @@
 .dark{
-    color:#bbb
+    color:#bbb;
 }
 
 .dark,.dark pre{
-    background-color:#222
+    background-color:#111;
 }
 
 .dark pre{
@@ -12,27 +12,27 @@
 }
 
 .dark pre code{
-    color:#00bcd4
+    color:#00bcd4;
 }
 
 .dark h1, h2 {
-    color:#fff
+    color:#fff;
 }
 
 .dark h1 a, .dark h2 a {
-    color:#fff
+    color:#fff;
 }
 
 .dark h3, h4, h5 {
-    color:#ddd
+    color:#eee;
 }
 
 .dark h3 a, .dark h4 a, .dark h5 a {
-    color:#ddd
+    color:#eee;
 }
 
 .dark code,.dark strong{
-    color:#ddd
+    color:#ddd;
 }
 
 .dark code{
@@ -40,7 +40,7 @@
 }
 
 .dark table{
-    color:#ccc
+    color:#ccc;
 }
 
 .dark table td,.dark table th{
@@ -48,7 +48,7 @@
 }
 
 .dark table tbody td:first-child{
-    color:#fff
+    color:#fff;
 }
 
 .dark .form-group label{
