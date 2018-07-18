@@ -3,6 +3,6 @@ layout: default
 permalink: warez
 ---
 
-# warez
+# day-to-day warez
 
-*under construction*
+**under construction**
