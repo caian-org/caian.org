@@ -126,14 +126,15 @@ guests. Our project received the highest evaluation from it.
 ## technical skills
 
  - **Strong**: gnu/linux (debian, centos), python, node.js, shell script, batch
-     script, markup (json, xml, yaml), flask, socket.io, google apps script,
-     heroku, travis-ci, git, vim/neovim, g suite, trello.
+     script, markup (json, xml, yaml), flask, socket.io, g suite, google apps
+     script, heroku, travis-ci, git, vim/neovim.
 
  - **Knowledgeable**: html, vanilla js, jquery, express.js, c#.net, java, redis,
      jekyll, amazon web services, google cloud plataform, apache, nginx,
-     hashicorp vault, docker, jira, asana.
+     hashicorp vault, docker, jira.
 
- - **In progress**: golang, powershell, prometheus, ansible, terraform, grafana.
+ - **In progress**: golang, powershell, kubernetes, prometheus, ansible,
+     terraform, grafana.
 
 
 ## (human) languages
