@@ -126,15 +126,27 @@ guests. Our project received the highest evaluation from it.
 ## technical skills
 
  - **Strong**: gnu/linux (debian, centos), python, node.js, shell script, batch
-     script, markup (json, xml, yaml), flask, socket.io, g suite, google apps
-     script, heroku, travis-ci, git, vim/neovim.
+     script, markup (json, xml, yaml), flask, [socket.io], g suite, [google apps
+     script], heroku, [travis-ci], git, [vim]/[neovim]/[viml].
 
- - **Knowledgeable**: html, vanilla js, jquery, express.js, c#.net, java, redis,
-     jekyll, amazon web services, google cloud plataform, apache, nginx,
-     hashicorp vault, docker, jira.
+ - **Knowledgeable**: html, [vanilla js], jquery, [express.js], c#.net, [golang],
+     [redis], jekyll, aws, gcp, nginx, [vault], docker.
 
- - **In progress**: golang, powershell, kubernetes, prometheus, ansible,
-     terraform, grafana.
+ - **In progress**: kubernetes, [ansible], [terraform], [vagrant]
+
+[socket.io]: https://socket.io/
+[google apps script]: https://developers.google.com/apps-script/
+[vim]: https://www.vim.org/
+[neovim]: https://neovim.io/
+[viml]: http://learnvimscriptthehardway.stevelosh.com/
+[vanilla js]: http://vanilla-js.com/
+[express.js]: https://expressjs.com/
+[golang]: https://golang.org/
+[redis]: https://redis.io/
+[vault]: https://www.vaultproject.io/
+[ansible]: https://www.ansible.com/
+[terraform]: https://www.terraform.io/
+[vagrant]: https://www.vagrantup.com/
 
 
 ## (human) languages
