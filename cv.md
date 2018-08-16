@@ -35,18 +35,17 @@ feb, 2018 - present.
 nov, 2016 - apr, 2017 (6 months).
 
 My role within the team was to sketch, develop and test case-specific solutions
-based on the requirements and criterias previously defined by our customers
-(POs) and the scrum master. Those solutions have ranged from custom made web
-services and mobile applications to the deployment and pipeline of workflow
-management softwares. I've taken part in three projects, namely one online
-corporate university for a brazilian finance institution. As an agile,
+based on the needs of our customers. These solutions have ranged from custom
+made web services and mobile applications to the deployment and pipeline of
+workflow management softwares. I've taken part in three projects, namely, one
+online corporate university for a brazilian finance institution. As an agile,
 scrum-based team, we routinely worked alongside our customer's analysts and
 project managers.
 
 Key responsibilities:
  - Sprint planning and task complexity analysis;
  - Sketch and architecture of cloud-based custom solutions;
- - Integration of services via public APIs;
+ - Service integrations via public APIs;
  - Web app development with Google AppMaker.
 
 ### [(alest)](http://www.alest.com.br) deployment engineer
