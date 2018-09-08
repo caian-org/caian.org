@@ -14,6 +14,7 @@ Contact:
  - linkedin: [/caianertl](https://www.linkedin.com/in/caianertl)
 
 
+
 ## summary
 
 I'm a 21 years old bachelor's student in computer information systems at the
@@ -24,11 +25,16 @@ very first program was an online chat using batch scripts and a FTP server on a
 Windows XP machine (**seriously**).
 
 
+
 ## experience
 
-### [(rivendel)](https://rivendel.com.br) monitoring & automation intern
+### [(rivendel)](https://rivendel.com.br) junior infrastructure developer
 
-feb, 2018 - present.
+sep, 2018 - present.
+
+### [(rivendel)](https://rivendel.com.br) devops intern
+
+feb, 2018 - aug, 2018 (7 months).
 
 ### [(alest)](http://www.alest.com.br) solutions engineer
 
@@ -84,6 +90,7 @@ Key responsibilities:
  - Technical guides and tutorials aimed for customers.
 
 
+
 ## education
 
 ### [(uam)](http://portal.anhembi.br/graduacao/cursos/sistemas-de-informacao) bsc cis
@@ -122,16 +129,17 @@ based on a real business case, presenting it to a panel of professors and other
 guests. Our project received the highest evaluation from it.
 
 
+
 ## technical skills
 
  - **Strong**: gnu/linux (debian, centos), python, node.js, shell script, batch
      script, markup (json, xml, yaml), flask, [socket.io], g suite, [google apps
-     script], heroku, [travis-ci], git, [vim]/[neovim]/[viml].
+     script], heroku, [travis-ci], git, [vim]/[neovim]/[vimscript].
 
- - **Knowledgeable**: html, [vanilla js], jquery, [express.js], c#.net, [golang],
-     [redis], jekyll, aws, gcp, nginx, [vault], docker.
+ - **Knowledgeable**: html, [vanilla js], [express.js], c#.net, [golang],
+     [redis], jekyll, aws, gcp, nginx, [vault], docker, [terraform].
 
- - **In progress**: kubernetes, [ansible], [terraform], [vagrant]
+ - **Next**: kubernetes, [ansible], [vagrant].
 
 [socket.io]: https://socket.io/
 [google apps script]: https://developers.google.com/apps-script/
@@ -148,10 +156,12 @@ guests. Our project received the highest evaluation from it.
 [vagrant]: https://www.vagrantup.com/
 
 
+
 ## (human) languages
 
  - `pt-BR` **(Portuguese)**: Native speaker.
  - `en-US` **(English)**: Reading, writing and speaking competence.
+
 
 
 ## pet projects
