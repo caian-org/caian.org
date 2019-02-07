@@ -1,49 +1,30 @@
 # Site settings
-title: Caian's website, blog, portifolio, [...]
-description: >
-  all rights reversed
-repository: https://github.com/caianrais/caian.org
-baseurl: /
-url: https://caian.org
+title: Caian R. Ertl
+email: hi@caian.org
+description: > # this means to ignore newlines until "baseurl:"
+  Caian's website, blog, portifolio, [...]
+baseurl: "" # the subpath of your site, e.g. /blog
+url: https://caian.org # the base hostname & protocol for your site
+
+# SEO settings
+author: caiertl
+social:
+  name: Caian R. Ertl
+  links:
+    - https://github.com/caiertl
+    - https://linkedin.com/in/caiertl
 
 # Build settings
 markdown: kramdown
-
-# Sass settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - venv
+  - vendor
 sass:
   style: compressed
 
-# Theme settings
-theme_mode: dark  # choices are: 'dark', 'standard', 'markdown'
-
-# Customizations
-your_name: Caian R. Ertl
-email: hi@caian.org
-
-navigation:
-  - text: home
-    url: /
-  - text: cv
-    url: /cv
-  - text: blog
-    url: /blog
-  - text: warez
-    url: /warez
-  - text: projs
-    url: /projs
-
-projects:
-  - name: proj one
-    description: lorem ipsum
-    link: https://github.com/caianrais
-  - name: proj two
-    description: sit dolor amet
-    link: https://github.com/caianrais
-
-social:
-  - service: github
-    username: caianrais
-    link: https://github.com/caianrais
-
+# Plugins
 gems:
+  - jekyll-sitemap
   - jekyll-seo-tag

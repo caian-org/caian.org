@@ -1,70 +1,44 @@
 <!DOCTYPE html>
 <html>
 
-    <!--
-        ┬ ┬┬ ┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐  ┬ ┬┌─┐┬ ┬
-        │││├─┤├─┤ │   ├─┤├┬┘├┤   └┬┘│ ││ │
-        └┴┘┴ ┴┴ ┴ ┴   ┴ ┴┴└─└─┘   ┴ └─┘└─┘
-        ┬  ┌─┐┌─┐┬┌─┬┌┐┌┌─┐  ┌─┐┌─┐┬─┐┌─┐
-        │  │ ││ │├┴┐│││││ ┬  ├┤ │ │├┬┘ ┌┘
-        ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
-    -->
+<head>
+  <link rel="stylesheet" href="/css/error.css">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Custom style -->
-        <link rel="stylesheet" href="/css/main.css" />
-
-        <!-- Favicon -->
-        <link rel="icon" href="{{ "/favicon.png" | prepend: site.baseurl }}">
-
-        <!-- Meta information -->
-        <title>caian.org</title>
-
-        <style type="text/css">
-            body {
-                color: #FFF;
-                background-color: #111;
-                font-family:Courier New,monospace,serif;
-            }
-
-            h1 {
-                font-size: 10em;
-            }
-
-            a{
-                cursor:pointer;
-                color:#00a1e4;
-                text-decoration:none;
-                border-bottom:1px solid #00a1e4
-            }
-
-            a:hover{
-                background-color:#00a1e4;
-                color:#fff
-            }
-
-            .centered {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        </style>
-
-    </head>
+  <style type="text/css">
+    body {
+      font-size: 120%;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      line-height: 1.7;
+    }
+    h1 {
+      font-size: 10em;
+    }
+    a:link {
+      color: #000;
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #000;
+    }
+    a:hover {
+      color: #fff;
+      background-color: #000;
+      text-decoration: none;
+    }
+    .centered {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
 
 
-    <body>
-        <div class="centered glitch">
-            {{ content }}
-        </div>
-
-        <!-- Prism.js -->
-        <script src="https://npmcdn.com/prismjs@1.5.1/prism.js"></script>
-    </body>
+<body>
+  <div class="centered glitch">
+    {{ content }}
+  </div>
+</body>
 
 </html>
