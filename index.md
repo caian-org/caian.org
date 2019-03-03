@@ -19,7 +19,7 @@ I deeply value privacy, anonimity, freedom of information exchange and
 minimalism (both functionally and aesthetically, though i'm not quite sure
 where the line should be drawn).
 
-- [GitHub](https://github.com/caianrais)
+- [GitHub](https://github.com/caiertl)
 - [LinkedIn](https://linkedin.com/in/caiertl)
 - [Curriculum Vitae](assets/pdf/cv_en.pdf) (pdf) / ([pt_BR](assets/pdf/cv_pt.pdf))
 
@@ -31,11 +31,13 @@ where the line should be drawn).
 
 ## Projects
 
+[All projects](/projects.html)
+
 - [tmul][tmul], a tiny implementation of a Lisp-like language
-- [vault-auth-google][vag], a [Vault][vault] plugin that authenticates with Google
-- [drone-eks-deploy][ded], a [Drone][drone] plugin that applies k8s manifests in [EKS][eks] clusters
-- [tpsp][tpsp], a CLI tool to get São Paulo's [train][cptm] and [metro][metro] lines statuses
 - [dora][dora], a cloud-ready DNS query microservice
+- [coin][coin], a CLI tool to currency conversion
+- [tpsp][tpsp], a CLI tool to get São Paulo's [train][cptm] and [metro][metro] lines statuses
+- [vault-auth-google][vag], a [Vault][vault] plugin that authenticates with Google
 
 
 {% comment %}
@@ -50,11 +52,11 @@ where the line should be drawn).
     Hyperlinks of the projects
 {% endcomment %}
 
-[tmul]:  https://github.com/caiertl/tmul
+[tmul]:  https://github.com/caian-org/tmul
+[dora]:  https://github.com/caian-org/dora
+[coin]:  https://github.com/caian-org/coin
+[tpsp]:  https://github.com/caian-org/tpsp
 [vag]:   https://github.com/erozario/vault-auth-google
-[ded]:   https://github.com/caiertl/drone-eks-deploy
-[dora]:  https://github.com/caiertl/dora
-[tpsp]:  https://github.com/caiertl/tpsp
 
 {% comment %}
     References to the products/services
@@ -62,6 +64,5 @@ where the line should be drawn).
 
 [vault]: https://vaultproject.io
 [drone]: https://drone.io
-[eks]:   https://aws.amazon.com/eks
 [cptm]:  https://www.cptm.sp.gov.br
 [metro]: http://www.metro.sp.gov.br
