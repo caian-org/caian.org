@@ -11,9 +11,9 @@ this is probably the best you have since I'm not on social media.
 
 ## whois caian.org
 
-A 21 years old programmer living in [São Paulo, Brazil][home] who works as an
-infrastructure developer (DevOps) for [Mandic][work] and is an undergraduate
-student at the [Anhembi Morumbi][uni] university.
+A 22 years old programmer living in [São Paulo, Brazil][home] who works as a
+chatbot developer for [Hvar][work] and is an undergraduate student at the
+[Anhembi Morumbi][uni] university.
 
 I deeply value privacy, anonimity, freedom of information exchange and
 minimalism (both functionally and aesthetically, though i'm not quite sure
@@ -37,7 +37,6 @@ where the line should be drawn).
 - [dora][dora], a cloud-ready DNS query microservice
 - [coin][coin], a CLI tool to currency conversion
 - [tpsp][tpsp], a CLI tool to get São Paulo's [train][cptm] and [metro][metro] lines statuses
-- [vault-auth-google][vag], a [Vault][vault] plugin that authenticates with Google
 
 
 {% comment %}
@@ -45,7 +44,7 @@ where the line should be drawn).
 {% endcomment %}
 
 [home]: https://bit.ly/2hx2Tdv
-[work]: https://mandic.com.br
+[work]: http://hvarconsulting.com.br
 [uni]: https://portal.anhembi.br
 
 {% comment %}
@@ -56,13 +55,10 @@ where the line should be drawn).
 [dora]:  https://github.com/caian-org/dora
 [coin]:  https://github.com/caian-org/coin
 [tpsp]:  https://github.com/caian-org/tpsp
-[vag]:   https://github.com/erozario/vault-auth-google
 
 {% comment %}
     References to the products/services
 {% endcomment %}
 
-[vault]: https://vaultproject.io
-[drone]: https://drone.io
 [cptm]:  https://www.cptm.sp.gov.br
 [metro]: http://www.metro.sp.gov.br
