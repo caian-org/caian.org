@@ -21,7 +21,7 @@ where the line should be drawn).
 
 - [GitHub](https://github.com/caiertl)
 - [LinkedIn](https://linkedin.com/in/caiertl)
-- [Curriculum Vitae][cv-en-us] (pdf) / ([pt_BR][cv-pt-br]
+- [Curriculum Vitae][cv-en-us] (pdf) / [(pt_BR)][cv-pt-br]
 
 ## Blog
 
