@@ -12,7 +12,7 @@ this is probably the best you have since I'm not on social media.
 ## whois caian.org
 
 A 22 years old programmer living in [São Paulo, Brazil][home] who works as a
-chatbot developer for [Hvar][work] and is an undergraduate student at the
+chatbot developer for [HVAR][work] and is an undergraduate student at the
 [Anhembi Morumbi][uni] university.
 
 I deeply value privacy, anonimity, freedom of information exchange and
@@ -21,7 +21,7 @@ where the line should be drawn).
 
 - [GitHub](https://github.com/caiertl)
 - [LinkedIn](https://linkedin.com/in/caiertl)
-- [Curriculum Vitae](assets/pdf/cv_en.pdf) (pdf) / ([pt_BR](assets/pdf/cv_pt.pdf))
+- [Curriculum Vitae][cv-en-us] (pdf) / ([pt_BR][cv-pt-br]
 
 ## Blog
 
@@ -38,6 +38,13 @@ where the line should be drawn).
 - [coin][coin], a CLI tool to currency conversion
 - [tpsp][tpsp], a CLI tool to get São Paulo's [train][cptm] and [metro][metro] lines statuses
 
+
+{% comment %}
+    My résumés in english and portuguese
+{% endcomment %}
+
+[cv-pt-br]: https://caian-org.s3.amazonaws.com/cv-pt_BR.pdf
+[cv-en-us]: https://caian-org.s3.amazonaws.com/cv-en_US.pdf
 
 {% comment %}
     "about-me" references.
