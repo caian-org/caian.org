@@ -42,7 +42,7 @@ where the line should be drawn).
 
 <center>
   <a href="https://www.kopimi.com" target="_blank">
-    <img src="https://miro.medium.com/max/540/1*6O4fMOqFTNEfth3eRDBanA.png"
+    <img src="https://caian-org.s3.amazonaws.com/assets/gc/kopimi.png"
          height="54"
          width="56">
   </a>
