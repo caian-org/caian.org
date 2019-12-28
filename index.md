@@ -3,69 +3,56 @@ layout: default
 title: Homepage
 ---
 
-# Caian R. Ertl
+# hello, friend
 
-This website is mainteined as my personal online cave, to make public some of
+This website is maintained as my personal online cave, to make public some of
 what I am, what I like and do. If you're the NSA or any data mining company,
 this is probably the best you have since I'm not on social media.
 
-## whois caian.org
+<center>
+  <a href="/blog.html">blog</a>
+  |
+  <a href="/projs.html">projs</a>
+  |
+  <a href="/contact.html">contact</a>
+</center>
 
-A 22 years old programmer living in [São Paulo, Brazil][home] who works as a
-chatbot developer for [HVAR][work] and is an undergraduate student at the
-[Anhembi Morumbi][uni] university.
+## $ whois caian.org
+
+% IANA WHOIS server<br />
+% for more information on IANA, visit http://www.iana.org<br />
+% This query returned 1 object<br />
+
+contact: &nbsp;&nbsp; administrative<br />
+name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Caian R. Ertl<br />
+address: &nbsp;&nbsp; [São Paulo][home]{:target="_blank"}<br />
+
+I'm a 22 years old guy that digs low level programming, retrocomputing,
+[unixp0rn][pron]{:target="_blank"}, deep house and cloudy days.
+
+A non-exhaustive list of things I like also include dystopian literature,
+[90s][90s] hacker culture, neoclassicism, free software, snobby coffee,
+psychedelic rock and typography.
 
 I deeply value privacy, anonimity, freedom of information exchange and
 minimalism (both functionally and aesthetically, though i'm not quite sure
 where the line should be drawn).
 
-- [GitHub](https://github.com/caiertl)
-- [LinkedIn](https://linkedin.com/in/caiertl)
-- [Curriculum Vitae][cv-en-us] (pdf) / [(pt_BR)][cv-pt-br]
+&gt;&gt;&gt; Last update of WHOIS database: 2019-12-27T06:08:31-03 &lt;&lt;&lt; <br /><br />
 
-## Blog
-
-[All posts](/blog.html)
-{% for post in site.categories.tech limit: 3 %}
-- `{{ post.date | date: "%Y-%m-%d" }}` - [{{ post.title }}]({{ post.url }}) {% endfor %}
-
-## Projects
-
-[All projects](/projects.html)
-
-- [tmul][tmul], a tiny implementation of a Lisp-like language
-- [dora][dora], a cloud-ready DNS query microservice
-- [coin][coin], a CLI tool to currency conversion
-- [tpsp][tpsp], a CLI tool to get São Paulo's [train][cptm] and [metro][metro] lines statuses
+<center>
+  <a href="https://www.kopimi.com" target="_blank">
+    <img src="https://miro.medium.com/max/540/1*6O4fMOqFTNEfth3eRDBanA.png"
+         height="54"
+         width="56">
+  </a>
+</center>
 
 
 {% comment %}
-    My résumés in english and portuguese
+    hyperlinks
 {% endcomment %}
 
-[cv-pt-br]: https://caian-org.s3.amazonaws.com/cv-pt_BR.pdf
-[cv-en-us]: https://caian-org.s3.amazonaws.com/cv-en_US.pdf
-
-{% comment %}
-    "about-me" references.
-{% endcomment %}
-
-[home]: https://bit.ly/2hx2Tdv
-[work]: http://hvarconsulting.com.br
-[uni]: https://portal.anhembi.br
-
-{% comment %}
-    Hyperlinks of the projects
-{% endcomment %}
-
-[tmul]:  https://github.com/caian-org/tmul
-[dora]:  https://github.com/caian-org/dora
-[coin]:  https://github.com/caian-org/coin
-[tpsp]:  https://github.com/caian-org/tpsp
-
-{% comment %}
-    References to the products/services
-{% endcomment %}
-
-[cptm]:  https://www.cptm.sp.gov.br
-[metro]: http://www.metro.sp.gov.br
+[home]: https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_(state)
+[pron]: https://www.reddit.com/r/unixporn
+[90s]: /geocities
