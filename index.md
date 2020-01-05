@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: main-bright
 title: Homepage
 ---
 
@@ -10,11 +10,11 @@ what I am, what I like and do. If you're the NSA or any data mining company,
 this is probably the best you have since I'm not on social media.
 
 <center>
-  <a href="/blog.html">blog</a>
+  <a href="/blog.html">Blog</a>
   |
-  <a href="/projs.html">projs</a>
+  <a href="/projs.html">Projs</a>
   |
-  <a href="/contact.html">contact</a>
+  <a href="/contact.html">Contact</a>
 </center>
 
 ## $ whois caian.org
