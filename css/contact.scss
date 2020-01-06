@@ -1,0 +1,53 @@
+---
+---
+
+body {
+  background: #fff url('https://caian-org.s3.amazonaws.com/assets/def/boxes.gif');
+  background-repeat: repeat;
+  font-size: 85%;
+  font-family: Menlo, monospace;
+  text-align: justify;
+  line-height: 1.7;
+}
+
+p {
+  font-weight: normal;
+}
+
+p.lighter {
+  font-weight: normal;
+  color: #999;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: left;
+}
+
+a:link {
+  color: #000;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #000;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content {
+  background: #fff;
+  height: 565px;
+  width: 500px;
+  padding: 40px;
+}
