@@ -1,12 +1,19 @@
 ---
-layout: default
+layout: main-bright
 ---
 
-<a href="/blog">Back</a>
+<script>
+  function ct() {
+    var dim = document.getElementById('theme').href.includes('/css/main-bright.css') ? 'dark' : 'bright';
+    document.getElementById('theme').href   = '/css/main-' + dim + '.css';
+    document.getElementById('syntax').href  = '/css/syntax-' + dim + '.css';
+    document.getElementById('ct').innerHTML = (dim === 'bright' ? 'Dark' : 'Bright') + ' theme';
+  }
+</script>
 
-<header>
-  <h1>{{ page.title }}</h1>
-  <p class="header-date">{{ page.date | date_to_long_string }}</p>
-</header>
+<a href="/blog">Back</a> | <a href="#" onclick="ct()" id="ct">Dark theme</a>
+
+<h1>{{ page.title }}</h1>
+<p class="header-date">{{ page.date | date_to_long_string }}</p>
 {{ content }}
 {% include post_footer.html %}
