@@ -9,6 +9,23 @@ body {
   font-size: 17px;
 }
 
+ul li {
+  background-image: url('/point.gif');
+  background-repeat: no-repeat;
+  line-height: 10px;
+  padding-left: 65px;
+  padding-bottom: 20px;
+}
+
+li {
+  list-style-type: none;
+  text-align: left;
+}
+
+ul {
+  margin-top: 50px;
+}
+
 a {
   color: #ff00df;
   font-weight: bold;
