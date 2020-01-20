@@ -10,7 +10,7 @@ heading: Photos
 #### a dope party
 ![](https://caian-org.s3.amazonaws.com/assets/gc/photos/dope.gif){: class="wiggle"}
 
-#### my teacher told me microsoft will win the browser war
+#### my teacher told me microsoft's gonna win the browser war
 ![](https://caian-org.s3.amazonaws.com/assets/gc/photos/ms.gif){: class="wiggle"}
 
 #### man i sure love christmas
@@ -30,6 +30,3 @@ heading: Photos
 
 #### hmm delicious hamburgers
 ![](https://caian-org.s3.amazonaws.com/assets/gc/photos/food.gif){: class="wiggle"}
-
-#### man i sure love mirrors
-![](https://caian-org.s3.amazonaws.com/assets/gc/photos/mirrors.gif){: class="wiggle"}
