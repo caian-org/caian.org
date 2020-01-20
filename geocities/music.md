@@ -4,7 +4,7 @@ title: Music
 heading: Music
 ---
 
-## classic
+## classical
 
 - *Albinoni*, [Adagio in G Minor][ce]{:target="_blank"}
 - *Glass*, [Concerto for Violin No. 1][ca]{:target="_blank"}
