@@ -55,4 +55,4 @@ where the line should be drawn).
 
 [home]: https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_(state)
 [pron]: https://www.reddit.com/r/unixporn
-[90s]: /geocities
+[90s]: /geocities/main.html
