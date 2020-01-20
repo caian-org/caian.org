@@ -4,8 +4,18 @@ title: Music
 heading: Music
 ---
 
-### this page has been swallowed by the void!
-![](https://caian-org.s3.amazonaws.com/assets/gc/void.gif)
+## classic
 
-For the time being, nothing is here.<br/>
-Come back later or press *F5* vigorously.
+- *Albinoni*, [Adagio in G Minor][ce]{:target="_blank"}
+- *Glass*, [Concerto for Violin No. 1][ca]{:target="_blank"}
+- *Ravel*, [Bolero][cb]{:target="_blank"}
+- *Ravel*, [Tzigane][cf]{:target="_blank"}
+- *Schubert*, [String Quartet No. 14][cd]{:target="_blank"}
+- *Shostakovitch*, [String Quartet No. 8][cc]{:target="_blank"}
+
+[ca]: https://www.youtube.com/watch?v=rM2KLeoRBGo
+[cb]: https://www.youtube.com/watch?v=mhhkGyJ092E
+[cc]: https://www.youtube.com/watch?v=41HIXtBElH4
+[cd]: https://www.youtube.com/watch?v=otdayisyIiM
+[ce]: https://www.youtube.com/watch?v=_eLU5W1vc8Y
+[cf]: https://www.youtube.com/watch?v=w0ObgSKBqTQ
