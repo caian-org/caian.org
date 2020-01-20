@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +13,12 @@
         <h1>{{ page.heading }}</h1>
       </div>
       <center>
+        {% if page.is_post %}
+          <br />
+          <a href="/geocities/thoughts.html"><img src="https://caian-org.s3.amazonaws.com/assets/gc/back.gif"></a>
+          <br />
+          <h2>{{ page.title }}</h2>
+        {% endif %}
         {{ content }}
       </center>
     </div>
