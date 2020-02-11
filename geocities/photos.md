@@ -30,3 +30,6 @@ heading: Photos
 
 #### hmm delicious hamburgers
 ![](https://caian-org.s3.amazonaws.com/assets/gc/photos/food.gif){: class="wiggle"}
+
+#### uuuh parteeh
+![](https://caian-org.s3.amazonaws.com/assets/gc/photos/parteh.gif){: class="wiggle"}
