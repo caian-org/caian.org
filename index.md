@@ -27,7 +27,7 @@ contact: &nbsp;&nbsp; administrative<br />
 name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Caian R. Ertl<br />
 address: &nbsp;&nbsp; [São Paulo][home]{:target="_blank"}<br />
 
-I'm a 22 years old guy that digs low level programming, retrocomputing,
+I'm a 23 years old guy that digs low level programming, retrocomputing,
 [unixp0rn][pron]{:target="_blank"}, deep house and cloudy days.
 
 A non-exhaustive list of things I like also include dystopian literature,
@@ -38,7 +38,7 @@ I deeply value privacy, anonimity, freedom of information exchange and
 minimalism (both functionally and aesthetically, though i'm not quite sure
 where the line should be drawn).
 
-&gt;&gt;&gt; Last update of WHOIS database: 2019-12-27T06:08:31-03 &lt;&lt;&lt; <br /><br />
+&gt;&gt;&gt; Last update of WHOIS database: 2020-06-16T04:21:47-03 &lt;&lt;&lt; <br /><br />
 
 <center>
   <a href="https://www.kopimi.com" target="_blank">
