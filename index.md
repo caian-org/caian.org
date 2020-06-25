@@ -35,7 +35,7 @@ A non-exhaustive list of things I like also include dystopian literature,
 psychedelic rock and typography.
 
 I deeply value privacy, anonimity, freedom of information exchange and
-minimalism (both functionally and aesthetically, though i'm not quite sure
+minimalism (both functionally and aesthetically, though I'm not quite sure
 where the line should be drawn).
 
 &gt;&gt;&gt; Last update of WHOIS database: 2020-06-16T04:21:47-03 &lt;&lt;&lt; <br /><br />
