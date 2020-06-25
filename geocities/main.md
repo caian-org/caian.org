@@ -5,7 +5,7 @@ heading: Homepage
 ---
 
 <br />
-![](https://caian-org.s3.amazonaws.com/assets/gc/hackercdad.gif)
+[![](https://caian-org.s3.amazonaws.com/assets/gc/hackercdad.gif)][hackers]
 <br /><br />
 
 Welcome to my personal page on the World Wide Web!
@@ -20,3 +20,5 @@ This website is still *under construction*, so things can change!
 Don't forget to add this page to your favorites!
 
 ![](https://caian-org.s3.amazonaws.com/assets/gc/bookmark.gif)
+
+[hackers]: https://hackerscurator.com
