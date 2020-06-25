@@ -5,7 +5,7 @@ heading: Homepage
 ---
 
 <br />
-[![](https://caian-org.s3.amazonaws.com/assets/gc/hackercdad.gif)][hackers]
+[![](https://caian-org.s3.amazonaws.com/assets/gc/hackercdad.gif)][hackers]{: target="_blank"}
 <br /><br />
 
 Welcome to my personal page on the World Wide Web!
