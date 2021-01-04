@@ -6,13 +6,6 @@ description: >
 baseurl: ""
 url: https://caian.org
 
-# SEO settings
-author: Caian Rais Ertl
-social:
-  name: Caian Rais Ertl
-  links:
-    - https://github.com/caiertl
-
 # Build settings
 markdown: kramdown
 exclude:
@@ -26,4 +19,3 @@ sass:
 # Plugins
 gems:
   - jekyll-sitemap
-  - jekyll-seo-tag
