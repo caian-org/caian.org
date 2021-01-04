@@ -13,8 +13,15 @@ exclude:
   - Gemfile.lock
   - venv
   - vendor
+  - CNAME
+  - LICENSE
+  - README.md
+  - Makefile
+  - logo.svg
+
 sass:
   style: nested
+  sourcemap: never
 
 # Plugins
 gems:
