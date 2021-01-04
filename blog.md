@@ -1,5 +1,5 @@
 ---
-layout: main-bright
+layout: default-bright
 title: Blog
 ---
 

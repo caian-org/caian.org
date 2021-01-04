@@ -1,12 +1,13 @@
 ---
-layout: main-bright
+layout: default-bright
 ---
 
 <script>
   function ct() {
-    var dim = document.getElementById('theme').href.includes('/css/main-bright.css') ? 'dark' : 'bright';
-    document.getElementById('theme').href   = '/css/main-' + dim + '.css';
-    document.getElementById('syntax').href  = '/css/syntax-' + dim + '.css';
+    var dim = document.getElementById('theme').href.includes('/css/default/bright.css') ? 'dark' : 'bright';
+
+    document.getElementById('theme').href = '/css/default/' + dim + '.css';
+    document.getElementById('syntax').href = '/css/syntax/' + dim + '.css';
     document.getElementById('ct').innerHTML = (dim === 'bright' ? 'Dark' : 'Bright') + ' theme';
   }
 </script>
