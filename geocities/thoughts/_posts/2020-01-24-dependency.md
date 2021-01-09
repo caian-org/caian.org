@@ -18,5 +18,5 @@ same mistakes over and over again. *Life without guarantees is scary* but I
 suppose that's the burden of abandoning childhood.
 
 <br />
-![](https://caian-org.s3.amazonaws.com/assets/gc/t/jailbird.gif)
+![](/geocities/assets/imgs/t/jailbird.gif)
 

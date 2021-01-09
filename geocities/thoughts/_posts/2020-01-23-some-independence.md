@@ -18,4 +18,4 @@ half dozen of my belongs. If everything goes accordingly, by the end of this
 semester I'll have my own place.
 
 <br />
-![](https://caian-org.s3.amazonaws.com/assets/gc/t/money_flying.gif){: width="150" height="150"}
+![](/geocities/assets/imgs/t/money_flying.gif){: width="150" height="150"}

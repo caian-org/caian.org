@@ -2,7 +2,7 @@
 ---
 
 body {
-  background: #000 url('https://caian-org.s3.amazonaws.com/assets/gc/background.gif');
+  background: #000 url('/geocities/assets/imgs/background.gif');
   background-repeat: repeat;
   background-attachment: fixed;
   color: #000;
@@ -10,7 +10,7 @@ body {
 }
 
 ul li {
-  background-image: url('https://caian-org.s3.amazonaws.com/assets/gc/point.gif');
+  background-image: url('/geocities/assets/imgs/point.gif');
   background-repeat: no-repeat;
   line-height: 10px;
   padding-left: 65px;
@@ -40,7 +40,7 @@ a:hover {
 .custom h1 {
   text-align: center;
   color: #ff00df;
-  background: #000 url('https://caian-org.s3.amazonaws.com/assets/gc/space.gif');
+  background: #000 url('/geocities/assets/imgs/space.gif');
   margin: auto;
   text-shadow: 1px 1px 3px #000;
 }
@@ -90,7 +90,7 @@ u { text-decoration: underline; }
 /* POSTS BOX */
 .wrapperp {
   background-color: #000;
-  background-image: url('https://caian-org.s3.amazonaws.com/assets/gc/constellation.png');
+  background-image: url('/geocities/assets/imgs/constellation.png');
   background-repeat: repeat;
   background-attachment: fixed;
   width: 550px;
@@ -120,7 +120,7 @@ u { text-decoration: underline; }
 /* SIDEBAR BOX */
 .wrappersi {
   background-color: #000;
-  background-image: url('https://caian-org.s3.amazonaws.com/assets/gc/constellation.png');
+  background-image: url('/geocities/assets/imgs/constellation.png');
   background-repeat: repeat;
   background-attachment: fixed;
   width: 300px;

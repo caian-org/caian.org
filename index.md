@@ -42,17 +42,10 @@ where the line should be drawn).
 
 <center>
   <a href="https://www.kopimi.com" target="_blank">
-    <img src="https://caian-org.s3.amazonaws.com/assets/gc/kopimi.png"
-         height="54"
-         width="56">
+    <img src="/assets/imgs/kopimi.png" height="54" width="56">
   </a>
 </center>
 
-
-{% comment %}
-    hyperlinks
-{% endcomment %}
-
 [home]: https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_(state)
 [pron]: https://www.reddit.com/r/unixporn
-[90s]: /geocities/main.html
+[90s]: /geocities

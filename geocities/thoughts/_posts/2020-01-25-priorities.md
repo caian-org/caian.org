@@ -17,4 +17,4 @@ thought on it. Life by itself is stressing already and worrying whether I'm
 having "enough fun" is a free call for more anxiety.
 
 <br />
-![](https://caian-org.s3.amazonaws.com/assets/gc/t/computer.gif){: width="150" height="150"}
+![](/geocities/assets/imgs/t/computer.gif){: width="150" height="150"}
