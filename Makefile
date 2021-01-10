@@ -1,13 +1,13 @@
 .DEFAULT_GOAL := build
 .PHONY: clean clean-build
 
-clean: clean-build
-
-clean-build:
+clean:
 	bundle exec jekyll clean
 
 build:  # Create the static and store it in _site/
 	bundle exec jekyll build
+
+build-clean: clean build
 
 build-dev:  # Create the static and store it in _site/
 	bundle exec jekyll build --drafts
