@@ -6,6 +6,8 @@ description: >
 baseurl: ""
 url: https://caian.org
 
+incremental: true
+
 # Build settings
 markdown: kramdown
 exclude:
