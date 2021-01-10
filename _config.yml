@@ -7,6 +7,8 @@ baseurl: ""
 url: https://caian.org
 
 incremental: true
+source: content
+destination: public
 
 # Build settings
 markdown: kramdown
