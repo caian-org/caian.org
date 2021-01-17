@@ -14,6 +14,8 @@ this is probably the best you have since I'm not on social media.
   |
   <a href="/projs.html">Projs</a>
   |
+  <a href="/files">Files</a>
+  |
   <a href="/contact.html">Contact</a>
 </center>
 
@@ -38,7 +40,7 @@ I deeply value privacy, anonimity, freedom of information exchange and
 minimalism (both functionally and aesthetically, though I'm not quite sure
 where the line should be drawn).
 
-&gt;&gt;&gt; Last update of WHOIS database: 2020-06-16T04:21:47-03 &lt;&lt;&lt; <br /><br />
+&gt;&gt;&gt; Last update of WHOIS database: 2021-01-17T16:52:05-03 &lt;&lt;&lt; <br /><br />
 
 <center>
   <a href="https://www.kopimi.com" target="_blank">
