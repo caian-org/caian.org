@@ -1,6 +1,6 @@
 # caian.org
 
-<img src="new-01.svg" height="210px" align="right"/>
+<img src="new-02.svg" height="210px" align="right"/>
 
 Personal website, blog et cetera.
 
