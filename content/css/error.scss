@@ -26,6 +26,13 @@ a:hover {
   text-decoration: none;
 }
 
+.centered {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .glitch {
   position: relative;
   animation: glitch 2s steps(100) infinite;
@@ -338,11 +345,4 @@ a:hover {
   100% {
     text-shadow: -1px 0 0 blue, 1px 0 0 lime;
   }
-}
-
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
