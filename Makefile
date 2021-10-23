@@ -1,20 +1,29 @@
 .DEFAULT_GOAL := build
 .PHONY: clean clean-build
 
+J = bundle exec jekyll
+
+init:
+	@mkdir -p vendor
+	@bundle install --path vendor
+	@npm install
+	@npx husky install
+
+update:
+	@bundle update
+	@npm run bump:all
+	@npm install
+
 clean:
-	bundle exec jekyll clean
+	@$(J) clean
 
-build:  # Create the static and store it in site/
-	bundle exec jekyll build
+# Create the static and store it in site/
+build:
+	@$(J) build
 
-build-clean: clean build
-
-build-dev:  # Create the static and store it in site/
-	bundle exec jekyll build --drafts
-
-install:
-	mkdir -p vendor
-	bundle install --path vendor
+# Create the static and store it in site/
+build-dev:
+	@$(J) build --drafts
 
 serve: clean
-	bundle exec jekyll serve --drafts
+	@$(J) serve --drafts
