@@ -1,0 +1,54 @@
+{
+  "name": "caian.org",
+  "version": "1.0.0",
+  "description": "My website",
+  "main": "index.js",
+  "homepage": "https://github.com/caian-org/caian.org#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caian-org/caian.org.git"
+  },
+  "author": "Caian R. Ertl <hi@caian.org>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/caian-org/caian.org/issues"
+  },
+  "scripts": {
+    "bump:dev": "ncu --upgrade --dep dev",
+    "bump:prod": "ncu --upgrade --dep prod --target minor",
+    "bump:all": "npm run bump:dev && npm run bump:prod",
+    "fix:style": "prettier --ignore-path .gitignore --no-semi --single-quote --print-width 120 --trailing-comma none --write . '**/*.{html,md,scss,yml,yaml}'"
+  },
+  "lint-staged": {
+    "**/*.{html,md,scss,yml,yaml}": [
+      "npm run fix:style"
+    ]
+  },
+  "jscpd": {
+    "threshold": 5,
+    "reporters": [
+      "html",
+      "console"
+    ],
+    "absolute": true,
+    "gitignore": true,
+    "ignore": [
+      "**/.github/**",
+      "**/dist/**",
+      "**/docs/**",
+      "**/report/**"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.4",
+    "jscpd": "^3.3.26",
+    "lint-staged": "^11.2.4",
+    "npm-check-updates": "^11.8.5",
+    "prettier": "^2.4.1",
+    "surge": "^0.23.0"
+  }
+}
