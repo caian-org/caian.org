@@ -13,7 +13,7 @@ prices are high and God knows how awful some places are. Either bad
 neighborhoods or straight up dirty and non-ventilated places that certainly are
 health hazards.
 
-*I'm moving alone.* I suppose something like 40m2 are enough for me and the
+_I'm moving alone._ I suppose something like 40m2 are enough for me and the
 half dozen of my belongs. If everything goes accordingly, by the end of this
 semester I'll have my own place.
 

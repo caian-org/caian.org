@@ -13,7 +13,12 @@ body {
   margin: 40px auto 40px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-align: left;
 }
 
@@ -30,7 +35,8 @@ img {
   margin: auto;
 }
 
-code, pre {
+code,
+pre {
   font-family: Menlo, monospace;
   background-color: #eceff1;
 }
@@ -55,7 +61,7 @@ a:hover {
 }
 
 hr {
-    margin: 25px auto 25px;
+  margin: 25px auto 25px;
 }
 
 table {
@@ -64,7 +70,9 @@ table {
   margin: 1.75rem 0;
 }
 
-table, td, th {
-    border: 1px solid black;
-    padding: 10px;
+table,
+td,
+th {
+  border: 1px solid black;
+  padding: 10px;
 }

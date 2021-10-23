@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A better language for tooling"
+title: 'A better language for tooling'
 ---
 
 **TL;DR:** _I were searching for a better alternative for a programming
@@ -53,7 +53,6 @@ features. Neither Golang or Python seems, at least in my experience, to solve
 the problem of making tooling & automation -- the optimal solution would be a
 point of intersection between them.
 
-
 ## A third way
 
 Truth be told, I don't quite remember how or when did I found
@@ -67,19 +66,18 @@ functions were right there. Like in the slogan: _fast as C, slick as Ruby_.
 Crystal immediately seemed to be a good fit for all the problems I've mentioned
 above:
 
- - It's syntax is Ruby-like (well, it's actually almost exactly as Ruby),
-   so practically anyone in the team can grasp it quite rapidly (more than with
-   Golang, at least) -- specially those who already knows something about
-   Python.
+- It's syntax is Ruby-like (well, it's actually almost exactly as Ruby),
+  so practically anyone in the team can grasp it quite rapidly (more than with
+  Golang, at least) -- specially those who already knows something about
+  Python.
 
- - It's a compiled language, capable of generating artifacts with everything
-   included (third-party libraries, modules, utilities etc), so the only thing
-   you need is to throw the binary into the `PATH` and voila.
+- It's a compiled language, capable of generating artifacts with everything
+  included (third-party libraries, modules, utilities etc), so the only thing
+  you need is to throw the binary into the `PATH` and voila.
 
- - It have a lot of sugar, everywhere: lots and lots of "shortcuts" in the
-   language, so you can easily and expressively do things with few lines --
-   like in any Ruby program.
-
+- It have a lot of sugar, everywhere: lots and lots of "shortcuts" in the
+  language, so you can easily and expressively do things with few lines --
+  like in any Ruby program.
 
 ## What's next
 

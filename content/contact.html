@@ -4,39 +4,46 @@ title: Contact
 
 <!DOCTYPE html>
 <html>
+  {% include head.html sheet="contact" %}
 
-{% include head.html sheet="contact" %}
-
-<body>
-  <div class="centered">
-    <table>
-      <col width="180px">
-      <col width="500px">
-      <col width="180px">
-      <tr>
-        <th><img src="/assets/imgs/venus_right.png"></th>
-        <th>
-          <div class="content">
-            <h1>Contact</h1>
-            <p>Don't search me at facebook, instagram, linkedin et caterva. I'm
-              not there. If you wish to talk with me, arrange a party or buy me
-              a cup of coffee, reach out by email.</p>
-            <p><a href="mailto:hi@caian.org">hi@caian.org</a> or <a href="mailto:caianrais@pm.me">caianrais@pm.me</a></p>
-            <p>For naughty stuff:<br />
-            $ curl pgp.caian.org | gpg --import</p>
-            <p class="lighter">E5D5 34DA ECBA 5209 3C44  F13E 6374 3190 E0AF 7A6B</p>
-            <p>---</p>
-            <p>Code projects are publicly available at <a href="https://github.com/caian-org" target="_blank">GitHub</a>.
-              My curriculum vitae is <a href="https://caian-org.s3.amazonaws.com/cv-en_US.pdf" target="_blank">here</a>.
-              Em português, <a href="https://caian-org.s3.amazonaws.com/cv-pt_BR.pdf" target="_blank">aqui</a>.</p>
-            <br /><br /><br /><br />
-            <p><a href="/">Back to home</a></p>
-          </div>
-        </th>
-        <th><img src="/assets/imgs/venus_left.png"></th>
-      </tr>
-    </table>
-  </div>
-</body>
-
+  <body>
+    <div class="centered">
+      <table>
+        <col width="180px" />
+        <col width="500px" />
+        <col width="180px" />
+        <tr>
+          <th><img src="/assets/imgs/venus_right.png" /></th>
+          <th>
+            <div class="content">
+              <h1>Contact</h1>
+              <p>
+                Don't search me at facebook, instagram, linkedin et caterva. I'm not there. If you wish to talk with me,
+                arrange a party or buy me a cup of coffee, reach out by email.
+              </p>
+              <p>
+                <a href="mailto:hi@caian.org">hi@caian.org</a> or
+                <a href="mailto:caianrais@pm.me">caianrais@pm.me</a>
+              </p>
+              <p>
+                For naughty stuff:<br />
+                $ curl pgp.caian.org | gpg --import
+              </p>
+              <p class="lighter">E5D5 34DA ECBA 5209 3C44 F13E 6374 3190 E0AF 7A6B</p>
+              <p>---</p>
+              <p>
+                Code projects are publicly available at
+                <a href="https://github.com/caian-org" target="_blank">GitHub</a>. My curriculum vitae is
+                <a href="https://caian-org.s3.amazonaws.com/cv-en_US.pdf" target="_blank">here</a>. Em português,
+                <a href="https://caian-org.s3.amazonaws.com/cv-pt_BR.pdf" target="_blank">aqui</a>.
+              </p>
+              <br /><br /><br /><br />
+              <p><a href="/">Back to home</a></p>
+            </div>
+          </th>
+          <th><img src="/assets/imgs/venus_left.png" /></th>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>

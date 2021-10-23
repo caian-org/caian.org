@@ -4,11 +4,11 @@ layout: default-bright
 
 <script>
   function ct() {
-    var dim = document.getElementById('theme').href.includes('/css/default/bright.css') ? 'dark' : 'bright';
+    var dim = document.getElementById('theme').href.includes('/css/default/bright.css') ? 'dark' : 'bright'
 
-    document.getElementById('theme').href = '/css/default/' + dim + '.css';
-    document.getElementById('syntax').href = '/css/syntax/' + dim + '.css';
-    document.getElementById('ct').innerHTML = (dim === 'bright' ? 'Dark' : 'Bright') + ' theme';
+    document.getElementById('theme').href = '/css/default/' + dim + '.css'
+    document.getElementById('syntax').href = '/css/syntax/' + dim + '.css'
+    document.getElementById('ct').innerHTML = (dim === 'bright' ? 'Dark' : 'Bright') + ' theme'
   }
 </script>
 
@@ -16,5 +16,4 @@ layout: default-bright
 
 <h1>{{ page.title }}</h1>
 <p class="header-date">{{ page.date | date_to_long_string }}</p>
-{{ content }}
-{% include post_footer.html %}
+{{ content }} {% include post_footer.html %}

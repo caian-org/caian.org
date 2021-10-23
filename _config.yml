@@ -3,7 +3,7 @@ title: caian.org
 email: hi@caian.org
 description: >
   Personal page, blog, portfolio etc
-baseurl: ""
+baseurl: ''
 url: https://caian.org
 
 incremental: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learning Crystal 01: the basics"
+title: 'Learning Crystal 01: the basics'
 ---
 
 **DISCLAIMER:** _HIC SUNT DRACONES! These are my "study notes". They're not
@@ -14,7 +14,6 @@ a programming language that strives to be fast as C and "slick" (read "simple",
 "elegant", "beautiful") as Ruby. Here's some of my initial notes and observations.
 
 [initial-post]: https://caian.org/tech/2019/02/13/a-better-language-for-tooling.html
-
 
 ## Installation & CLI
 
@@ -53,7 +52,6 @@ Following the opinionated nature of Golang, Crystal offers some built-in ways
 of doing documentation and testing. You can see some "uniformity" in many
 Crystal projects out there, which is something that I personally value.
 
-
 ## Shards
 
 The Crystal equivalent of Ruby's Gems are Shards. A shard could be a tiny
@@ -72,7 +70,6 @@ shard to install. It simply read the manifest file and installs it into a local
 edit the manifest and include it yourself.
 
 Counter-intuitive, but okay.
-
 
 ## Code
 
@@ -129,7 +126,6 @@ The `file.cr` would have to be required as:
 
 require "./module/file.cr"
 ```
-
 
 ## Compiler
 
