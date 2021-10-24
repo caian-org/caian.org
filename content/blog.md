@@ -7,8 +7,7 @@ title: Blog
 
 # Blog
 
-{% for post in site.categories.blog %}
-
-- `{{ post.date | date: "%Y-%m-%d" }}` - [{{ post.title }}]({{ post.url }}) {% endfor %}
+{% for p in site.categories.blog %}- `{{ p.date | date: "%Y-%m-%d" }}` - [{{ p.title }}]({{ p.url }})
+{% endfor %}
 
 [Subscribe with RSS](/feed.xml)

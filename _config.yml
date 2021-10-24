@@ -1,4 +1,5 @@
 # Site settings
+
 title: caian.org
 email: hi@caian.org
 description: >
@@ -11,6 +12,7 @@ source: content
 destination: site
 
 # Build settings
+
 markdown: kramdown
 exclude:
   - Gemfile
@@ -28,5 +30,6 @@ sass:
   sourcemap: never
 
 # Plugins
+
 gems:
   - jekyll-sitemap
