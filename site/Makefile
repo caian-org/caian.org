@@ -39,6 +39,6 @@ build-dev:
 # ...
 
 deploy:
-	@sudo npm install --global pug
+	@npm install --global pug
 	@$(MAKE) install-prod
 	@$(MAKE) build
