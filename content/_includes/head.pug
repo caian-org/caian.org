@@ -1,0 +1,28 @@
+//
+  ┬ ┬┬ ┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐  ┬ ┬┌─┐┬ ┬
+  │││├─┤├─┤ │   ├─┤├┬┘├┤   └┬┘│ ││ │
+  └┴┘┴ ┴┴ ┴ ┴   ┴ ┴┴└─└─┘   ┴ └─┘└─┘
+  ┬  ┌─┐┌─┐┬┌─┬┌┐┌┌─┐  ┌─┐┌─┐┬─┐┌─┐
+  │  │ ││ │├┴┐│││││ ┬  ├┤ │ │├┬┘ ┌┘
+  ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
+
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
+  | {% if include.sheet != null %}
+  link#theme(rel='stylesheet', href='/css/{{ include.sheet }}.css')
+  | {% endif %}
+
+  | {% if page.layout == "post" %}
+  link#syntax(rel='stylesheet', href='/css/syntax/bright.css')
+  | {% endif %}
+
+  link(
+    rel='alternate',
+    type='application/rss+xml',
+    title='{{ site.title }}',
+    href='{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}'
+  )
+  link(rel='icon', type='image/png', href='/assets/imgs/favicon.ico')

@@ -1,0 +1,51 @@
+---
+title: Contact
+---
+
+doctype html
+html
+  | {% include head.pug sheet="contact" %}
+  body
+    .centered
+      table
+        colgroup
+          col(width='180px')
+          col(width='500px')
+          col(width='180px')
+        tbody
+          tr
+            th
+              img(src='/assets/imgs/venus_right.png')
+            th
+              .content
+                h1 Contact
+                p
+                  | Don't search me at facebook, instagram, linkedin et caterva. I'm not there. If you wish to talk with me,
+                  | arrange a party or buy me a cup of coffee, reach out by email.
+                p
+                  a(href='mailto:hi@caian.org') hi@caian.org
+                  |
+                  | or
+                  a(href='mailto:caianrais@pm.me') caianrais@pm.me
+                p
+                  | For naughty stuff:
+                  br
+                  | $ curl pgp.caian.org | gpg --import
+                p.lighter E5D5 34DA ECBA 5209 3C44 F13E 6374 3190 E0AF 7A6B
+                p ---
+                p
+                  | Code projects are publicly available at
+                  a(href='https://github.com/caian-org', target='_blank') GitHub
+                  | . My curriculum vitae is
+                  a(href='https://caian-org.s3.amazonaws.com/cv-en_US.pdf', target='_blank') here
+                  | . Em português,
+                  a(href='https://caian-org.s3.amazonaws.com/cv-pt_BR.pdf', target='_blank') aqui
+                  | .
+                br
+                br
+                br
+                br
+                p
+                  a(href='/') Back to home
+            th
+              img(src='/assets/imgs/venus_left.png')

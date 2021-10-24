@@ -1,0 +1,20 @@
+---
+layout: default-bright
+---
+
+script.
+  function ct() {
+    var dim = document.getElementById("theme").href.includes("/css/default/bright.css") ? "dark" : "bright";
+    document.getElementById("theme").href = "/css/default/" + dim + ".css";
+    document.getElementById("syntax").href = "/css/syntax/" + dim + ".css";
+    document.getElementById("ct").innerHTML = (dim === "bright" ? "Dark" : "Bright") + " theme";
+  }
+
+a(href='/blog') Back
+| &nbsp;|&nbsp;
+a#ct(href='#', onclick='ct()') Dark theme
+
+h1 {{ page.title }}
+p.header-date {{ page.date | date_to_long_string }}
+| {{ content }}
+| {% include post_footer.pug %}

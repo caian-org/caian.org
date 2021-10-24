@@ -1,0 +1,79 @@
+doctype html
+html
+  | {% include head.pug sheet="90s" %}
+  body
+    .wrapperp
+      .cont
+        .custom
+          h1 {{ page.heading }}
+        center
+          | {% if page.is_post %}
+          br
+          a(href='/geocities/thoughts.html')
+            img(src='/geocities/assets/imgs/back.gif')
+          br
+          h2 {{ page.title }}
+          | {% endif %}
+          | {{ content }}
+    .wrappersi
+      .sidebar
+        p
+          img(src='/geocities/assets/imgs/paint.gif')
+        p
+          img(src='/geocities/assets/imgs/menu.gif')
+        .menu
+          p
+            a(href='/geocities') home
+          p
+            a(href='/geocities/thoughts.html') shower thoughts
+          p
+            a(href='/geocities/photos.html') my photos
+          p
+            a(href='/geocities/music.html') music i like
+          p
+            a(href='/geocities/sites.html') cool sites and links
+          p
+            a(href='/') the begin
+    .footer
+      marquee
+        | The Aneristic Principle is that of apparent order; the Eristic Principle is that of apparent disorder. Both
+        | order and disorder are man made concepts and are artificial divisions of pure chaos, which is a level deeper
+        | than is the level of distinction making. It is only the ideas-about-reality which differ. Real (capital-T) True
+        | reality is a level deeper than is the level of concept. We look at the world through windows on which have been
+        | drawn grids (concepts). Different philosophies use different grids. A culture is a group of people with rather
+        | similar grids. Through a window we view chaos, and relate it to the points on our grid, and thereby understand
+        | it. The order is in the grid. That is the Aneristic Principle. Disorder is simply unrelated information viewed
+        | through some particular grid. But, like &quot;relation&quot;, no-relation is a concept. Male, like female, is an idea
+        | about sex. To say that male-ness is &quot;absence of female-ness&quot;, or vice versa, is a matter of definition and
+        | metaphysically arbitrary. The artificial concept of no-relation is the Eristic Principle. The belief that &quot;order
+        | is true&quot; and disorder is false or somehow wrong, is the Aneristic Illusion. To say the same of disorder, is the
+        | Eristic Illusion. The point is that (little-t) truth is a matter of definition relative to the grid one is using
+        | at the moment, and that (capital-T) Truth, metaphysical reality, is irrelevant to grids entirely. Pick a grid,
+        | and through it some chaos appears ordered and some appears disordered. Pick another grid, and the same chaos
+        | will appear differently ordered and disordered. Reality is the original Rorschach.
+      br
+      center
+        a(href='https://spyware.neocities.org', target='_blank')
+          img(src='/geocities/assets/imgs/privacy.gif')
+
+        a(href='https://digdeeper.neocities.org', target='_blank')
+          img(src='/geocities/assets/imgs/nocookie.gif')
+
+        img(src='/geocities/assets/imgs/ie.gif')
+
+        a(href='https://ssd.eff.org', target='_blank')
+          img(src='/geocities/assets/imgs/aol.gif')
+
+        img(src='/geocities/assets/imgs/hicolor.gif')
+
+        a(href='https://neovim.io', target='_blank')
+          img(src='/geocities/assets/imgs/notepad.gif')
+
+        a(href='https://conficturaindustries.com', target='_blank')
+          img(src='/geocities/assets/imgs/aponow.gif')
+
+        a(href='https://stanleyparable.com', target='_blank')
+          img(src='/geocities/assets/imgs/deep.gif')
+
+        a(href='https://thatoneprivacysite.net', target='_blank')
+          img(src='/geocities/assets/imgs/hc.gif')
