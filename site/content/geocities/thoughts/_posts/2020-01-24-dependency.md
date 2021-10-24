@@ -18,4 +18,4 @@ same mistakes over and over again. _Life without guarantees is scary_ but I
 suppose that's the burden of abandoning childhood.
 
 <br />
-![](/geocities/assets/imgs/t/jailbird.gif)
+![](/assets/imgs/geocities/t/jailbird.gif)

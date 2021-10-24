@@ -17,4 +17,4 @@ thought on it. Life by itself is stressing already and worrying whether I'm
 having "enough fun" is a free call for more anxiety.
 
 <br />
-![](/geocities/assets/imgs/t/computer.gif){: width="150" height="150"}
+![](/assets/imgs/geocities/t/computer.gif){: width="150" height="150"}

@@ -19,10 +19,13 @@ head
   link#syntax(rel='stylesheet', href='/css/syntax/bright.css')
   | {% endif %}
 
+  link(rel='icon', type='image/png', href='/assets/imgs/favicon.ico')
+
   link(
     rel='alternate',
     type='application/rss+xml',
     title='{{ site.title }}',
     href='{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}'
   )
-  link(rel='icon', type='image/png', href='/assets/imgs/favicon.ico')
+
+  title {{ page.title }}

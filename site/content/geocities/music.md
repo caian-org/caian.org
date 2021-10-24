@@ -1,7 +1,7 @@
 ---
 layout: 90s
 title: Music
-heading: Music
+heading: music i like
 ---
 
 ## classical

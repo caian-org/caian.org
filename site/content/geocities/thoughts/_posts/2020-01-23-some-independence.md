@@ -18,4 +18,4 @@ half dozen of my belongs. If everything goes accordingly, by the end of this
 semester I'll have my own place.
 
 <br />
-![](/geocities/assets/imgs/t/money_flying.gif){: width="150" height="150"}
+![](/assets/imgs/geocities/t/money_flying.gif){: width="150" height="150"}

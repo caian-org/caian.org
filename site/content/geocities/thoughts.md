@@ -1,7 +1,7 @@
 ---
 layout: 90s
 title: Logs
-heading: Logs
+heading: shower thoughts
 ---
 
 <br />
