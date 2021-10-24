@@ -50,7 +50,6 @@
     "jscpd": "^3.3.26",
     "lint-staged": "^11.2.4",
     "npm-check-updates": "^11.8.5",
-    "prettier": "^2.4.1",
-    "surge": "^0.23.0"
+    "prettier": "^2.4.1"
   }
 }
