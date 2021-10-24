@@ -2,6 +2,7 @@
 .PHONY: clean clean-build
 
 J = bundle exec jekyll
+export JEKYLL_ENV = production
 
 init:
 	@mkdir -p vendor
@@ -16,14 +17,15 @@ update:
 
 clean:
 	@$(J) clean
+	@rm -rf .bundle .pug-cache node_modules public vendor
 
-# Create the static and store it in site/
+# Create the static and store it in public/
 build:
 	@$(J) build
 
-# Create the static and store it in site/
+# Create the static and store it in public/
 build-dev:
 	@$(J) build --drafts
 
-serve: clean
+serve:
 	@$(J) serve --drafts

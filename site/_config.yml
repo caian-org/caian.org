@@ -12,11 +12,16 @@ source: content
 destination: public
 
 # Build settings
+plugins:
+  - jekyll-pug
+  - jekyll-minifier
+  - jekyll-target-blank
+
 markdown: kramdown
 
 sass:
-  style: nested
+  style: compressed
   sourcemap: never
 
-plugins:
-  - jekyll-pug
+jekyll-pug:
+  minify: true
