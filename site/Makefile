@@ -30,8 +30,15 @@ serve:
 
 # Create the static and store it in public/
 build:
-	@$(J) build
+	@$(J) build --trace
 
 # Create the static and store it in public/
 build-dev:
-	@$(J) build --drafts
+	@$(J) build --trace --drafts
+
+# ...
+
+deploy:
+	@sudo npm install --global pug
+	@$(MAKE) install-prod
+	@$(MAKE) build
