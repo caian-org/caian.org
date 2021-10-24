@@ -3,18 +3,25 @@ layout: default-bright
 ---
 
 script.
-  function ct() {
-    var dim = document.getElementById("theme").href.includes("/css/default/bright.css") ? "dark" : "bright";
-    document.getElementById("theme").href = "/css/default/" + dim + ".css";
-    document.getElementById("syntax").href = "/css/syntax/" + dim + ".css";
-    document.getElementById("ct").innerHTML = (dim === "bright" ? "Dark" : "Bright") + " theme";
+  function changeTheme() {
+    var c = '/assets/css'
+
+    var theme = document.getElementById('theme')
+    var syntax = document.getElementById('syntax')
+    var changeTheme = document.getElementById('changeTheme')
+
+    var dim = theme.href.endsWith('bright.css') ? 'dark' : 'bright'
+
+    theme.href = [c, 'default', dim].join('/').concat('.css')
+    syntax.href = [c, 'syntax', dim].join('/').concat('.css')
+    changeTheme.innerHTML = (dim === 'bright' ? 'Dark' : 'Bright').concat(' theme')
   }
 
 a(href='/blog') Back
 |
 | |
 |
-a#ct(href='#', onclick='ct()') Dark theme
+a#changeTheme(href='#', onclick='changeTheme()') Dark theme
 
 h1 {{ page.title }}
 p.header-date {{ page.date | date_to_long_string }}
