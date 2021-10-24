@@ -12,24 +12,8 @@ source: content
 destination: site
 
 # Build settings
-
 markdown: kramdown
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - venv
-  - vendor
-  - CNAME
-  - LICENSE
-  - README.md
-  - Makefile
-  - logo.svg
 
 sass:
   style: nested
   sourcemap: never
-
-# Plugins
-
-gems:
-  - jekyll-sitemap
