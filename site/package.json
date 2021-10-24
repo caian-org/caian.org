@@ -17,7 +17,8 @@
     "bump:dev": "ncu --upgrade --dep dev",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod",
-    "fix:style": "prettier --ignore-path .gitignore --print-width 120 --trailing-comma none --no-semi --single-quote --write . '**/*.{html,md,scss,yml,yaml,js,pug}'"
+    "fix:style": "prettier --ignore-path ../.gitignore --print-width 120 --trailing-comma none --no-semi --single-quote --write . '**/*.{html,md,scss,yml,yaml,js,pug}'",
+    "add-hooks": "cd .. && husky install"
   },
   "lint-staged": {
     "**/*.{html,md,scss,yml,yaml,js,pug}": [

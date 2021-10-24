@@ -9,7 +9,7 @@ url: https://caian.org
 
 incremental: true
 source: content
-destination: site
+destination: public
 
 # Build settings
 markdown: kramdown

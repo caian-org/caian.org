@@ -7,7 +7,7 @@ init:
 	@mkdir -p vendor
 	@bundle install --path vendor
 	@npm install
-	@npx husky install
+	@npm run add-hooks
 
 update:
 	@bundle update
