@@ -98,6 +98,8 @@ DEPENDENCIES
   jekyll-minifier
   jekyll-pug
   jekyll-target-blank
+  kramdown
+  rouge
 
 BUNDLED WITH
-   2.2.22
+   2.2.29
