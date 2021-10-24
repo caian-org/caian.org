@@ -1,17 +1,14 @@
-# Site settings
-
 title: caian.org
 email: hi@caian.org
+url: https://caian.org
+baseurl: ''
 description: >
   Personal page, blog, portfolio etc
-baseurl: ''
-url: https://caian.org
 
 incremental: true
 source: content
 destination: public
 
-# Build settings
 plugins:
   - jekyll-pug
   - jekyll-minifier
