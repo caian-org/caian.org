@@ -6,35 +6,35 @@ heading: Music
 
 ## classical
 
-- _Albinoni_, [Adagio in G Minor][ce]{:target="\_blank"}
-- _Glass_, [Concerto for Violin No. 1][ca]{:target="\_blank"}
-- _Ravel_, [Bolero][cb]{:target="\_blank"}
-- _Ravel_, [Tzigane][cf]{:target="\_blank"}
-- _Schubert_, [String Quartet No. 14][cd]{:target="\_blank"}
-- _Shostakovitch_, [String Quartet No. 8][cc]{:target="\_blank"}
-- _Shostakovitch_, [Concerto for Violin No. 1][cg]{:target="\_blank"}
+- _Albinoni_, [Adagio in G Minor][ce]
+- _Glass_, [Concerto for Violin No. 1][ca]
+- _Ravel_, [Bolero][cb]
+- _Ravel_, [Tzigane][cf]
+- _Schubert_, [String Quartet No. 14][cd]
+- _Shostakovitch_, [String Quartet No. 8][cc]
+- _Shostakovitch_, [Concerto for Violin No. 1][cg]
 
 ## electronic
 
-- _Aleksandir_, [Yamaha][ed]{:target="\_blank"}
-- _COMPUTER DATA_, [Schlafen][ec]{:target="\_blank"}
-- _Dj Boring_, [Love's a Crime][eh]{:target="\_blank"}
-- _Loods_, [Every Time][eg]{:target="\_blank"}
-- _Sweely_, [Around][ea]{:target="\_blank"}
-- _Sweely_, [A Day in Malaysia][eb]{:target="\_blank"}
-- _Sweely_, [On The Run][ef]{:target="\_blank"}
-- _Parrish_, [Lost Angel][ee]{:target="\_blank"}
+- _Aleksandir_, [Yamaha][ed]
+- _COMPUTER DATA_, [Schlafen][ec]
+- _Dj Boring_, [Love's a Crime][eh]
+- _Loods_, [Every Time][eg]
+- _Sweely_, [Around][ea]
+- _Sweely_, [A Day in Malaysia][eb]
+- _Sweely_, [On The Run][ef]
+- _Parrish_, [Lost Angel][ee]
 
 ## jake
 
 he deserves a whole category, just for him
 
-- _Chudnow_, [Prelude to Shona][ja]{:target="\_blank"}
-- _Chudnow_, [Shona][jb]{:target="\_blank"}
-- _Chudnow_, [Olive][jc]{:target="\_blank"}
-- _Chudnow_, [Flan][jd]{:target="\_blank"}
-- _Chudnow_, [Keith][je]{:target="\_blank"}
-- _Chudnow_, [Pressed Pennies][jf]{:target="\_blank"}
+- _Chudnow_, [Prelude to Shona][ja]
+- _Chudnow_, [Shona][jb]
+- _Chudnow_, [Olive][jc]
+- _Chudnow_, [Flan][jd]
+- _Chudnow_, [Keith][je]
+- _Chudnow_, [Pressed Pennies][jf]
 
 [ca]: https://www.youtube.com/watch?v=rM2KLeoRBGo
 [cb]: https://www.youtube.com/watch?v=mhhkGyJ092E

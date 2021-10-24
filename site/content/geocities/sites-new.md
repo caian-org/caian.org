@@ -6,24 +6,24 @@ heading: Sites
 
 ## neocities
 
-- [whiterose][na]{:target="\_blank"}
-- [runningsolutions][nb]{:target="\_blank"}
-- [nightcity][nc]{:target="\_blank"}
-- [kidmarscat][nd]{:target="\_blank"}
-- [newchapter][ne]{:target="\_blank"}
-- [blackwings][nf]{:target="\_blank"}
-- [segfault][ng]{:target="\_blank"}
-- [andnow][nh]{:target="\_blank"}
-- [edlinfan][ni]{:target="\_blank"}
-- [benharri][nj]{:target="\_blank"}
-- [vaporesources][nk]{:target="\_blank"}
-- [kratzen][nl]{:target="\_blank"}
-- [fuck][nm]{:target="\_blank"}
-- [thrashandtrash][nn]{:target="\_blank"}
-- [manifesto][no]{:target="\_blank"}
-- [arecibo][np]{:target="\_blank"}
-- [xsb][nq]{:target="\_blank"}
-- [xiixiixii][nr]{:target="\_blank"}
+- [whiterose][na]
+- [runningsolutions][nb]
+- [nightcity][nc]
+- [kidmarscat][nd]
+- [newchapter][ne]
+- [blackwings][nf]
+- [segfault][ng]
+- [andnow][nh]
+- [edlinfan][ni]
+- [benharri][nj]
+- [vaporesources][nk]
+- [kratzen][nl]
+- [fuck][nm]
+- [thrashandtrash][nn]
+- [manifesto][no]
+- [arecibo][np]
+- [xsb][nq]
+- [xiixiixii][nr]
 
 https://owltech.neocities.org/index.html
 https://gui.neocities.org/

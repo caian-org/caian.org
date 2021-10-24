@@ -5,7 +5,7 @@ heading: Homepage
 ---
 
 <br />
-[![](/geocities/assets/imgs/hackercdad.gif)][hackers]{: target="_blank"}
+[![](/geocities/assets/imgs/hackercdad.gif)][hackers]
 <br /><br />
 
 Welcome to my personal page on the World Wide Web!

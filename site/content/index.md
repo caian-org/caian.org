@@ -27,10 +27,10 @@ this is probably the best you have since I'm not on social media.
 
 contact: &nbsp;&nbsp; administrative<br />
 name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Caian R. Ertl<br />
-address: &nbsp;&nbsp; [São Paulo][home]{:target="\_blank"}<br />
+address: &nbsp;&nbsp; [São Paulo][home]<br />
 
 I'm a 23 years old guy that digs low level programming, retrocomputing,
-[unixp0rn][pron]{:target="\_blank"}, deep house and cloudy days.
+[unixp0rn][pron], deep house and cloudy days.
 
 A non-exhaustive list of things I like also include dystopian literature,
 [90s][90s] hacker culture, neoclassicism, free software, snobby coffee,
@@ -43,7 +43,7 @@ where the line should be drawn).
 &gt;&gt;&gt; Last update of WHOIS database: 2021-01-17T16:52:05-03 &lt;&lt;&lt; <br /><br />
 
 <center>
-  <a href="https://www.kopimi.com" target="_blank">
+  <a href="https://www.kopimi.com">
     <img src="/assets/imgs/kopimi.png" height="54" width="56">
   </a>
 </center>
