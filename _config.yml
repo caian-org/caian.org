@@ -17,3 +17,6 @@ markdown: kramdown
 sass:
   style: nested
   sourcemap: never
+
+plugins:
+  - jekyll-pug
