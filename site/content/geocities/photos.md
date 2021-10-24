@@ -1,6 +1,5 @@
 ---
 layout: 90s
-title: Photos
 heading: my photos
 ---
 

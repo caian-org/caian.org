@@ -1,6 +1,5 @@
 ---
 layout: 90s
-title: Music
 heading: music i like
 ---
 

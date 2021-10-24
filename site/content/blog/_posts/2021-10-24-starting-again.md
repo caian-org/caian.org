@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Starting again'
+title: Starting again
 ---
 
 ...

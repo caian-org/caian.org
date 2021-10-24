@@ -1,7 +1,7 @@
 ---
 layout: 90s
-title: priorities
-heading: Logs
+heading: priorities
+title: ''
 is_post: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: 90s
-title: some independence
-heading: Logs
+heading: some independence
+title: ''
 is_post: true
 ---
 

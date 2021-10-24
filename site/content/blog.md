@@ -1,6 +1,6 @@
 ---
 layout: default-bright
-title: Blog
+title: blog
 ---
 
 [Home](/)

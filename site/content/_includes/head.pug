@@ -28,4 +28,10 @@ head
     href='{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}'
   )
 
-  title {{ page.title }}
+  | {% if page.title == "" or page.title == nil %}
+  |   {% assign t = "???" %}
+  | {% else %}
+  |   {% assign t = page.title %}
+  | {% endif %}
+
+  title {{ site.title | append: " | " | append: t }}

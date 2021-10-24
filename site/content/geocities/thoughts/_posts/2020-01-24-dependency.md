@@ -1,7 +1,7 @@
 ---
 layout: 90s
-title: dependency
-heading: Logs
+heading: dependency
+title: ''
 is_post: true
 ---
 

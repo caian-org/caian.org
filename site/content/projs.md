@@ -1,6 +1,6 @@
 ---
 layout: default-bright
-title: Projects
+title: projects
 ---
 
 [Home](/)

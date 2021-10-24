@@ -1,6 +1,5 @@
 ---
 layout: 90s
-title: Sites
 heading: cool sites and links
 ---
 
