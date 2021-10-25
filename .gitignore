@@ -261,4 +261,8 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,ruby,jekyll,node
 
+# PUG compilation cache
 .pug-cache
+
+# jscpd report
+report
