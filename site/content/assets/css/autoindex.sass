@@ -1,0 +1,103 @@
+---
+---
+
+@font-face
+  font-family: 'PixelMplus12'
+  src: url('/assets/fonts/PixelMplus12-Regular.eot')
+  src: url('/assets/fonts/PixelMplus12-Regular.eot?#iefix') format('embedded-opentype')
+  src: url('/assets/fonts/PixelMplus12-Regular.woff2') format('woff2')
+  src: url('/assets/fonts/PixelMplus12-Regular.woff') format('woff')
+  src: url('/assets/fonts/PixelMplus12-Regular.ttf') format('truetype')
+  src: url('/assets/fonts/PixelMplus12-Regular.svg#PixelMplus12-Regular') format('svg')
+  font-weight: 400
+  font-style: normal
+  font-display: swap
+
+html, body
+  color: black
+  background: url('/assets/imgs/autoindex/bg.webp')
+  background-blend-mode: difference
+  background-attachment: fixed
+  background-position: top
+  animation: background 25s ease-in-out infinite
+  background-size: cover
+  image-rendering: pixelated
+  position: relative
+  transition: background-color 1s
+
+html
+  font-family: 'PixelMplus12' !important
+  font-size: 8px
+
+img.middle
+  vertical-align: middle
+
+.box
+  width: 95%
+  margin: 42px auto
+  background: black
+  font-size: 1.9rem
+
+  th, td
+    padding: 0.1rem 0.5rem
+    color: pink
+    text-align: left
+    padding: 0.5rem
+
+  th
+    text-align: left
+    border-bottom: 1px solid #d9d6d6
+
+  #list
+    border: 1px solid #d9d6d6
+    width: 100%
+    padding: 1rem
+    background: #0a0a0a
+
+  a
+    font-weight: 400
+    color: #777
+    text-decoration: none
+
+    &:hover
+      color: white
+
+tr.sep td
+  border-bottom: 1px solid #d9d6d6
+
+.wdel1s
+  animation: WiredB 2s ease-in-out infinite
+  animation-delay: 0.4s
+
+.wdel2s
+  animation: WiredB 2s ease-in-out infinite
+  animation-delay: 0.8s
+
+.wdel3s
+  animation: WiredB 2s ease-in-out infinite
+  animation-delay: 1.2s
+
+.sugoi
+  color: white
+  margin: auto
+  padding: 0px
+  text-align: left
+  border-radius: 2px
+  position: relative
+  font-size: 40px
+  text-shadow: 5px 5px #315f8c
+  animation: float .90s step-end infinite
+
+@keyframes WiredB
+  50%
+    color: #db64a4
+    text-shadow: #db64a4 1px 4px 5px
+
+@keyframes float
+  from,
+  to
+    top: 24px
+
+  50%
+    top: 28px
+    transform: rotate(1deg)
