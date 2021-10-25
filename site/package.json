@@ -20,12 +20,7 @@
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod",
     "check:duplicated": "jscpd",
-    "fix:style": "prettier --ignore-path ../.gitignore --print-width 120 --trailing-comma none --no-semi --single-quote --write . '**/*.{html,md,scss,yml,yaml,js,pug}'"
-  },
-  "lint-staged": {
-    "**/*.{html,md,scss,yml,yaml,js,pug}": [
-      "npm run fix:style"
-    ]
+    "fix:style": "prettier --ignore-path ../.gitignore --print-width 120 --trailing-comma none --no-semi --single-quote --write . '**/*.{html,md,sass,yml,yaml,js,ts}' && standardx --fix 'autoindex/*.ts'"
   },
   "jscpd": {
     "threshold": 5,
@@ -71,7 +66,6 @@
     "eslint-plugin-promise": "^4.3.1",
     "husky": "^7.0.4",
     "jscpd": "^3.3.26",
-    "lint-staged": "^11.2.4",
     "npm-check-updates": "^11.8.5",
     "prettier": "^2.4.1",
     "standardx": "^7.0.0",
