@@ -19,24 +19,21 @@ update:
 	@npm run bump:all
 	@npm install
 
-# ...
-
 clean:
 	@$(J) clean
 	@rm -rf .bundle .pug-cache node_modules public vendor
 
-serve:
-	@$(J) serve --drafts
+# ...
 
-# Create the static and store it in public/
-build:
+precompile:
+	@cd content && rm -rf files && git checkout -- files
+	@npm run autoindex
+
+build: precompile
 	@$(J) build --trace
 
-# Create the static and store it in public/
-build-dev:
-	@$(J) build --trace --drafts
-
-# ...
+serve: precompile
+	@$(J) serve --drafts
 
 deploy:
 	@npm install --global pug
