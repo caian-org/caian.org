@@ -6,6 +6,13 @@
   │  │ ││ │├┴┐│││││ ┬  ├┤ │ │├┬┘ ┌┘
   ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
 
+| {% if page.title == "" or page.title == nil %}
+|   {% assign s = "???" %}
+| {% else %}
+|   {% assign s = page.title %}
+| {% endif %}
+| {% assign title = site.title | append: " | " | append: s %}
+
 head
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -28,10 +35,4 @@ head
     href='{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}'
   )
 
-  | {% if page.title == "" or page.title == nil %}
-  |   {% assign t = "???" %}
-  | {% else %}
-  |   {% assign t = page.title %}
-  | {% endif %}
-
-  title {{ site.title | append: " | " | append: t }}
+  title {{ title }}

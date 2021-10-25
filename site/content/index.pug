@@ -2,9 +2,11 @@
 title: homepage
 ---
 
+| {% assign ts = site.time | date: '%Y-%m-%dT%H:%M:%S%:z' %}
+
 doctype html
 html
-  | {% include head.pug sheet="default/bright" %}
+  | {% include head.pug sheet='default/bright' %}
   body
     .main
       h1 hello, friend
@@ -67,7 +69,7 @@ html
       br
       | &gt;&gt;&gt; Last update of WHOIS database:
       |
-      | {{ site.time | date: "%Y-%m-%dT%H:%M:%S%:z" }}
+      | {{ ts }}
       |
       | &lt;&lt;&lt;
       br
@@ -75,4 +77,4 @@ html
       br
       p(align='center')
         a(href='https://www.kopimi.com')
-          img(src='/assets/imgs/kopimi.png' height='54' width='56')
+          img(src='/assets/imgs/kopimi.png', height='54', width='56')
