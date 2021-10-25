@@ -95,7 +95,7 @@ const otf = (objs: IObject[]): IFile[] =>
   objs.map((f) => ({ name: f.key, size: f.size, lastModified: f.lastModified }))
 
 const renderAndWrite = async (template: string, dir: string, files: IFile[]): Promise<void> => {
-  const c = ejs.render(template, { directoryLevel: dir, files })
+  const c = ejs.render(template, { directoryLevel: '/'.concat(dir), files })
   await fs.writeFile(fdir(dir, 'index.pug'), c)
 }
 
