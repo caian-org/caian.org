@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "baseUrl": "./autoindex",
+    "strict": true,
+    "alwaysStrict": true,
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "pretty": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
