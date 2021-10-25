@@ -4,15 +4,15 @@
 J = bundle exec jekyll
 export JEKYLL_ENV = production
 
-install-prod:
+# ...
+
+install:
 	@mkdir -p vendor
 	@bundle install --path vendor
-
-install-dev:
 	@npm install
-	@npm run add-hooks
 
-install: install-prod install-dev
+init: install
+	@npm run add-hooks
 
 update:
 	@bundle update
@@ -26,7 +26,10 @@ clean:
 # ...
 
 precompile:
-	@cd content && rm -rf files && git checkout -- files
+	@cd content \
+		&& rm -rf files  \
+		&& mkdir files \
+		&& touch files/.git-keep
 	@npm run autoindex
 
 build: precompile
