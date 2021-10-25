@@ -40,5 +40,5 @@ build-dev:
 
 deploy:
 	@npm install --global pug
-	@$(MAKE) install-prod
+	@$(MAKE) install
 	@$(MAKE) build
