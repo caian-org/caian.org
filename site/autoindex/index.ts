@@ -1,7 +1,12 @@
-import { dirname } from 'path'
+/* standard */
+import { promises as fs } from 'fs'
+import { dirname, join, resolve } from 'path'
 import { format as fmt } from 'util'
 
+/* 3rd-party */
 import _ from 'lodash'
+import ejs from 'ejs'
+
 import { DateTime } from 'luxon'
 import { fromEnv } from '@aws-sdk/credential-providers'
 import { S3, ListObjectsV2Request, _Object as S3Object } from '@aws-sdk/client-s3'
@@ -29,7 +34,9 @@ const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })
 
 const len = (a: any[] | string): number => a.length
 
-const formatBytes = (bytes: number, decimals: number = 2): string => {
+const fdir = (...s: string[]): string => resolve(join(__dirname, '..', 'content', 'files', ...s))
+
+const fmtFileSize = (bytes: number, decimals: number = 2): string => {
   if (bytes === 0) {
     return '0 Bytes'
   }
@@ -73,37 +80,51 @@ const processObjects = (objs: S3Object[]): IObject[] =>
 
       return {
         key: obj.Key!,
-        size: obj.Size === undefined ? '-' : formatBytes(obj.Size),
+        size: obj.Size === undefined ? '-' : fmtFileSize(obj.Size),
         lastModified: DateTime.fromJSDate(d, { zone: 'UTC' })
           .setZone('America/Sao_Paulo')
           .toFormat('MMMM dd, yyyy hh:mm a')
       }
     })
 
-const getUniqueDirs = (objs: IObject[]): string[] =>
+const uniqueDirsOf = (objs: IObject[]): string[] =>
   [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))].sort((a, b) => len(b) - len(a))
 
-const objToFile = (objs: IObject[]): IFile[] =>
+/* Object To File */
+const otf = (objs: IObject[]): IFile[] =>
   objs.map((f) => ({ name: f.key, size: f.size, lastModified: f.lastModified }))
 
+const renderAndWrite = async (template: string, dir: string, files: IFile[]): Promise<void> => {
+  const c = ejs.render(template, { directoryLevel: dir, files })
+  await fs.writeFile(fdir(dir, 'index.pug'), c)
+}
+
 const main = async (): Promise<void> => {
+  /* ... */
   const objs = processObjects(await listAllObjects('caian-org'))
-  const dirs = getUniqueDirs(objs)
+  const dirs = uniqueDirsOf(objs)
   let files = objs.filter((obj) => !obj.key.endsWith('/'))
 
+  /* ... */
   const structure: IStructure = {}
-  for (const dir of dirs) {
-    const f = files.filter((file) => file.key.startsWith(dir))
+  for (const d of dirs) {
+    const f = files.filter((file) => file.key.startsWith(d))
     files = _.xor(files, f)
 
-    structure[dir] = {
-      directoryName: _.last(dir.split('/'))!,
-      items: objToFile(f)
+    structure[d] = {
+      directoryName: _.last(d.split('/'))!,
+      items: otf(f)
     }
   }
 
-  structure._ = { directoryName: null, items: objToFile(files) }
-  console.log(JSON.stringify(structure, null, 2))
+  /* ... */
+  const template = await fs.readFile(resolve(join(__dirname, 'files.pug')), 'utf-8')
+  await renderAndWrite(template, '', otf(files))
+
+  for (const d of dirs) {
+    await fs.mkdir(fdir(d), { recursive: true })
+    await renderAndWrite(template, d, structure[d].items)
+  }
 }
 
 main().catch((e) => console.error(e))
