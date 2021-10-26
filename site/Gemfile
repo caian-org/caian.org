@@ -1,9 +1,10 @@
 # frozen_string_literal: true
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "jekyll"
-gem "jekyll-pug"
-gem "jekyll-minifier"
-gem "jekyll-target-blank"
-gem "kramdown"
-gem "rouge"
+gem 'jekyll'
+gem 'jekyll-pug'
+gem 'jekyll-minifier'
+gem 'jekyll-target-blank'
+gem 'jekyll-archives'
+gem 'kramdown'
+gem 'rouge'
