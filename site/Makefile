@@ -21,7 +21,7 @@ update:
 
 clean:
 	@$(J) clean
-	@rm -rf .bundle .pug-cache node_modules public vendor
+	@rm -rf .bundle .pug-cache node_modules public vendor report
 
 # ...
 
@@ -36,7 +36,7 @@ build: precompile
 	@$(J) build --trace
 
 serve: precompile
-	@$(J) serve --drafts
+	@$(J) serve --drafts --host=0.0.0.0
 
 deploy:
 	@npm install --global pug
