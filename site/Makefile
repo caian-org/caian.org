@@ -1,5 +1,5 @@
-.DEFAULT_GOAL := build
-.PHONY: clean clean-build
+.DEFAULT_GOAL := all
+.PHONY: clean autoindex
 
 J = bundle exec jekyll
 export JEKYLL_ENV = production
@@ -25,17 +25,19 @@ clean:
 
 # ...
 
-precompile:
+autoindex:
 	@cd content \
 		&& rm -rf files  \
 		&& mkdir files \
 		&& touch files/.git-keep
 	@npm run autoindex
 
-build: precompile
+jekyll:
 	@$(J) build --trace
 
-serve: precompile
+all: autoindex jekyll
+
+serve: autoindex
 	@$(J) serve --drafts --host=0.0.0.0
 
 deploy:
