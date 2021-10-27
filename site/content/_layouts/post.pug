@@ -2,13 +2,33 @@
 layout: default-bright
 ---
 
+a(href='/blog') Back
+|
+| |
+|
+a#change-theme(href='#', onclick='changeTheme()') Dark theme
+
+h1 {{ page.title }}
+#meta
+  p.aleft
+    span.tag-list
+      | {% for t in page.tags %}
+      |   {% assign tslug = t | slugify: 'raw' %}
+      |   {% assign turl = site.url | append: '/tags/' | append: tslug | append: '/' %}
+      a(href='{{ turl }}') {{ t }}
+      | {% endfor %}
+  p.aright {{ page.date | date_to_long_string }}
+  .aclear
+| {{ content }}
+| {% include post-footer.pug %}
+
 script.
   function changeTheme() {
     var c = '/assets/css'
 
     var theme = document.getElementById('theme')
     var syntax = document.getElementById('syntax')
-    var changeTheme = document.getElementById('changeTheme')
+    var changeTheme = document.getElementById('change-theme')
 
     var dim = theme.href.endsWith('bright.css') ? 'dark' : 'bright'
 
@@ -16,14 +36,3 @@ script.
     syntax.href = [c, 'syntax', dim].join('/').concat('.css')
     changeTheme.innerHTML = (dim === 'bright' ? 'Dark' : 'Bright').concat(' theme')
   }
-
-a(href='/blog') Back
-|
-| |
-|
-a#changeTheme(href='#', onclick='changeTheme()') Dark theme
-
-h1 {{ page.title }}
-p.header-date {{ page.date | date_to_long_string }}
-| {{ content }}
-| {% include post_footer.pug %}
