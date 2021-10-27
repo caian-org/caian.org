@@ -1,10 +1,11 @@
 ---
 ---
 
+@import 'common'
+
 body
+  @extend %ff
   font-size: 120%
-  font-family: Menlo, monospace
-  line-height: 1.7
 
 h1
   font-size: 10em
@@ -21,12 +22,6 @@ a
     color: #fff
     background-color: #000
     text-decoration: none
-
-.centered
-  height: 100vh
-  display: flex
-  justify-content: center
-  align-items: center
 
 .glitch
   position: relative

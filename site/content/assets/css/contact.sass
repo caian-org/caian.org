@@ -1,13 +1,14 @@
 ---
 ---
 
+@import 'common'
+
 body
+  @extend %ff
   background: #fff url('/assets/imgs/boxes.gif')
   background-repeat: repeat
   font-size: 85%
-  font-family: Menlo, monospace
   text-align: justify
-  line-height: 1.7
 
 p
   font-weight: normal
@@ -31,12 +32,6 @@ a
     color: #fff
     background-color: #000
     text-decoration: none
-
-.centered
-  height: 100vh
-  display: flex
-  justify-content: center
-  align-items: center
 
 .content
   background: #fff
