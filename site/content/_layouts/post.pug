@@ -2,6 +2,8 @@
 layout: default-bright
 ---
 
+| {% assign post_tags = page.tags | join: ' ' %}
+
 a(href='/blog') Back
 |
 | |
@@ -11,12 +13,7 @@ a#change-theme(href='#', onclick='changeTheme()') Dark theme
 h1 {{ page.title }}
 #meta
   p.aleft
-    span.tag-list
-      | {% for t in page.tags %}
-      |   {% assign tslug = t | slugify: 'raw' %}
-      |   {% assign turl = site.url | append: '/tags/' | append: tslug | append: '/' %}
-      a(href='{{ turl }}') {{ t }}
-      | {% endfor %}
+    | {% include tags.pug tags=post_tags %}
   p.aright {{ page.date | date_to_long_string }}
   .aclear
 | {{ content }}

@@ -2,6 +2,11 @@
 title: blog
 ---
 
+| {% assign all_tags = '' %}
+| {% for t in site.tags %}
+|   {% assign all_tags = all_tags | append: ' ' | append: t[0] %}
+| {% endfor %}
+
 doctype html
 html
   | {% include head.pug sheet='default/bright' %}
@@ -9,6 +14,12 @@ html
     .main
       a(href='/') Home
       h1 Blog
+      | {% if all_tags.size > 0 %}
+      #all-blog-tags
+        p.aleft
+          | {% include tags.pug tags=all_tags %}
+        .aclear
+      | {% endif %}
       ul
         | {% for p in site.categories.blog %}
         | {% assign d = p.date | date: '%Y-%m-%d' %}
@@ -16,9 +27,9 @@ html
           code
             | {{ d }}
           |
-          | -
-          |
+          | &nbsp;
           a(href='{{ p.url }}')
             | {{ p.title }}
         | {% endfor %}
+      hr
       a(href='/feed.xml') Subscribe with RSS
