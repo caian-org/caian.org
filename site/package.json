@@ -15,7 +15,6 @@
   },
   "scripts": {
     "add-hooks": "cd .. && husky install",
-    "autoindex": "cd content && rm -rf files  && mkdir files && touch files/.git-keep && ts-node autoindex",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod",

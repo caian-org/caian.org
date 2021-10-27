@@ -42,10 +42,17 @@ jekyll:
 
 serve: clean-cache
 	@$(J) serve --drafts --host=0.0.0.0
-	@$(N) autoindex
+	@$(MAKE) autoindex
+
+autoindex:
+	@cd content \
+		&& rm -rf files \
+		&& mkdir files \
+		&& touch files/.git-keep
+	@npx ts-node autoindex
 
 deploy:
 	@npm install --global pug
 	@$(MAKE) install
 	@$(MAKE) jekyll
-	@$(N) autoindex
+	@$(MAKE) autoindex
