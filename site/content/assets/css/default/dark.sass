@@ -1,31 +1,12 @@
 ---
 ---
 
+@import 'default/common'
+
 body
+  @extend %bb
   color: #c8c8c8
   background: #222222
-  font-size: 85%
-  font-family: Menlo, monospace
-  line-height: 1.7
-  text-align: justify
-
-.main
-  max-width: 700px
-  margin: 40px auto 40px
-
-h1, h2, h3, h4, h5, h6
-  text-align: left
-
-.header-date
-  text-align: right
-
-/* Image styling
-
-img
-  display: block
-  max-width: 100%
-  height: auto
-  margin: auto
 
 code
   font-family: Menlo, monospace
@@ -45,20 +26,12 @@ a
     color: #c8c8c8
 
   &:hover
-    color: #c8c8c8
-    background: #000
+    color: black
+    background: white
     text-decoration: none
 
-hr
-  margin: 25px auto 25px
-
-table
-  width: 100%
-  border-collapse: collapse
-  margin: 1.75rem 0
-  border: 1px solid #000
-  padding: 10px
-
-td, th
-  border: 1px solid #000
-  padding: 10px
+.tag-list
+  background-image: url('/assets/imgs/tag-white.png')
+  background-repeat: no-repeat
+  background-size: 16px 16px
+  padding-left: 25px

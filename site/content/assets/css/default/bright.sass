@@ -1,29 +1,11 @@
 ---
 ---
 
+@import 'default/common'
+
 body
-  font-size: 85%
-  font-family: Menlo, monospace
-  line-height: 1.7
-  text-align: justify
-
-.main
-  max-width: 700px
-  margin: 40px auto 40px
-
-h1, h2, h3, h4, h5, h6
-  text-align: left
-
-.header-date
-  text-align: right
-
-/* Image styling
-
-img
-  display: block
-  max-width: 100%
-  height: auto
-  margin: auto
+  @extend %bb
+  color: #222222
 
 code
   font-family: Menlo, monospace
@@ -36,27 +18,19 @@ pre
 
 a
   &:link
-    color: #000
+    color: black
     text-decoration: underline
 
   &:visited
-    color: #000
+    color: black
 
   &:hover
-    color: #fff
-    background-color: #000
+    color: white
+    background-color: black
     text-decoration: none
 
-hr
-  margin: 25px auto 25px
-
-table
-  width: 100%
-  border-collapse: collapse
-  margin: 1.75rem 0
-  border: 1px solid black
-  padding: 10px
-
-td, th
-  border: 1px solid black
-  padding: 10px
+.tag-list
+  background-image: url('/assets/imgs/tag-black.png')
+  background-repeat: no-repeat
+  background-size: 16px 16px
+  padding-left: 25px
