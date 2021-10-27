@@ -6,33 +6,27 @@
   │  │ ││ │├┴┐│││││ ┬  ├┤ │ │├┬┘ ┌┘
   ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
 
-| {% if page.title == "" or page.title == nil %}
-|   {% assign s = "???" %}
+| {% if page.title == '' or page.title == nil %}
+|   {% assign s = '???' %}
 | {% else %}
 |   {% assign s = page.title %}
 | {% endif %}
-| {% assign title = site.title | append: " | " | append: s %}
+
+| {% assign title = site.title | append: ' | ' | append: s %}
+| {% assign feed = '/feed.xml' | prepend: site.baseurl | prepend: site.url %}
 
 head
   meta(charset='utf-8')
-  meta(http-equiv='X-UA-Compatible', content='IE=edge')
   meta(name='viewport', content='width=device-width, initial-scale=1')
 
   | {% if include.sheet != null %}
   link#theme(rel='stylesheet', href='/assets/css/{{ include.sheet }}.css')
   | {% endif %}
 
-  | {% if page.layout == "post" %}
+  | {% if page.layout == 'post' %}
   link#syntax(rel='stylesheet', href='/assets/css/syntax/bright.css')
   | {% endif %}
 
   link(rel='icon', type='image/png', href='/favicon.ico')
-
-  link(
-    rel='alternate',
-    type='application/rss+xml',
-    title='{{ site.title }}',
-    href='{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}'
-  )
-
+  link(rel='alternate', type='application/rss+xml', title='{{ site.title }}', href='{{ feed }}')
   title {{ title }}
