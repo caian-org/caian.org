@@ -1,0 +1,24 @@
+---
+title: blog
+---
+
+doctype html
+html
+  | {% include head.pug sheet='default/bright' %}
+  body
+    .main
+      a(href='/') Home
+      h1 Blog
+      ul
+        | {% for p in site.categories.blog %}
+        | {% assign d = p.date | date: '%Y-%m-%d' %}
+        li
+          code
+            | {{ d }}
+          |
+          | -
+          |
+          a(href='{{ p.url }}')
+            | {{ p.title }}
+        | {% endfor %}
+      a(href='/feed.xml') Subscribe with RSS
