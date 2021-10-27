@@ -12,6 +12,10 @@ plugins:
   - jekyll-pug
   - jekyll-minifier
   - jekyll-target-blank
+  - jekyll-loading-lazy
+  - jekyll-seo-tag
+  - liquid_reading_time
+  - liquid_pluralize
 
 markdown: kramdown
 highlighter: rouge

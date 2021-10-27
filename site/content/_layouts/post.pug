@@ -1,4 +1,10 @@
 | {% assign post_tags = page.tags | join: ' ' %}
+| {% assign time = content | reading_time %}
+
+| {% if time == 0 %}
+|   {% assign time = 1 %}
+| {% endif %}
+| {% assign time = time | pluralize: 'min' %}
 
 doctype html
 html
@@ -15,12 +21,17 @@ html
       #meta
         p.aleft
           | {% include tags.pug tags=post_tags %}
-        p.aright {{ page.date | date_to_long_string }}
+        p.aright
+          | ~{{ time }} read
+          |
+          | |
+          |
+          | {{ page.date | date_to_long_string }}
         .aclear
       | {{ content }}
       hr
       footer
-        a(href='/') Back to home
+        a(href='/') Home
         |
         | |
         |

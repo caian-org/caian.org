@@ -16,7 +16,8 @@
 | {% assign feed = '/feed.xml' | prepend: site.baseurl | prepend: site.url %}
 
 head
-  meta(charset='utf-8')
+  | {% seo title=false %}
+
   meta(name='viewport', content='width=device-width, initial-scale=1')
 
   | {% if include.sheet != null %}
