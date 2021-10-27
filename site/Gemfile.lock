@@ -32,8 +32,6 @@ GEM
       rouge (~> 3.0)
       safe_yaml (~> 1.0)
       terminal-table (~> 2.0)
-    jekyll-archives (2.2.1)
-      jekyll (>= 3.6, < 5.0)
     jekyll-minifier (0.1.10)
       cssminify2 (~> 2.0)
       htmlcompressor (~> 0.4)
@@ -98,7 +96,6 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
-  jekyll-archives
   jekyll-minifier
   jekyll-pug
   jekyll-target-blank

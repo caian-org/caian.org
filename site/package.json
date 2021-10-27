@@ -15,7 +15,7 @@
   },
   "scripts": {
     "add-hooks": "cd .. && husky install",
-    "autoindex": "ts-node autoindex",
+    "autoindex": "cd content && rm -rf files  && mkdir files && touch files/.git-keep && ts-node autoindex",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod",
@@ -31,14 +31,29 @@
     "absolute": true,
     "gitignore": true,
     "ignore": [
-      "**/public/**",
-      "**/vendor/**",
-      "**/report/**",
-      "**/node_modules/**",
-      "**/.pug-cache/**",
-      "**/.jekyll-cache/**",
-      "**/*.svg"
+      "public/**",
+      "vendor/**",
+      "report/**",
+      "node_modules/**",
+      "content/files/**",
+      ".pug-cache/**",
+      ".jekyll-cache/**",
+      "*.svg"
     ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public",
+      "vendor",
+      "report",
+      "node_modules",
+      "content/files"
+    ],
+    "watch": [
+      "content"
+    ],
+    "ext": "*",
+    "exec": "make serve"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.38.0",
@@ -66,6 +81,7 @@
     "eslint-plugin-promise": "^4.3.1",
     "husky": "^7.0.4",
     "jscpd": "^3.3.26",
+    "nodemon": "^2.0.14",
     "npm-check-updates": "^11.8.5",
     "prettier": "^2.4.1",
     "standardx": "^7.0.0",

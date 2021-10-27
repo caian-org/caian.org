@@ -5,7 +5,6 @@ baseurl: ''
 description: >
   Personal page, blog, portfolio etc
 
-incremental: true
 source: content
 destination: public
 

@@ -1,8 +1,15 @@
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := watch
 .PHONY: clean autoindex
 
 J = bundle exec jekyll
+N = npm run
+
 export JEKYLL_ENV = production
+
+# ...
+
+watch:
+	npx nodemon
 
 # ...
 
@@ -12,35 +19,33 @@ install:
 	@npm install
 
 init: install
-	@npm run add-hooks
+	@$(N) add-hooks
 
 update:
 	@bundle update
-	@npm run bump:all
+	@$(N) bump:all
 	@npm install
 
-clean:
-	@$(J) clean
-	@rm -rf .bundle .pug-cache node_modules public vendor report
+uninstall:
+	@rm -rf .bundle node_modules vendor
+
+clean-cache:
+	@rm -rf .pug-cache public content/.jekyll-cache content/.jekyll-metadata
+
+clean: uninstall clean-cache
+	@rm -rf report
 
 # ...
-
-autoindex:
-	@cd content \
-		&& rm -rf files  \
-		&& mkdir files \
-		&& touch files/.git-keep
-	@npm run autoindex
 
 jekyll:
 	@$(J) build --trace
 
-all: autoindex jekyll
-
-serve: autoindex
+serve: clean-cache
 	@$(J) serve --drafts --host=0.0.0.0
+	@$(N) autoindex
 
 deploy:
 	@npm install --global pug
 	@$(MAKE) install
-	@$(MAKE) build
+	@$(MAKE) jekyll
+	@$(N) autoindex
