@@ -106,10 +106,15 @@ const renderAndWrite = async (template: string, dir: string, files: IFile[]): Pr
 }
 
 const main = async (): Promise<void> => {
+  const l = 20
+  console.log('\n'.concat('-'.repeat(l)))
+  console.log('* autoindex started')
+
   /* ... */
   const objs = processObjects(await listAllObjects('caian-org'))
   const dirs = uniqueDirsOf(objs)
   let files = objs.filter((obj) => !obj.key.endsWith('/'))
+  console.log(`* got ${files.length} objects`)
 
   /* ... */
   const structure: IStructure = {}
@@ -124,6 +129,7 @@ const main = async (): Promise<void> => {
   }
 
   /* ... */
+  console.log('* file structure generated')
   const template = await fs.readFile(resolve(join(__dirname, 'files.pug')), 'utf-8')
   await renderAndWrite(template, '', otf(files))
 
@@ -131,6 +137,9 @@ const main = async (): Promise<void> => {
     await fs.mkdir(fdir(d), { recursive: true })
     await renderAndWrite(template, d, structure[d].items)
   }
+
+  console.log('* done')
+  console.log('-'.repeat(l).concat('\n'))
 }
 
 main().catch((e) => console.error(e))
