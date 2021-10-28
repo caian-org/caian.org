@@ -55,3 +55,4 @@ deploy:
 	@$(MAKE) install
 	@$(MAKE) jekyll
 	@$(MAKE) autoindex
+	@tree public
