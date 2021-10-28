@@ -102,7 +102,10 @@ const otf = (objs: IObject[]): IFile[] =>
 
 const renderAndWrite = async (template: string, dir: string, files: IFile[]): Promise<void> => {
   const c = ejs.render(template, { directoryLevel: '/'.concat(dir), files })
-  await fs.writeFile(fdir(dir, 'index.pug'), c)
+  const f = fdir(dir, 'index.pug')
+
+  console.log(`* writing "${f}"`)
+  await fs.writeFile(f, c)
 }
 
 const main = async (): Promise<void> => {

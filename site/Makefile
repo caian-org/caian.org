@@ -26,21 +26,23 @@ update:
 	@$(N) bump:all
 	@npm install
 
-uninstall:
-	@rm -rf .bundle node_modules vendor
-
-clean-cache:
+clean:
 	@rm -rf .pug-cache public content/.jekyll-cache content/.jekyll-metadata
+	@cd content \
+		&& rm -rf files \
+		&& mkdir files \
+		&& touch files/.git-keep
 
-clean: uninstall clean-cache
+uninstall: clean
 	@rm -rf report
+	@rm -rf .bundle node_modules vendor
 
 # ...
 
 jekyll:
 	@$(J) build --trace
 
-serve: clean-cache
+serve: clean
 	@$(MAKE) autoindex
 	@$(J) serve --drafts --host=0.0.0.0
 
@@ -53,6 +55,6 @@ autoindex:
 deploy:
 	@npm install --global pug
 	@$(MAKE) install
-	@$(MAKE) jekyll
 	@$(MAKE) autoindex
+	@$(MAKE) jekyll
 	@tree public
