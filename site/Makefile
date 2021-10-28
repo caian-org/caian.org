@@ -41,14 +41,13 @@ jekyll:
 	@$(J) build --trace
 
 serve: clean-cache
-	@$(J) serve --drafts --host=0.0.0.0
 	@$(MAKE) autoindex
+	@$(J) serve --drafts --host=0.0.0.0
 
 autoindex:
 	@cd content \
 		&& rm -rf files \
-		&& mkdir files \
-		&& touch files/.git-keep
+		&& mkdir files
 	@npx ts-node autoindex
 
 deploy:
