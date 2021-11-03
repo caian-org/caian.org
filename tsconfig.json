@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2018",
     "module": "commonjs",
     "outDir": "./dist",
     "baseUrl": "./autoindex",
@@ -12,8 +12,5 @@
     "esModuleInterop": true,
     "pretty": true
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist"]
 }

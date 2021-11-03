@@ -5,11 +5,10 @@ baseurl: ''
 description: >
   Personal page, blog, portfolio etc
 
-source: content
+source: dist/www
 destination: public
 
 plugins:
-  - jekyll-pug
   - jekyll-minifier
   - jekyll-target-blank
   - jekyll-loading-lazy

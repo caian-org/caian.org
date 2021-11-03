@@ -2,7 +2,6 @@
 source 'https://rubygems.org'
 
 gem 'jekyll'
-gem 'jekyll-pug'
 gem 'jekyll-minifier'
 gem 'jekyll-target-blank'
 gem 'jekyll-loading-lazy'

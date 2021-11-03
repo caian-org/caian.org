@@ -1,12 +1,8 @@
----
-title: homepage
----
-
 | {% assign ts = site.time | date: '%Y-%m-%dT%H:%M:%S%:z' %}
 
 doctype html
 html
-  | {% include head.pug sheet='default/bright' %}
+  | {% include head.html sheet='default/bright' %}
   body
     .main
       h1 hello, friend

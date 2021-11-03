@@ -1,15 +1,12 @@
----
-title: blog
----
-
 | {% assign all_tags = '' %}
 | {% for t in site.tags %}
-|   {% assign all_tags = all_tags | append: ' ' | append: t[0] %}
+|
+| {% assign all_tags = all_tags | append: ' ' | append: t[0] %}
 | {% endfor %}
 
 doctype html
 html
-  | {% include head.pug sheet='default/bright' %}
+  | {% include head.html sheet='default/bright' %}
   body
     .main
       a(href='/') Back
@@ -17,7 +14,7 @@ html
       | {% if all_tags.size > 0 %}
       #all-blog-tags
         p.aleft
-          | {% include tags.pug tags=all_tags %}
+          | {% include tags.html tags=all_tags %}
         .aclear
       | {% endif %}
       ul

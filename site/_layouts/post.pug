@@ -2,13 +2,14 @@
 | {% assign time = content | reading_time %}
 
 | {% if time == 0 %}
-|   {% assign time = 1 %}
+|
+| {% assign time = 1 %}
 | {% endif %}
 | {% assign time = time | pluralize: 'min' %}
 
 doctype html
 html
-  | {% include head.pug sheet='default/bright' %}
+  | {% include head.html sheet='default/bright' %}
   body
     .main
       a(href='/blog') Back
@@ -20,7 +21,7 @@ html
       h1 {{ page.title }}
       #meta
         p.aleft
-          | {% include tags.pug tags=post_tags %}
+          | {% include tags.html tags=post_tags %}
         p.aright
           | ~{{ time }} read
           |
@@ -39,15 +40,15 @@ html
 
       script.
         function changeTheme() {
-          var c = '/assets/css'
+          var c = "/assets/css";
 
-          var theme = document.getElementById('theme')
-          var syntax = document.getElementById('syntax')
-          var changeTheme = document.getElementById('change-theme')
+          var theme = document.getElementById("theme");
+          var syntax = document.getElementById("syntax");
+          var changeTheme = document.getElementById("change-theme");
 
-          var dim = theme.href.endsWith('bright.css') ? 'dark' : 'bright'
+          var dim = theme.href.endsWith("bright.css") ? "dark" : "bright";
 
-          theme.href = [c, 'default', dim].join('/').concat('.css')
-          syntax.href = [c, 'syntax', dim].join('/').concat('.css')
-          changeTheme.innerHTML = (dim === 'bright' ? 'Dark' : 'Bright').concat(' theme')
+          theme.href = [c, "default", dim].join("/").concat(".css");
+          syntax.href = [c, "syntax", dim].join("/").concat(".css");
+          changeTheme.innerHTML = (dim === "bright" ? "Dark" : "Bright").concat(" theme");
         }
