@@ -1,7 +1,6 @@
 /* standard */
 const { promises: fs } = require('fs')
 const { dirname, join, resolve } = require('path')
-const { format: fmt } = require('util')
 
 /* 3rd-party */
 const _ = require('lodash')
@@ -11,24 +10,14 @@ const { DateTime } = require('luxon')
 const { fromEnv } = require('@aws-sdk/credential-providers')
 const { S3 } = require('@aws-sdk/client-s3')
 
+/* modules */
+const { fmtFileSize } = require('./util')
+
+/* ................................................. */
+
 const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })
 
 const len = (a) => a.length
-
-const fdir = (...s) => resolve(join(__dirname, '..', 'content', 'files', ...s))
-
-const fmtFileSize = (bytes, decimals = 2) => {
-  if (bytes === 0) {
-    return '0 Bytes'
-  }
-
-  const k = 1024
-  const dm = Number(decimals < 0 ? 0 : decimals)
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-
-  const i = Math.floor(Math.log(bytes) / Math.log(k))
-  return fmt('%s %s', parseFloat((bytes / Math.pow(k, i)).toFixed(dm)).toString(), sizes[i])
-}
 
 const listAllObjects = async (bucket) => {
   const f = []
@@ -84,13 +73,15 @@ const otf = (objs) =>
 
 const renderAndWrite = async (template, dir, files) => {
   const c = ejs.render(template, { directoryLevel: '/'.concat(dir), files })
-  const f = fdir(dir, 'index.pug')
+  const f = join(dir, 'index.pug')
 
   console.log(`* writing "${f}"`)
   await fs.writeFile(f, c)
 }
 
-const main = async () => {
+/* ................................................. */
+
+const create = async (basedir) => {
   const l = 20
   console.log('\n'.concat('-'.repeat(l)))
   console.log('* autoindex started')
@@ -116,15 +107,17 @@ const main = async () => {
   /* ... */
   console.log('* file structure generated')
   const template = await fs.readFile(resolve(join(__dirname, 'files.pug')), 'utf-8')
-  await renderAndWrite(template, '', otf(files))
+  await renderAndWrite(template, basedir, otf(files))
 
   for (const d of dirs) {
-    await fs.mkdir(fdir(d), { recursive: true })
-    await renderAndWrite(template, d, structure[d].items)
+    const fileLevelDirName = join(basedir, d)
+
+    await fs.mkdir(fileLevelDirName, { recursive: true })
+    await renderAndWrite(template, fileLevelDirName, structure[d].items)
   }
 
   console.log('* done')
   console.log('-'.repeat(l).concat('\n'))
 }
 
-main().catch((e) => console.error(e))
+module.exports = { create }
