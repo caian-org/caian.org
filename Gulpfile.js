@@ -1,10 +1,11 @@
 /* standard */
 const { exec } = require('child_process')
-
-const { format } = require('util')
 const { basename, dirname, join } = require('path')
 
 /* 3rd-party */
+const del = require('del')
+const log = require('fancy-log')
+
 const pug = require('gulp-pug')
 const header = require('gulp-header')
 const flatmap = require('gulp-flatmap')
@@ -25,8 +26,8 @@ const resolveDirs = () => {
 }
 
 const p = resolveDirs()
-const sourceDir = (f) => format('%s/%s/**/*', p.src, f)
-const intermediateDir = (f) => format('%s/%s', p.intermediate, f)
+const sourceDir = (f) => join(p.src, f, '**', '*')
+const intermediateDir = (f) => join(p.intermediate, f)
 
 /* ................................................. */
 
@@ -45,20 +46,33 @@ const run =
       })
 
 const copyAll = (n) => from(sourceDir(n)).pipe(to(intermediateDir(n)))
-const deps = (...d) => series('build:pug', 'copy:assets', 'copy:geocities', 'copy:blog', ...d)
+
+const deps = (...d) =>
+  series(
+    'clean:dist',
+    'build:pug',
+    'copy:assets',
+    'copy:blog',
+    ...d
+  )
 
 /* ................................................. */
 
+task('clean:dist', () => del(p.dist, { force: true }))
+
 task('copy:assets', () => copyAll('assets'))
-task('copy:geocities', () => copyAll('geocities'))
 task('copy:blog', () => copyAll('blog'))
 
+task('build:jekyll', run('bundle exec jekyll build --trace', false))
+task('serve:jekyll', run('bundle exec jekyll serve'))
+
 task('build:pug', () =>
-  from(format('%s/**/*.pug', p.src))
+  from(join(p.src, '**', '*.pug'))
     .pipe(
       flatmap((stream, file) => {
-        const htmlContent = stream.pipe(pug({}))
+        log('  Building '.concat(basename(file.path)).concat('...'))
 
+        const htmlContent = stream.pipe(pug())
         switch (basename(dirname(file.path))) {
           case '_includes':
           case '_layouts':
@@ -72,8 +86,4 @@ task('build:pug', () =>
     .pipe(to(p.intermediate))
 )
 
-task('build:jekyll', run('bundle exec jekyll build --trace', false))
-task('serve:jekyll', run('bundle exec jekyll serve'))
-
-task('build', deps('build:jekyll'))
-task('default', deps('serve:jekyll'))
+task('default', deps('build:jekyll'))

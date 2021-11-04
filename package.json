@@ -15,7 +15,7 @@
   },
   "scripts": {
     "init": "mkdir -p vendor && bundle install --path vendor && npm install && husky install",
-    "build": "JEKYLL_ENV=production gulp build",
+    "build": "JEKYLL_ENV=production gulp",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod && bundle update",
@@ -70,6 +70,7 @@
     "@types/luxon": "^2.0.5",
     "@types/node": "^16.11.6",
     "browser-sync": "^2.27.7",
+    "del": "^6.0.0",
     "ejs": "^3.1.6",
     "gulp": "^4.0.2",
     "gulp-flatmap": "^1.0.2",

@@ -8,14 +8,14 @@
   ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
 
 
-| {% if page.title == '' or page.title == nil %}
+| {% if include.title == '' or include.title == nil %}
 |   {% assign s = '???' %}
 | {% else %}
-|   {% assign s = page.title %}
+|   {% assign s = include.title %}
 | {% endif %}
 
 | {% assign title = site.title | append: ' | ' | append: s %}
-| {% assign feed = '/feed.xml' | prepend: site.baseurl | prepend: site.url %}
+| {% assign feed = '/feed.xml' | prepend: site.url %}
 
 head
   | {% seo title=false %}
@@ -26,7 +26,7 @@ head
   link#theme(rel='stylesheet', href='/assets/css/{{ include.sheet }}.css')
   | {% endif %}
 
-  | {% if page.layout == 'post' %}
+  | {% if include.layout == 'post' %}
   link#syntax(rel='stylesheet', href='/assets/css/syntax/bright.css')
   | {% endif %}
 

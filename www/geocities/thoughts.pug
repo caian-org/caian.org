@@ -1,0 +1,19 @@
+extends ../_layouts/90s.pug
+
+block vars
+  - const heading = 'shower thoughts'
+
+block content
+  br
+  p
+    ul
+      | {% for p in site.categories.thoughts %}
+      | {% assign d = p.date | date: '%Y-%m-%d' %}
+      li
+        code
+          | {{ d }}
+        |
+        | &nbsp;
+        a(href='{{ p.url }}')
+          | {{ p.heading }}
+      | {% endfor %}
