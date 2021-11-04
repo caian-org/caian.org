@@ -1,10 +1,15 @@
 /* standard */
-const { format } = require('util')
+const { format: fmt } = require('util')
 
 /* 3rd-party */
+const flog = require('fancy-log')
 const { DateTime } = require('luxon')
 
 /* ................................................. */
+
+module.exports.fmt = fmt
+
+module.exports.log = (m, ...p) => flog(fmt('  '.concat(m), ...p))
 
 module.exports.fmtFileSize = (bytes, decimals = 2) => {
   if (bytes === 0) {
@@ -16,7 +21,7 @@ module.exports.fmtFileSize = (bytes, decimals = 2) => {
   const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
 
   const i = Math.floor(Math.log(bytes) / Math.log(k))
-  return format('%s %s', parseFloat((bytes / Math.pow(k, i)).toFixed(dm)).toString(), sizes[i])
+  return fmt('%s %s', parseFloat((bytes / Math.pow(k, i)).toFixed(dm)).toString(), sizes[i])
 }
 
 module.exports.getNumberSuffix = (num) => {

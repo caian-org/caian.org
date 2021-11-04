@@ -1,18 +1,16 @@
 /* standard */
 const fs = require('fs')
-const { format } = require('util')
 const { basename, dirname, join } = require('path')
 const { exec } = require('child_process')
 
 /* 3rd-party */
-const log = require('fancy-log')
 const { DateTime } = require('luxon')
 
 const header = require('gulp-header')
 const flatmap = require('gulp-flatmap')
 
 /* modules */
-const { getNumberSuffix, now } = require('./util')
+const { getNumberSuffix, now, fmt, log } = require('./util')
 
 /* ................................................. */
 
@@ -37,7 +35,7 @@ module.exports.readPostDir = (location) =>
       const name = basename(f).replace('.pug', '')
 
       const date = DateTime.fromISO(name.substring(0, 10))
-      const dfmt = format("MMMM d'%s,' yyyy", getNumberSuffix(date.day))
+      const dfmt = fmt("MMMM d'%s,' yyyy", getNumberSuffix(date.day))
 
       return {
         _d: date,
@@ -64,8 +62,10 @@ module.exports.run = (cmd, showOutput = true) =>
   (callback) =>
     exec(cmd, (err, stdout, stderr) => {
       if (showOutput || err) {
-        console.log('\nstdout: \n' + stdout)
-        console.log('\nstderr: \n' + stderr)
+        log('STDOUT')
+        log('  %s', stdout)
+        log('STDERR')
+        log('  %s', stderr)
       }
 
       callback(err)
@@ -73,7 +73,7 @@ module.exports.run = (cmd, showOutput = true) =>
 
 module.exports.renderPugFiles = (basedir, extras) =>
   flatmap((stream, file) => {
-    log('  Building '.concat(basename(file.path)).concat('...'))
+    log('Writing "%s"', file.path.replace(basedir, ''))
 
     const htmlContent = stream.pipe(pug(basedir, extras))
     switch (basename(dirname(file.path))) {

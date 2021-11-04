@@ -1,6 +1,6 @@
 /* standard */
 const { promises: fs } = require('fs')
-const { dirname, join, resolve } = require('path')
+const { dirname, join } = require('path')
 
 /* 3rd-party */
 const _ = require('lodash')
@@ -11,15 +11,15 @@ const { fromEnv } = require('@aws-sdk/credential-providers')
 const { S3 } = require('@aws-sdk/client-s3')
 
 /* modules */
-const { fmtFileSize } = require('./util')
+const { fmtFileSize, fmt, log } = require('./util')
 
 /* ................................................. */
-
-const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })
 
 const len = (a) => a.length
 
 const listAllObjects = async (bucket) => {
+  const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })
+
   const f = []
   const r = {
     Bucket: bucket,
@@ -62,35 +62,35 @@ const uniqueDirsOf = (objs) =>
     (a, b) => len(b) - len(a)
   )
 
-/* Object To File */
-const otf = (objs) =>
+const objectsToFiles = (bucket, objs) =>
   objs.map((f) => ({
     name: f.key,
     size: f.size,
     lastModified: f.lastModified,
-    publicUrl: 'https://caian-org.s3.amazonaws.com/' + f.key
+    publicUrl: fmt('https://%s.s3.amazonaws.com/%s', bucket, f.key)
   }))
 
-const renderAndWrite = async (template, dir, files) => {
-  const c = ejs.render(template, { directoryLevel: '/'.concat(dir), files })
-  const f = join(dir, 'index.pug')
+const create = async ({ rootdir, dest, template, files }) => {
+  await fs.mkdir(dest, { recursive: true })
 
-  console.log(`* writing "${f}"`)
+  const l = dest.replace(rootdir, '')
+  const d = { files, directoryLevel: l.startsWith('/') ? l : '/'.concat(l) }
+
+  const c = ejs.render(template, d)
+  const f = join(dest, 'index.pug')
+
+  log('Writing "%s"', f.replace(dest, ''))
   await fs.writeFile(f, c)
 }
 
 /* ................................................. */
 
-const create = async (basedir) => {
-  const l = 20
-  console.log('\n'.concat('-'.repeat(l)))
-  console.log('* autoindex started')
-
+module.exports.build = async (rootdir, bucket) => {
   /* ... */
-  const objs = processObjects(await listAllObjects('caian-org'))
+  const objs = processObjects(await listAllObjects(bucket))
   const dirs = uniqueDirsOf(objs)
   let files = objs.filter((obj) => !obj.key.endsWith('/'))
-  console.log(`* got ${files.length} objects`)
+  log('Got %s objects from bucket "%s"', files.length, bucket)
 
   /* ... */
   const structure = {}
@@ -100,24 +100,17 @@ const create = async (basedir) => {
 
     structure[d] = {
       directoryName: _.last(d.split('/')),
-      items: otf(f)
+      items: objectsToFiles(bucket, f)
     }
   }
 
+  log('File structure generated')
+
   /* ... */
-  console.log('* file structure generated')
-  const template = await fs.readFile(resolve(join(__dirname, 'files.pug')), 'utf-8')
-  await renderAndWrite(template, basedir, otf(files))
+  const template = await fs.readFile(join(__dirname, 'files-template.pug'), 'utf-8')
+  await create({ rootdir, template, dest: rootdir, files: objectsToFiles(bucket, files) })
 
   for (const d of dirs) {
-    const fileLevelDirName = join(basedir, d)
-
-    await fs.mkdir(fileLevelDirName, { recursive: true })
-    await renderAndWrite(template, fileLevelDirName, structure[d].items)
+    await create({ rootdir, template, dest: join(rootdir, d), files: structure[d].items })
   }
-
-  console.log('* done')
-  console.log('-'.repeat(l).concat('\n'))
 }
-
-module.exports = { create }

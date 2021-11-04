@@ -1,10 +1,7 @@
----
-title: caian.org&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;
----
-
 doctype html
 html
-  | {% include head.html sheet='autoindex' %}
+  | {% assign t = 'caian.org&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;' %}
+  | {% include head.html sheet='autoindex' title=t %}
   body
     .sugoi &#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9; of <%= directoryLevel %>
     .box
