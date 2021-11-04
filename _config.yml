@@ -5,8 +5,8 @@ baseurl: ''
 description: >
   Personal page, blog, portfolio etc
 
-source: dist/www
-destination: public
+source: dist/intermediate
+destination: dist/public
 
 plugins:
   - jekyll-minifier
