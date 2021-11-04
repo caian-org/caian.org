@@ -20,12 +20,10 @@ html
         | {% for p in site.categories.blog %}
         | {% assign d = p.date | date: '%Y-%m-%d' %}
         li
-          code
-            | {{ d }}
+          code {{ d }}
           |
           | &nbsp;
-          a(href='{{ p.url }}')
-            | {{ p.title }}
+          a(href='{{ p.url }}') {{ p.title }}
         | {% endfor %}
       hr
       a(href='/feed.xml') Subscribe with RSS
