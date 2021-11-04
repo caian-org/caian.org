@@ -23,11 +23,11 @@ html
         p.aleft
           | {% include tags.html tags=post_tags %}
         p.aright
-          | ~{{ time }} read
-          |
-          | |
-          |
-          | {{ page.date | date_to_long_string }}
+          span.lighter
+            | ~{{ time }} read
+            |
+            | &nbsp;
+            | {{ page.date | date: '%Y-%m-%d' }}
         .aclear
       | {{ content }}
       hr
