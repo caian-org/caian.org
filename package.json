@@ -14,12 +14,13 @@
     "url": "https://github.com/caian-org/caian.org/issues"
   },
   "scripts": {
-    "add-hooks": "husky install",
+    "init": "mkdir -p vendor && bundle install --path vendor && npm install && husky install",
+    "build": "JEKYLL_ENV=production gulp",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
-    "bump:all": "npm run bump:dev && npm run bump:prod",
+    "bump:all": "npm run bump:dev && npm run bump:prod && bundle update",
     "check:duplicated": "jscpd",
-    "fix:style": "prettier --ignore-path .gitignore --print-width 100 --trailing-comma none --no-semi --single-quote --write . '**/*.{html,md,yml,yaml,js,pug}' && standard --fix '**/*.js'"
+    "fix:style": "prettier --ignore-path .gitignore --print-width 100 --trailing-comma none --no-semi --single-quote --write . && standard --fix '**/*.js'"
   },
   "jscpd": {
     "threshold": 5,
