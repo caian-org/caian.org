@@ -4,31 +4,29 @@
 @import 'default/base'
 
 body
-  @extend %ff
-  color: #c8c8c8
-  background: #222222
+  @extend %font-defs
+  color: $color-light-grey
+  background: $color-medium-grey
 
 code
-  font-family: Menlo, monospace
-  background-color: #111111
+  @extend %default-font-family
+  background-color: $color-dark-grey
 
 pre
-  font-family: Menlo, monospace
-  background-color: #111111
+  @extend %default-font-family
+  background-color: $color-dark-grey
   padding: 1.2em
 
 a
   &:link
-    color: #c8c8c8
-    text-decoration: underline
+    color: $color-light-grey !important
 
   &:visited
-    color: #c8c8c8
+    color: $color-light-grey !important
 
   &:hover
-    color: black
-    background: white
-    text-decoration: none
+    color: $color-dark-grey !important
+    background: $color-light-grey !important
 
 .tag-list
   background-image: url('/assets/imgs/tag-white.png')

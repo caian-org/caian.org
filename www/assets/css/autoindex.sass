@@ -1,10 +1,13 @@
 ---
 ---
 
+$f: '/assets/fonts/pixel-mplus-12-regular'
+$font-family-pixel: 'PixelMplus12'
+
 @font-face
-  font-family: 'PixelMplus12'
-  src: url('/assets/fonts/pixel-mplus-12-regular.eot')
-  src: url('/assets/fonts/pixel-mplus-12-regular.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/pixel-mplus-12-regular.woff2') format('woff2'), url('/assets/fonts/pixel-mplus-12-regular.woff') format('woff'), url('/assets/fonts/pixel-mplus-12-regular.ttf') format('truetype'), url('/assets/fonts/pixel-mplus-12-regular.svg#PixelMplus12-Regular') format('svg')
+  font-family: $font-family-pixel
+  src: url('#{$f}.eot')
+  src: url('#{$f}.eot?#iefix') format('embedded-opentype'), url('#{$f}.woff2') format('woff2'), url('#{$f}.woff') format('woff'), url('#{$f}.ttf') format('truetype'), url('#{$f}.svg#PixelMplus12-Regular') format('svg')
   font-weight: 400
   font-style: normal
   font-display: swap
@@ -22,7 +25,7 @@ html, body
   transition: background-color 1s
 
 html
-  font-family: 'PixelMplus12' !important
+  font-family: $font-family-pixel !important
   font-size: 8px
 
 img.middle

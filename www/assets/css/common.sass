@@ -1,12 +1,17 @@
+$f: '/assets/fonts/meslo-lgs-regular'
+$font-family-meslo: 'MesloLGS-Regular'
+
+$color-light-grey: #eceff1
+$color-half-medium-grey: #999999
+$color-medium-grey: #222222
+$color-dark-grey: #111111
+
 @font-face
-  font-family: 'MesloLGS-Regular'
-  src: url('/assets/fonts/meslo-lgs-regular.eot')
-  src: url('/assets/fonts/meslo-lgs-regular.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/meslo-lgs-regular.svg#MesloLGS-Regular') format('svg'), url('/assets/fonts/meslo-lgs-regular.ttf') format('truetype'), url('/assets/fonts/meslo-lgs-regular.woff') format('woff'), url('/assets/fonts/meslo-lgs-regular.woff2') format('woff2')
+  font-family: $font-family-meslo
+  src: url('#{$f}.eot')
+  src: url('#{$f}.eot?#iefix') format('embedded-opentype'), url('#{$f}.svg#MesloLGS-Regular') format('svg'), url('#{$f}.ttf') format('truetype'), url('#{$f}.woff') format('woff'), url('#{$f}.woff2') format('woff2')
   font-weight: normal
   font-style: normal
-
-body p:last-child
-  margin-bottom: 0em
 
 h1, h2, h3, h4, h5, h6
   text-align: left
@@ -29,8 +34,11 @@ p
   padding-top: 0.5em
 
   &.lighter
-    font-weight: normal
-    color: #999
+    color: $color-half-medium-grey
+
+span
+  &.lighter
+    color: $color-half-medium-grey
 
 .centered
   height: 100vh
@@ -38,10 +46,13 @@ p
   justify-content: center
   align-items: center
 
-%ff
-  font-family: 'MesloLGS-Regular', monospace
+%default-font-family
+  font-family: $font-family-meslo, monospace
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+
+%font-defs
+  @extend %default-font-family
   font-size: 85%
   line-height: 1.7
   text-align: justify
-  -moz-osx-font-smoothing: grayscale
-  -webkit-font-smoothing: antialiased
