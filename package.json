@@ -54,14 +54,9 @@
     "ext": "*",
     "exec": "make serve"
   },
-  "dependencies": {
+  "devDependencies": {
     "@aws-sdk/client-s3": "^3.39.0",
     "@aws-sdk/credential-providers": "^3.39.0",
-    "ejs": "^3.1.6",
-    "lodash": "^4.17.21",
-    "luxon": "^2.0.2"
-  },
-  "devDependencies": {
     "@prettier/plugin-pug": "^1.17.1",
     "@types/ejs": "^3.1.0",
     "@types/gulp": "^4.0.9",
@@ -69,11 +64,15 @@
     "@types/luxon": "^2.0.5",
     "@types/node": "^16.11.6",
     "browser-sync": "^2.27.7",
+    "ejs": "^3.1.6",
     "gulp": "^4.0.2",
+    "gulp-flatmap": "^1.0.2",
     "gulp-header": "^2.0.9",
     "gulp-pug": "^5.0.0",
     "husky": "^7.0.4",
     "jscpd": "^3.3.26",
+    "lodash": "^4.17.21",
+    "luxon": "^2.0.2",
     "nodemon": "^2.0.14",
     "npm-check-updates": "^11.8.5",
     "prettier": "^2.4.1",
