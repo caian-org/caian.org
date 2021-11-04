@@ -16,6 +16,7 @@
   "scripts": {
     "init": "mkdir -p vendor && bundle install --path vendor && npm install && husky install",
     "build": "JEKYLL_ENV=production gulp",
+    "watch": "nodemon",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod && bundle update",
@@ -58,7 +59,7 @@
       "www"
     ],
     "ext": "*",
-    "exec": "npm run build"
+    "exec": "gulp prepare && bundle exec jekyll serve"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.39.0",
@@ -69,7 +70,6 @@
     "@types/lodash": "^4.14.176",
     "@types/luxon": "^2.0.5",
     "@types/node": "^16.11.6",
-    "browser-sync": "^2.27.7",
     "del": "^6.0.0",
     "ejs": "^3.1.6",
     "gulp": "^4.0.2",
