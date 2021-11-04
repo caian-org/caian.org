@@ -17,6 +17,7 @@
     "init": "mkdir -p vendor && bundle install --path vendor && npm install && husky install",
     "build": "JEKYLL_ENV=production gulp",
     "watch": "nodemon",
+    "clean": "gulp clean:dist && gulp clean:files",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod && bundle update",
@@ -49,17 +50,18 @@
     ]
   },
   "nodemonConfig": {
-    "ignore": [
-      "dist",
-      "vendor",
-      "report",
-      "node_modules"
-    ],
     "watch": [
       "www"
     ],
+    "ignore": [
+      "dist/",
+      "vendor/",
+      "report/",
+      "node_modules/",
+      "www/files/"
+    ],
     "ext": "*",
-    "exec": "gulp prepare && bundle exec jekyll serve"
+    "exec": "JEKYLL_ENV=production gulp prepare && bundle exec jekyll serve"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.39.0",
