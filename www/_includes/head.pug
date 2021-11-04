@@ -1,13 +1,3 @@
-//
-
-  ┬ ┬┬ ┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐  ┬ ┬┌─┐┬ ┬
-  │││├─┤├─┤ │   ├─┤├┬┘├┤   └┬┘│ ││ │
-  └┴┘┴ ┴┴ ┴ ┴   ┴ ┴┴└─└─┘   ┴ └─┘└─┘
-  ┬  ┌─┐┌─┐┬┌─┬┌┐┌┌─┐  ┌─┐┌─┐┬─┐┌─┐
-  │  │ ││ │├┴┐│││││ ┬  ├┤ │ │├┬┘ ┌┘
-  ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
-
-
 | {% if include.title == '' or include.title == nil %}
 |   {% assign s = '???' %}
 | {% else %}
@@ -26,7 +16,7 @@ head
   link#theme(rel='stylesheet', href='/assets/css/{{ include.sheet }}.css')
   | {% endif %}
 
-  | {% if include.layout == 'post' %}
+  | {% if include.isPost %}
   link#syntax(rel='stylesheet', href='/assets/css/syntax/bright.css')
   | {% endif %}
 
