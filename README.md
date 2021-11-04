@@ -8,7 +8,7 @@ Personal website, blog et cetera.
 ## Environment
 
 | Variable                | Value     |
-|-------------------------|-----------|
+| ----------------------- | --------- |
 | `AWS_ACCESS_KEY_ID`     | `...`     |
 | `AWS_SECRET_ACCESS_KEY` | `...`     |
 | `NODE_VERSION`          | `16.13.0` |

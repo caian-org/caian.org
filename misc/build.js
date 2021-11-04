@@ -18,18 +18,20 @@ const { getNumberSuffix, now } = require('./util')
 
 const yamlStart = ['---', '---', '', ''].join('\n')
 
-const pug = (basedir, extras) => require('gulp-pug')({
-  basedir,
-  locals: {
-    _data: Object.assign({}, extras),
-    _func: { now }
-  }
-})
+const pug = (basedir, extras) =>
+  require('gulp-pug')({
+    basedir,
+    locals: {
+      _data: Object.assign({}, extras),
+      _func: { now }
+    }
+  })
 
 /* ................................................. */
 
 module.exports.readPostDir = (location) =>
-  fs.readdirSync(location)
+  fs
+    .readdirSync(location)
     .filter((f) => basename(f) !== 'index.pug')
     .map((f) => {
       const name = basename(f).replace('.pug', '')
@@ -69,16 +71,17 @@ module.exports.run = (cmd, showOutput = true) =>
       callback(err)
     })
 
-module.exports.renderPugFiles = (basedir, extras) => flatmap((stream, file) => {
-  log('  Building '.concat(basename(file.path)).concat('...'))
+module.exports.renderPugFiles = (basedir, extras) =>
+  flatmap((stream, file) => {
+    log('  Building '.concat(basename(file.path)).concat('...'))
 
-  const htmlContent = stream.pipe(pug(basedir, extras))
-  switch (basename(dirname(file.path))) {
-    case '_includes':
-    case '_layouts':
-      return htmlContent
+    const htmlContent = stream.pipe(pug(basedir, extras))
+    switch (basename(dirname(file.path))) {
+      case '_includes':
+      case '_layouts':
+        return htmlContent
 
-    default:
-      return htmlContent.pipe(header(yamlStart))
-  }
-})
+      default:
+        return htmlContent.pipe(header(yamlStart))
+    }
+  })

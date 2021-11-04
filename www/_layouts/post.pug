@@ -1,11 +1,12 @@
-| {% assign post_tags = page.tags | join: ' ' %}
-| {% assign time = content | reading_time %}
+| {% assign read_time = content | reading_time %}
 
-| {% if time == 0 %}
-|   {% assign time = 1 %}
+| {% if read_time == 0 %}
+|   {% assign read_time = 1 %}
 | {% endif %}
 
-| {% assign time = time | pluralize: 'min' %}
+| {% assign read_time = read_time | pluralize: 'min' %}
+| {% assign post_tags = page.tags | join: ' ' %}
+| {% assign publish_date = page.date | date: '%Y-%m-%d' %}
 
 doctype html
 html
@@ -24,10 +25,10 @@ html
           | {% include tags.html tags=post_tags %}
         p.aright
           span.lighter
-            | ~{{ time }} read
+            | ~{{ read_time }} read
             |
             | &nbsp;
-            | {{ page.date | date: '%Y-%m-%d' }}
+            | {{ publish_date }}
         .aclear
       | {{ content }}
       hr
