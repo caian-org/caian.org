@@ -72,7 +72,7 @@ task('build:pug', () =>
     .pipe(to(p.intermediate))
 )
 
-task('build:jekyll', run('bundle exec jekyll build', false))
+task('build:jekyll', run('bundle exec jekyll build --trace', false))
 task('serve:jekyll', run('bundle exec jekyll serve'))
 
 task('build', deps('build:jekyll'))
