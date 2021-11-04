@@ -1,0 +1,13 @@
+extends /_layouts/90s.pug
+
+block vars
+  - const heading = 'shower thoughts'
+
+block content
+  br
+  br
+  p
+    ul
+      each t in _data.thoughts
+        li.
+          #[em #{t.date}], #[a(href=`${t.url}`) #{t.title}]
