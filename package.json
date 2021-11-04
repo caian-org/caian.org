@@ -58,7 +58,7 @@
       "www"
     ],
     "ext": "*",
-    "exec": "make serve"
+    "exec": "npm run build"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.39.0",
