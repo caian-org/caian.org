@@ -5,6 +5,33 @@
   font-weight: normal
   font-style: normal
 
+body p:last-child
+  margin-bottom: 0em
+
+h1, h2, h3, h4, h5, h6
+  text-align: left
+
+a
+  &:link
+    color: black
+    text-decoration: underline
+
+  &:visited
+    color: black
+
+  &:hover
+    color: white
+    background-color: black
+    text-decoration: none
+
+p
+  font-weight: normal
+  padding-top: 0.5em
+
+  &.lighter
+    font-weight: normal
+    color: #999
+
 .centered
   height: 100vh
   display: flex
