@@ -1,7 +1,6 @@
 | {% assign all_tags = '' %}
 | {% for t in site.tags %}
-|
-| {% assign all_tags = all_tags | append: ' ' | append: t[0] %}
+|   {% assign all_tags = all_tags | append: ' ' | append: t[0] %}
 | {% endfor %}
 
 doctype html

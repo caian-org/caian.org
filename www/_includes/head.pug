@@ -1,4 +1,5 @@
 //
+
   ┬ ┬┬ ┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐  ┬ ┬┌─┐┬ ┬
   │││├─┤├─┤ │   ├─┤├┬┘├┤   └┬┘│ ││ │
   └┴┘┴ ┴┴ ┴ ┴   ┴ ┴┴└─└─┘   ┴ └─┘└─┘
@@ -6,12 +7,11 @@
   │  │ ││ │├┴┐│││││ ┬  ├┤ │ │├┬┘ ┌┘
   ┴─┘└─┘└─┘┴ ┴┴┘└┘└─┘  └  └─┘┴└─ o
 
+
 | {% if page.title == '' or page.title == nil %}
-|
-| {% assign s = '???' %}
+|   {% assign s = '???' %}
 | {% else %}
-|
-| {% assign s = page.title %}
+|   {% assign s = page.title %}
 | {% endif %}
 
 | {% assign title = site.title | append: ' | ' | append: s %}

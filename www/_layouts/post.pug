@@ -2,9 +2,9 @@
 | {% assign time = content | reading_time %}
 
 | {% if time == 0 %}
-|
-| {% assign time = 1 %}
+|   {% assign time = 1 %}
 | {% endif %}
+
 | {% assign time = time | pluralize: 'min' %}
 
 doctype html
