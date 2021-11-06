@@ -1,6 +1,9 @@
+include /_includes/head.pug
+
 doctype html
 html
-  | {% include head.html sheet='contact' title='contact' %}
+  +header('contact', 'contact')
+
   body
     .centered
       table

@@ -1,6 +1,9 @@
+include /_includes/head.pug
+
 doctype html
 html
-  | {% include head.html sheet='default/bright' title='projects' %}
+  +header('projects')
+
   body
     .main
       a(href='/') Back

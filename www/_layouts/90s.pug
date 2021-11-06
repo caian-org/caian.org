@@ -1,8 +1,11 @@
+include /_includes/head.pug
+
 block vars
 
 doctype html
 html
-  | {% include head.html sheet='90s' %}
+  +header(null, '90s')
+
   body
     .wrapperp
       .cont

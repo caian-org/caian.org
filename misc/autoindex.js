@@ -11,11 +11,9 @@ const { fromEnv } = require('@aws-sdk/credential-providers')
 const { S3 } = require('@aws-sdk/client-s3')
 
 /* modules */
-const { fmtFileSize, fmt, log } = require('./util')
+const { fmtFileSize, fmt, len, log } = require('./util')
 
 /* ................................................. */
-
-const len = (a) => a.length
 
 const listAllObjects = async (bucket) => {
   const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })

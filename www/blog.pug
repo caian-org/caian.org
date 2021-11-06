@@ -1,3 +1,5 @@
+include /_includes/head.pug
+
 | {% assign all_tags = '' %}
 | {% for t in site.tags %}
 |   {% assign all_tags = all_tags | append: ' ' | append: t[0] %}
@@ -5,7 +7,8 @@
 
 doctype html
 html
-  | {% include head.html sheet='default/bright' title='blog' %}
+  +header('blog')
+
   body
     .main
       a(href='/') Back

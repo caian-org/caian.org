@@ -7,6 +7,10 @@ const { DateTime } = require('luxon')
 
 /* ................................................. */
 
+const len = (a) => a.length
+
+module.exports.len = len
+
 module.exports.fmt = fmt
 
 module.exports.log = (m, ...p) => flog(fmt('  '.concat(m), ...p))
@@ -43,3 +47,5 @@ module.exports.getNumberSuffix = (num) => {
 }
 
 module.exports.now = () => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
+
+module.exports.strFallback = (s) => typeof s === 'string' && len(s.trim()) > 0 ? s : '???'

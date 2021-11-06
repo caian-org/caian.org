@@ -10,7 +10,7 @@ const header = require('gulp-header')
 const flatmap = require('gulp-flatmap')
 
 /* modules */
-const { getNumberSuffix, now, fmt, log } = require('./util')
+const { strFallback, getNumberSuffix, now, fmt, log } = require('./util')
 
 /* ................................................. */
 
@@ -21,7 +21,11 @@ const pug = (basedir, extras) =>
     basedir,
     locals: {
       _data: Object.assign({}, extras),
-      _func: { now }
+      _site: {
+        title: 'caian.org',
+        url: 'https://caian.org'
+      },
+      _func: { now, fmt, strFallback }
     }
   })
 

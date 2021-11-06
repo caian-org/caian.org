@@ -1,3 +1,5 @@
+include /_includes/head.pug
+
 | {% assign read_time = content | reading_time %}
 
 | {% if read_time == 0 %}
@@ -10,7 +12,8 @@
 
 doctype html
 html
-  | {% include head.html sheet='default/bright' isPost=true %}
+  +header('blog', 'default/bright', true)
+
   body
     .main
       a(href='/blog') Back
@@ -32,12 +35,8 @@ html
         .aclear
       | {{ content }}
       hr
-      footer
-        a(href='/') Home
-        |
-        | |
-        |
-        a(href='/feed.xml') Subscribe with RSS
+      footer.
+        #[a(href='/') Home] | #[a(href='/feed.xml') Subscribe with RSS]
 
   script.
     function changeTheme() {

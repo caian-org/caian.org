@@ -1,25 +1,15 @@
-| {% if include.title == '' or include.title == nil %}
-|   {% assign s = '???' %}
-| {% else %}
-|   {% assign s = include.title %}
-| {% endif %}
-
-| {% assign title = site.title | append: ' | ' | append: s %}
-| {% assign feed = '/feed.xml' | prepend: site.url %}
-
-head
+mixin header(title, sheet='default/bright', isPost=false)
   | {% seo title=false %}
 
+  - const fullTitle = _func.fmt('%s | %s', _site.title, _func.strFallback(title))
+  - const feed = _func.fmt('%s/feed.xml', _site.url)
+
   meta(name='viewport', content='width=device-width, initial-scale=1')
+  link#theme(rel='stylesheet', href=_func.fmt('/assets/css/%s.css', sheet))
 
-  | {% if include.sheet != null %}
-  link#theme(rel='stylesheet', href='/assets/css/{{ include.sheet }}.css')
-  | {% endif %}
-
-  | {% if include.isPost %}
-  link#syntax(rel='stylesheet', href='/assets/css/syntax/bright.css')
-  | {% endif %}
+  if isPost
+    link#syntax(rel='stylesheet', href='/assets/css/syntax/bright.css')
 
   link(rel='icon', type='image/png', href='/favicon.ico')
-  link(rel='alternate', type='application/rss+xml', title='{{ site.title }}', href='{{ feed }}')
-  title {{ title }}
+  link(rel='alternate', type='application/rss+xml', title=_site.title, href=feed)
+  title= fullTitle

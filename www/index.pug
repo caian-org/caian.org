@@ -1,6 +1,9 @@
+include /_includes/head.pug
+
 doctype html
 html
-  | {% include head.html sheet='default/bright' title='homepage' %}
+  +header('homepage')
+
   body
     .main
       h1 hello, friend
