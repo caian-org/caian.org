@@ -1,120 +1,39 @@
 extends /_layouts/90s.pug
 
+mixin yt(id, artist, title)
+  li.
+    #[em #{ artist }], #[a(href=`https://www.youtube.com/watch?v=${id}`) #{ title }]
+
 block vars
   - const heading = 'music i like'
 
 block content
   h2 classical
   ul
-    li
-      em Albinoni
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=_eLU5W1vc8Y') Adagio in G Minor
-    li
-      em Glass
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=rM2KLeoRBGo') Concerto for Violin No. 1
-    li
-      em Ravel
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=mhhkGyJ092E') Bolero
-    li
-      em Ravel
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=w0ObgSKBqTQ') Tzigane
-    li
-      em Schubert
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=otdayisyIiM') String Quartet No. 14
-    li
-      em Shostakovitch
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=41HIXtBElH4') String Quartet No. 8
-    li
-      em Shostakovitch
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=8HZVQyD9rsY') Concerto for Violin No. 1
+    +yt('_eLU5W1vc8Y', 'Albinoni', 'Adagio in G Minor')
+    +yt('rM2KLeoRBGo', 'Glass', 'Concerto for Violin No. 1')
+    +yt('mhhkGyJ092E', 'Ravel', 'Bolero')
+    +yt('w0ObgSKBqTQ', 'Ravel', 'Tzigane')
+    +yt('otdayisyIiM', 'Schubert', 'String Quartet No. 14')
+    +yt('41HIXtBElH4', 'Shostakovitch', 'String Quartet No. 8')
+    +yt('8HZVQyD9rsY', 'Shostakovitch', 'Concerto for Violin No. 1')
 
   h2 electronic
   ul
-    li
-      em Aleksandir
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=OnW6rQ_z9Ug') Yamaha
-    li
-      em COMPUTER DATA
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=0zT_Mk7ZkyY') Schlafen
-    li
-      em Dj Boring
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=XO66x8zodFo') Love&rsquo;s a Crime
-    li
-      em Loods
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=R4Qlv-nwhy0') Every Time
-    li
-      em Sweely
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=2NG9h9yZYf8') Around
-    li
-      em Sweely
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=sg6-GaAKmUI') A Day in Malaysia
-    li
-      em Sweely
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=FgEQh2yGnMU') On The Run
-    li
-      em Parrish
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=L2aUMxR2tUo') Lost Angel
+    +yt('OnW6rQ_z9Ug', 'Aleksandir', 'Yamaha')
+    +yt('0zT_Mk7ZkyY', 'COMPUTER DATA', 'Schlafen')
+    +yt('XO66x8zodFo', 'Dj Boring', 'Love\'s a Crime')
+    +yt('R4Qlv-nwhy0', 'Loods', 'Every Time')
+    +yt('2NG9h9yZYf8', 'Sweely', 'Around')
+    +yt('sg6-GaAKmUI', 'Sweely', 'A Day in Malaysia')
+    +yt('FgEQh2yGnMU', 'Sweely', 'On The Run')
+    +yt('L2aUMxR2tUo', 'Parrish', 'Lost Angel')
 
   h2 jake
-  p he deserves a whole category, just for him
   ul
-    li
-      em Chudnow
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=CXQA9oJtK9c') Prelude to Shona
-    li
-      em Chudnow
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=WBAIyY9y3HM') Shona
-    li
-      em Chudnow
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=3QQS8fJqXoI') Olive
-    li
-      em Chudnow
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=6u_EWKVRoxc') Flan
-    li
-      em Chudnow
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=7lxZoh9-G_8') Keith
-    li
-      em Chudnow
-      | ,
-      |
-      a(href='https://www.youtube.com/watch?v=PwrUR8LVcb4') Pressed Pennies
+    +yt('CXQA9oJtK9c', 'Chudnow', 'Prelude to Shona')
+    +yt('WBAIyY9y3HM', 'Chudnow', 'Shona')
+    +yt('3QQS8fJqXoI', 'Chudnow', 'Olive')
+    +yt('6u_EWKVRoxc', 'Chudnow', 'Flan')
+    +yt('7lxZoh9-G_8', 'Chudnow', 'Keith')
+    +yt('PwrUR8LVcb4', 'Chudnow', 'Pressed Pennies')
