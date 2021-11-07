@@ -29,7 +29,7 @@ const copy = (f, d) => pipe(from(join(p.src, f)), to(intermediateDir(d)))
 const copyAll = (...d) => pipe(from(sourceDir(...d)), to(intermediateDir(...d)))
 
 const e = {
-  thoughts: readPostDir(join(p.src, 'geocities', 'thoughts'))
+  thoughts: readPostDir(join(p.src, 'geo', 'thoughts'))
 }
 
 const preJekyllBuildSteps = [

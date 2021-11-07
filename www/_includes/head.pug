@@ -1,4 +1,4 @@
-mixin header(title, sheet='default/bright', isPost=false)
+mixin header(title, sheet='themes/main/bright', isPost=false)
   | {% seo title=false %}
 
   - const fullTitle = _func.fmt('%s | %s', _site.title, _func.strFallback(title))
@@ -8,7 +8,7 @@ mixin header(title, sheet='default/bright', isPost=false)
   link#theme(rel='stylesheet', href=_func.fmt('/assets/css/%s.css', sheet))
 
   if isPost
-    link#syntax(rel='stylesheet', href='/assets/css/syntax/bright.css')
+    link#syntax(rel='stylesheet', href='/assets/css/themes/main/syntax/bright.css')
 
   link(rel='icon', type='image/png', href='/favicon.ico')
   link(rel='alternate', type='application/rss+xml', title=_site.title, href=feed)
