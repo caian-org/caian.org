@@ -62,18 +62,19 @@ module.exports.resolveDirs = (root) => {
   }
 }
 
-module.exports.run = (cmd, showOutput = true) =>
-  (callback) =>
-    exec(cmd, (err, stdout, stderr) => {
-      if (showOutput || err) {
-        log('STDOUT')
-        log('  %s', stdout)
-        log('STDERR')
-        log('  %s', stderr)
-      }
+module.exports.run =
+  (cmd, showOutput = true) =>
+    (callback) =>
+      exec(cmd, (err, stdout, stderr) => {
+        if (showOutput || err) {
+          log('STDOUT')
+          log('  %s', stdout)
+          log('STDERR')
+          log('  %s', stderr)
+        }
 
-      callback(err)
-    })
+        callback(err)
+      })
 
 module.exports.renderPugFiles = (basedir, extras) =>
   flatmap((stream, file) => {

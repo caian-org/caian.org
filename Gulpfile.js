@@ -3,29 +3,30 @@ const { join, extname } = require('path')
 
 /* 3rd-party */
 const del = require('del')
+const merge = require('merge-stream')
+const { pipeline: pipe } = require('readable-stream')
+
 const tap = require('gulp-tap')
+const babel = require('gulp-babel')
+const uglify = require('gulp-uglify')
 const { task, series, src: from, dest: to } = require('gulp')
 
 /* modules */
 const autoindex = require('./misc/autoindex')
 const { run, resolveDirs, readPostDir, renderPugFiles: rdr } = require('./misc/build')
-const { log } = require('./misc/util')
+const { log, joinSafe } = require('./misc/util')
 
 /* ................................................. */
 
 const p = resolveDirs(__dirname)
-const sourceDir = (f) => join(p.src, f, '**', '*')
-const intermediateDir = (f) => join(p.intermediate, f)
+const sourceDir = (...f) => joinSafe(p.src, ...f, '**', '*')
+const intermediateDir = (...f) => joinSafe(p.intermediate, ...f)
 
 const pugFiles = join(p.src, '**', '*.pug')
 const publicFiles = join(p.dist, 'public', '**', '*')
 
-const copyAll = (n) => from(sourceDir(n)).pipe(to(intermediateDir(n)))
-
-const deleteAndNotify = (fp) => {
-  del(fp)
-  log('Deleted "%s"', fp.replace(p.dist, ''))
-}
+const copy = (f, d) => pipe(from(join(p.src, f)), to(intermediateDir(d)))
+const copyAll = (...d) => pipe(from(sourceDir(...d)), to(intermediateDir(...d)))
 
 const e = {
   thoughts: readPostDir(join(p.src, 'geocities', 'thoughts'))
@@ -36,8 +37,8 @@ const preJekyllBuildSteps = [
   'clean:files',
   'build:autoindex',
   'build:pug',
-  'copy:assets',
-  'copy:blog'
+  'build:js',
+  'copy:all'
 ]
 
 /* ................................................. */
@@ -46,20 +47,41 @@ task('clean:dist', () => del(p.dist, { force: true }))
 task('clean:files', () => del(p.files, { force: true }))
 
 task('clean:left-overs', () =>
-  from(publicFiles).pipe(tap((file, t) => {
-    switch (extname(file.path).substring(1).toLowerCase()) {
-      case 'sass':
-        deleteAndNotify(file.path)
-        break
-    }
-  }))
+  pipe(
+    from(publicFiles),
+    tap((file, t) => {
+      switch (extname(file.path).substring(1).toLowerCase()) {
+        case 'sass':
+          del(file.path)
+          log('Deleted "%s"', file.path.replace(p.dist, ''))
+          break
+      }
+    })
+  )
 )
 
-task('copy:assets', () => copyAll('assets'))
-task('copy:blog', () => copyAll('blog'))
+task('copy:all', () =>
+  merge(
+    copy('feed.xml'),
+    copy('favicon.ico'),
+    copyAll('blog'),
+    copyAll('assets', 'css'),
+    copyAll('assets', 'fonts'),
+    copyAll('assets', 'imgs')
+  )
+)
+
+task('build:js', () =>
+  pipe(
+    from(sourceDir('assets', 'js')),
+    babel({ presets: ['@babel/preset-env'] }),
+    uglify(),
+    to(intermediateDir('assets', 'js'))
+  )
+)
 
 task('build:autoindex', async () => autoindex.build(p.files, 'caian-org'))
-task('build:pug', () => from(pugFiles).pipe(rdr(p.src, e)).pipe(to(p.intermediate)))
+task('build:pug', () => pipe(from(pugFiles), rdr(p.src, e), to(p.intermediate)))
 task('build:jekyll', run('bundle exec jekyll build --trace', false))
 
 task('prepare', series(...preJekyllBuildSteps))

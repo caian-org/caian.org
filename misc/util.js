@@ -1,4 +1,5 @@
 /* standard */
+const { join } = require('path')
 const { format: fmt } = require('util')
 
 /* 3rd-party */
@@ -48,4 +49,20 @@ module.exports.getNumberSuffix = (num) => {
 
 module.exports.now = () => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
 
-module.exports.strFallback = (s) => typeof s === 'string' && len(s.trim()) > 0 ? s : '???'
+module.exports.strFallback = (s) => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
+
+module.exports.joinSafe = (...s) =>
+  join(
+    ...s.map((v) => {
+      switch (typeof v) {
+        case 'string':
+        case 'number':
+        case 'bigint':
+        case 'boolean':
+          return v.toString()
+
+        default:
+          return ''
+      }
+    })
+  )

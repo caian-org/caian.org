@@ -16,7 +16,7 @@
   "scripts": {
     "init": "mkdir -p vendor && bundle install --path vendor && npm install && husky install",
     "build": "JEKYLL_ENV=production gulp",
-    "watch": "nodemon",
+    "serve": "nodemon",
     "clean": "gulp clean:dist && gulp clean:files",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
@@ -25,7 +25,7 @@
     "check:style": "standard",
     "check:duplicated": "jscpd",
     "check:all": "npm run check:lint && npm run check:style && npm run check:duplicated",
-    "fix:style": "prettier --ignore-path .gitignore --print-width 100 --trailing-comma none --no-semi --single-quote --write . && standard --fix '**/*.js'"
+    "fix:style": "prettier --ignore-path .gitignore --write . '**/*.{js,yaml,yml,pug,md,json}' && standard --fix '**/*.js'"
   },
   "eslintIgnore": [
     "dist",
@@ -33,6 +33,12 @@
     "report",
     "node_modules"
   ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "none"
+  },
   "jscpd": {
     "threshold": 5,
     "reporters": [
@@ -45,6 +51,7 @@
       "**/vendor/**",
       "**/report/**",
       "**/node_modules/**",
+      "**/www/files/**",
       "**/*.svg"
     ]
   },
@@ -60,12 +67,14 @@
       "www/files/"
     ],
     "ext": "*",
-    "exec": "JEKYLL_ENV=production gulp prepare && bundle exec jekyll serve"
+    "exec": "gulp prepare && JEKYLL_ENV=production bundle exec jekyll serve"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.40.0",
     "@aws-sdk/credential-providers": "^3.40.0",
     "@aws-sdk/signature-v4-crt": "^3.40.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
     "@jscpd/finder": "^3.3.26",
     "@prettier/plugin-pug": "^1.17.1",
     "@types/ejs": "^3.1.0",
@@ -76,24 +85,24 @@
     "del": "^6.0.0",
     "ejs": "^3.1.6",
     "eslint": "^8.2.0",
-    "eslint-config-standard": "^16.0.3",
     "eslint-formatter-codeframe": "^7.32.1",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1",
     "fancy-log": "^1.3.3",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-flatmap": "^1.0.2",
     "gulp-header": "^2.0.9",
     "gulp-pug": "^5.0.0",
     "gulp-tap": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
     "husky": "^7.0.4",
     "jscpd": "^3.3.26",
     "lodash": "^4.17.21",
     "luxon": "^2.0.2",
+    "merge-stream": "^2.0.0",
     "nodemon": "^2.0.14",
     "npm-check-updates": "^12.0.0",
     "prettier": "^2.4.1",
+    "readable-stream": "^3.6.0",
     "standard": "^16.0.4",
     "svgo": "^2.8.0"
   }

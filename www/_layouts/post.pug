@@ -38,17 +38,4 @@ html
       footer.
         #[a(href='/') Home] | #[a(href='/feed.xml') Subscribe with RSS]
 
-  script.
-    function changeTheme() {
-      var c = "/assets/css";
-
-      var theme = document.getElementById("theme");
-      var syntax = document.getElementById("syntax");
-      var changeTheme = document.getElementById("change-theme");
-
-      var dim = theme.href.endsWith("bright.css") ? "dark" : "bright";
-
-      theme.href = [c, "default", dim].join("/").concat(".css");
-      syntax.href = [c, "syntax", dim].join("/").concat(".css");
-      changeTheme.innerHTML = (dim === "bright" ? "Dark" : "Bright").concat(" theme");
-    }
+  script(type='text/javascript', src='/assets/js/change-theme.js')
