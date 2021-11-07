@@ -16,6 +16,12 @@ module.exports.fmt = fmt
 
 module.exports.log = (m, ...p) => flog(fmt('  '.concat(m), ...p))
 
+module.exports.globAll = (d, ext = null) => join(d, '**', '*'.concat(ext === null ? '' : '.'.concat(ext)))
+
+module.exports.now = () => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
+
+module.exports.strFallback = (s) => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
+
 module.exports.fmtFileSize = (bytes, decimals = 2) => {
   if (bytes === 0) {
     return '0 Bytes'
@@ -46,10 +52,6 @@ module.exports.getNumberSuffix = (num) => {
     default: return th
   }
 }
-
-module.exports.now = () => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
-
-module.exports.strFallback = (s) => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
 
 module.exports.joinSafe = (...s) =>
   join(

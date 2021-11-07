@@ -78,7 +78,7 @@ module.exports.run =
 
 module.exports.renderPugFiles = (basedir, extras) =>
   flatmap((stream, file) => {
-    log('Writing "%s"', file.path.replace(basedir, ''))
+    log('Writing "%s"', file.path.replace(basedir, '').replace('.pug', '.html'))
 
     const htmlContent = stream.pipe(pug(basedir, extras))
     switch (basename(dirname(file.path))) {
