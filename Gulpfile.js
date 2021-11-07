@@ -13,18 +13,17 @@ const { task, series, src: from, dest: to } = require('gulp')
 
 /* modules */
 const autoindex = require('./misc/autoindex')
-const { run, resolveDirs, readPostDir, renderPugFiles } = require('./misc/build')
-const { log, joinSafe, globAll } = require('./misc/util')
+const { run, resolveDirs, readPostDir, renderPugFiles: rdr } = require('./misc/build')
+const { log, joinSafe } = require('./misc/util')
 
 /* ................................................. */
 
 const p = resolveDirs(__dirname)
-
-const sourceDir = (...f) => globAll(joinSafe(p.src, ...f))
+const sourceDir = (...f) => joinSafe(p.src, ...f, '**', '*')
 const intermediateDir = (...f) => joinSafe(p.intermediate, ...f)
 
-const includeDir = join(p.src, '_inc')
-const publicFiles = globAll(join(p.dist, 'public'))
+const pugFiles = join(p.src, '**', '*.pug')
+const publicFiles = join(p.dist, 'public', '**', '*')
 
 const copy = (f, d) => pipe(from(join(p.src, f)), to(intermediateDir(d)))
 const copyAll = (...d) => pipe(from(sourceDir(...d)), to(intermediateDir(...d)))
@@ -63,6 +62,7 @@ task('clean:left-overs', () =>
 
 task('copy:all', () =>
   merge(
+    copy('feed.xml'),
     copy('favicon.ico'),
     copyAll('blog'),
     copyAll('assets', 'css'),
@@ -80,14 +80,8 @@ task('build:js', () =>
   )
 )
 
-task('build:pug', () => pipe(
-    from([globAll(p.src, 'pug'), '!'.concat(globAll(includeDir))]),
-    renderPugFiles(includeDir, e),
-    to(p.intermediate))
-)
-
 task('build:autoindex', async () => autoindex.build(p.files, 'caian-org'))
-
+task('build:pug', () => pipe(from(pugFiles), rdr(p.src, e), to(p.intermediate)))
 task('build:jekyll', run('bundle exec jekyll build --trace', false))
 
 task('prepare', series(...preJekyllBuildSteps))

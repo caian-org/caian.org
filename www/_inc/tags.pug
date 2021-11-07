@@ -1,8 +1,0 @@
-mixin tag-list(foundTags)
-  - const tags = _func.organizeTags(foundTags)
-
-  if tags.length > 0
-    span.tag-list
-      each t in tags
-        - const url = _func.tagPageUrl(t)
-        a(href=url) t

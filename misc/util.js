@@ -4,7 +4,6 @@ const { format: fmt } = require('util')
 
 /* 3rd-party */
 const flog = require('fancy-log')
-const slugify = require('slugify')
 const { DateTime } = require('luxon')
 
 /* ................................................. */
@@ -16,14 +15,6 @@ module.exports.len = len
 module.exports.fmt = fmt
 
 module.exports.log = (m, ...p) => flog(fmt('  '.concat(m), ...p))
-
-module.exports.globAll = (p, ext = null) => join(p, '**', '*'.concat(ext === null ? '' : '.'.concat(ext)))
-
-module.exports.now = () => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
-
-module.exports.strFallback = (s) => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
-
-module.exports.tagPageUrl = (s, t) => fmt('%s/blog/tag/%s', s, slugify(t, { lower: true }))
 
 module.exports.fmtFileSize = (bytes, decimals = 2) => {
   if (bytes === 0) {
@@ -56,6 +47,10 @@ module.exports.getNumberSuffix = (num) => {
   }
 }
 
+module.exports.now = () => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
+
+module.exports.strFallback = (s) => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
+
 module.exports.joinSafe = (...s) =>
   join(
     ...s.map((v) => {
@@ -71,11 +66,3 @@ module.exports.joinSafe = (...s) =>
       }
     })
   )
-
-module.exports.organizeTags = (t) => {
-  if (typeof t !== 'string') {
-    return []
-  }
-
-  return [...new Set(t.trim().split(' ').map((v) => v.trim()))].sort((a, b) => a.localeCompare(b))
-}

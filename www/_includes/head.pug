@@ -2,7 +2,7 @@ mixin header(title, sheet='default/bright', isPost=false)
   | {% seo title=false %}
 
   - const fullTitle = _func.fmt('%s | %s', _site.title, _func.strFallback(title))
-  - const feed = _func.fmt('%s/blog/feed.xml', _site.url)
+  - const feed = _func.fmt('%s/feed.xml', _site.url)
 
   meta(name='viewport', content='width=device-width, initial-scale=1')
   link#theme(rel='stylesheet', href=_func.fmt('/assets/css/%s.css', sheet))

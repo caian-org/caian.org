@@ -4,26 +4,28 @@ const { basename, dirname, join } = require('path')
 const { exec } = require('child_process')
 
 /* 3rd-party */
-const yaml = require('yaml')
 const { DateTime } = require('luxon')
 
 const header = require('gulp-header')
 const flatmap = require('gulp-flatmap')
 
 /* modules */
-const { strFallback, getNumberSuffix, organizeTags, now, fmt, log } = require('./util')
+const { strFallback, getNumberSuffix, now, fmt, log } = require('./util')
 
 /* ................................................. */
 
 const yamlStart = ['---', '---', '', ''].join('\n')
 
-const pug = (basedir, _data) =>
+const pug = (basedir, extras) =>
   require('gulp-pug')({
     basedir,
     locals: {
-      _data,
-      _site: yaml.parse(fs.readFileSync(join(__dirname, '..', '_config.yml'), 'utf-8')),
-      _func: { now, fmt, strFallback, organizeTags }
+      _data: Object.assign({}, extras),
+      _site: {
+        title: 'caian.org',
+        url: 'https://caian.org'
+      },
+      _func: { now, fmt, strFallback }
     }
   })
 
@@ -76,11 +78,12 @@ module.exports.run =
 
 module.exports.renderPugFiles = (basedir, extras) =>
   flatmap((stream, file) => {
-    log('Writing "%s"', file.path.replace(dirname(basedir), '').replace('.pug', '.html'))
+    log('Writing "%s"', file.path.replace(basedir, ''))
 
     const htmlContent = stream.pipe(pug(basedir, extras))
     switch (basename(dirname(file.path))) {
-      case '_inc':
+      case '_includes':
+      case '_layouts':
         return htmlContent
 
       default:

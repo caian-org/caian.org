@@ -1,5 +1,4 @@
-include /head.pug
-include /tags.pug
+include /_includes/head.pug
 
 | {% assign read_time = content | reading_time %}
 
@@ -16,15 +15,17 @@ html
   +header('blog', 'default/bright', true)
 
   body
-    .main.
-      #[a(href='/blog') Back] | #[a#change-theme(href='#', onclick='changeTheme()') Dark theme]
+    .main
+      a(href='/blog') Back
+      |
+      | |
+      |
+      a#change-theme(href='#', onclick='changeTheme()') Dark theme
 
       h1 {{ page.title }}
-
       #meta
         p.aleft
-          +tag-list(post_tags)
-
+          | {% include tags.html tags=post_tags %}
         p.aright
           span.lighter
             | ~{{ read_time }} read
@@ -33,9 +34,8 @@ html
             | {{ publish_date }}
         .aclear
       | {{ content }}
-
       hr
       footer.
-        #[a(href='/') Home] | #[a(href='/blog/feed.xml') Subscribe with RSS]
+        #[a(href='/') Home] | #[a(href='/feed.xml') Subscribe with RSS]
 
   script(type='text/javascript', src='/assets/js/change-theme.js')
