@@ -1,4 +1,5 @@
-include /_includes/head.pug
+include /head.pug
+include /tags.pug
 
 | {% assign all_tags = '' %}
 | {% for t in site.tags %}
@@ -16,7 +17,7 @@ html
       | {% if all_tags.size > 0 %}
       #all-blog-tags
         p.aleft
-          | {% include tags.html tags=all_tags %}
+          +tag-list(all_tags)
         .aclear
       | {% endif %}
       ul
@@ -29,4 +30,4 @@ html
           a(href='{{ p.url }}') {{ p.title }}
         | {% endfor %}
       hr
-      a(href='/feed.xml') Subscribe with RSS
+      a(href='/blog/feed.xml') Subscribe with RSS
