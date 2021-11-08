@@ -1,10 +1,12 @@
+@import 'lib'
+
 $f: '/assets/fonts/meslo-lgs-regular'
 $font-family-meslo: 'MesloLGS-Regular'
 
-$color-light-grey: #eceff1
+$color-light-grey:       #eceff1
 $color-half-medium-grey: #999999
-$color-medium-grey: #222222
-$color-dark-grey: #111111
+$color-medium-grey:      #222222
+$color-dark-grey:        #111111
 
 @font-face
   font-family: $font-family-meslo
@@ -47,11 +49,10 @@ span
   align-items: center
 
 %default-font-family
+  @include smooth-font
   font-family: $font-family-meslo, monospace
-  -moz-osx-font-smoothing: grayscale
-  -webkit-font-smoothing: antialiased
 
-%font-defs
+%font-defaults
   @extend %default-font-family
   font-size: 85%
   line-height: 1.7

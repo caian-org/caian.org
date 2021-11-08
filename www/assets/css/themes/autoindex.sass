@@ -1,8 +1,16 @@
 ---
 ---
 
+@import 'lib'
+
 $f: '/assets/fonts/pixel-mplus-12-regular'
 $font-family-pixel: 'PixelMplus12'
+
+$color-light-grey:   #d9d6d6
+$color-medium-grey:  #777777
+$color-almost-black: #0a0a0a
+$color-dark-blue:    #315f8c
+$color-medium-pink:  #db64a4
 
 @font-face
   font-family: $font-family-pixel
@@ -13,16 +21,17 @@ $font-family-pixel: 'PixelMplus12'
   font-display: swap
 
 html, body
+  @include smooth-font
   color: black
   background: url('/assets/imgs/autoindex/bg.webp')
   background-blend-mode: difference
   background-attachment: fixed
   background-position: top
-  animation: background 25s ease-in-out infinite
   background-size: cover
+  animation: background 25s ease-in-out infinite
+  transition: background-color 1s
   image-rendering: pixelated
   position: relative
-  transition: background-color 1s
 
 html
   font-family: $font-family-pixel !important
@@ -45,36 +54,24 @@ img.middle
 
   th
     text-align: left
-    border-bottom: 1px solid #d9d6d6
+    border-bottom: 1px solid $color-light-grey
 
   #list
-    border: 1px solid #d9d6d6
+    border: 1px solid $color-light-grey
     width: 100%
     padding: 1rem
-    background: #0a0a0a
+    background: $color-almost-black
 
   a
     font-weight: 400
-    color: #777
+    color: $color-medium-grey
     text-decoration: none
 
     &:hover
       color: white
 
 tr.sep td
-  border-bottom: 1px solid #d9d6d6
-
-.wdel1s
-  animation: WiredB 2s ease-in-out infinite
-  animation-delay: 0.4s
-
-.wdel2s
-  animation: WiredB 2s ease-in-out infinite
-  animation-delay: 0.8s
-
-.wdel3s
-  animation: WiredB 2s ease-in-out infinite
-  animation-delay: 1.2s
+  border-bottom: 1px solid $color-light-grey
 
 .sugoi
   color: white
@@ -84,13 +81,25 @@ tr.sep td
   border-radius: 2px
   position: relative
   font-size: 40px
-  text-shadow: 5px 5px #315f8c
+  text-shadow: 5px 5px $color-dark-blue
   animation: float .90s step-end infinite
 
-@keyframes WiredB
+.wdel1s
+  animation: aix 2s ease-in-out infinite
+  animation-delay: 0.4s
+
+.wdel2s
+  animation: aix 2s ease-in-out infinite
+  animation-delay: 0.8s
+
+.wdel3s
+  animation: aix 2s ease-in-out infinite
+  animation-delay: 1.2s
+
+@keyframes aix
   50%
-    color: #db64a4
-    text-shadow: #db64a4 1px 4px 5px
+    color: $color-medium-pink
+    text-shadow: $color-medium-pink 1px 4px 5px
 
 @keyframes float
   from,
