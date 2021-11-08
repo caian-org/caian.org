@@ -1,4 +1,5 @@
 extends /_layouts/90s
+include /_includes/mixins/geo
 
 block vars
   - const heading = 'some independence'
@@ -19,4 +20,4 @@ block content
     end of this semester I&rsquo;ll have my own place.
   p
     br
-    img(src='/assets/imgs/geo/t/money_flying.gif', width='150', height='150')
+    +img('t/money_flying.gif', '150px', '150px')

@@ -1,4 +1,5 @@
 extends /_layouts/90s
+include /_includes/mixins/geo
 
 block vars
   - const heading = 'home'
@@ -7,18 +8,18 @@ block content
   p
     br
     a(href='https://hackerscurator.com')
-      img(src='/assets/imgs/geo/hackercdad.gif')
+      +img('hackercdad.gif')
     br
     br
   p.
     Welcome to my personal page on the World Wide Web! This website is still
     #[em under construction], so things can change!
   p
-    img(src='/assets/imgs/geo/construction.gif', height='75px', width='240px')
+    +img('construction.gif', '250px', '75px')
     br
   h3 &ldquo;lay down all thoughts, surrender to the void&rdquo;
   p
-    img(src='/assets/imgs/geo/beatles.gif')
+    +img('beatles.gif')
   p Don&rsquo;t forget to add this page to your favorites!
   p
-    img(src='/assets/imgs/geo/bookmark.gif')
+    +img('bookmark.gif')

@@ -1,0 +1,15 @@
+mixin site(url, title)
+  li
+    a(href=`https://${url}`) #{ title }
+
+mixin pic(title, name)
+  h4 #{ title }
+  p
+    img.wiggle(src=`/assets/imgs/geo/photos/${name}.gif`)
+
+mixin yt(id, artist, title)
+  li.
+    #[em #{ artist }], #[a(href=`https://www.youtube.com/watch?v=${id}`) #{ title }]
+
+mixin img(file, w=false, h=false)
+  img(src=`/assets/imgs/geo/${file}`, width=w, height=h)

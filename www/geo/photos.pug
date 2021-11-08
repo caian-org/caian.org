@@ -1,9 +1,5 @@
 extends /_layouts/90s
-
-mixin pic(title, name)
-  h4 #{ title }
-  p
-    img.wiggle(src=`/assets/imgs/geo/photos/${name}.gif`)
+include /_includes/mixins/geo
 
 block vars
   - const heading = 'my photos'

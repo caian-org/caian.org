@@ -1,4 +1,5 @@
 extends /_layouts/90s
+include /_includes/mixins/geo
 
 block vars
   - const heading = 'dependency'
@@ -20,4 +21,4 @@ block content
     burden of abandoning childhood.
   p
     br
-    img(src='/assets/imgs/geo/t/jailbird.gif')
+    +img('t/jailbird.gif')

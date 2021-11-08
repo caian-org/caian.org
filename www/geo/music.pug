@@ -1,8 +1,5 @@
 extends /_layouts/90s
-
-mixin yt(id, artist, title)
-  li.
-    #[em #{ artist }], #[a(href=`https://www.youtube.com/watch?v=${id}`) #{ title }]
+include /_includes/mixins/geo
 
 block vars
   - const heading = 'music i like'

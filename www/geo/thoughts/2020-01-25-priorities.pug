@@ -1,4 +1,5 @@
 extends /_layouts/90s
+include /_includes/mixins/geo
 
 block vars
   - const heading = 'priorities'
@@ -20,4 +21,4 @@ block content
     | anxiety.
   p
     br
-    img(src='/assets/imgs/geo/t/computer.gif', width='150', height='150')
+    +img('t/computer.gif', '150px', '150px')

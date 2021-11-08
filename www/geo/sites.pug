@@ -1,8 +1,5 @@
 extends /_layouts/90s
-
-mixin site(url, title)
-  li
-    a(href=`https://${url}`) #{ title }
+include /_includes/mixins/geo
 
 block vars
   - const heading = 'cool sites and links'
