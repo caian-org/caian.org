@@ -11,13 +11,14 @@ html
       .cont
         .custom
           h1 #{ heading }
-        center
+
+        div(align='center')
           if isPost
             br
             a(href='/geo/thoughts/')
               img(src='/assets/imgs/geo/back.gif')
-            br
 
+          br
           block content
     .wrappersi
       .sidebar
@@ -56,7 +57,8 @@ html
         | and through it some chaos appears ordered and some appears disordered. Pick another grid, and the same chaos
         | will appear differently ordered and disordered. Reality is the original Rorschach.
       br
-      center
+
+      div(align='center')
         a(href='https://spyware.neocities.org')
           img(src='/assets/imgs/geo/privacy.gif')
 

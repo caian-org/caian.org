@@ -1,0 +1,13 @@
+@mixin div-content-collapse
+  cursor: pointer
+  display: block
+  background: #cdf
+
+  + input
+    display: none
+
+    + div
+      display: none
+
+    &:checked + div
+      display: block

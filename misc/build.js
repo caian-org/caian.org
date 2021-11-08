@@ -4,6 +4,7 @@ const { basename, dirname, join } = require('path')
 const { exec } = require('child_process')
 
 /* 3rd-party */
+const slugify = require('slugify')
 const { DateTime } = require('luxon')
 
 const header = require('gulp-header')
@@ -25,7 +26,7 @@ const pug = (basedir, extras) =>
         title: 'caian.org',
         url: 'https://caian.org'
       },
-      _func: { now, fmt, strFallback }
+      _func: { now, fmt, strFallback, slugify }
     }
   })
 

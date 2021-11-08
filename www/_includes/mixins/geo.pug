@@ -13,3 +13,9 @@ mixin yt(id, artist, title)
 
 mixin img(file, w=false, h=false)
   img(src=`/assets/imgs/geo/${file}`, width=w, height=h)
+
+mixin category(title)
+  - const id = _func.fmt('category_%s', _func.slugify(title, { replacement: '_', lower: true }))
+
+  label.collapse(for=id) #{ title }
+  input(id=id, type='checkbox')

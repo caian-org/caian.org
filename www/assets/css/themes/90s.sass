@@ -1,7 +1,8 @@
 ---
 ---
 
-@import 'lib'
+@import 'mixins/collapse'
+@import 'mixins/smooth-font'
 
 $color-bright-pink: #ff00df
 $color-bright-cyan: #00fff8
@@ -62,9 +63,6 @@ a
   font-weight: bold
   text-shadow: 0 0 3px black
   text-decoration: none
-  -o-transition: 0.2s ease-in-out
-  -moz-transition: 0.2s ease-in-out
-  -webkit-transition: 0.2s ease-in-out
 
   &:hover
     color: $color-bright-cyan
@@ -161,6 +159,10 @@ u
 .wiggle:hover
   animation: shake 0.5s
   animation-iteration-count: infinite
+
+.collapse
+  @include div-content-collapse
+  color: black
 
 @keyframes shake
   0%
