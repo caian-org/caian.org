@@ -4,27 +4,23 @@
 @import 'mixins/collapse'
 @import 'mixins/smooth-font'
 
-$color-bright-pink: #ff00df
-$color-bright-cyan: #00fff8
-$color-medium-blue: #0c02ff
-$color-dark-blue:   #0800af
+$color-bright-pink:   #ff00df
+$color-bright-cyan:   #00fff8
+$color-medium-blue:   #0c02ff
+$color-dark-blue:     #0800af
+$color-bright-yellow: #fff400
 
 @mixin borders($size, $color, $shadow)
-  border-top:    $size double $color
-  border-left:   $size double $color
-  border-bottom: $size double $shadow
-  border-right:  $size double $shadow
+  border-top:    $size solid $color
+  border-left:   $size solid $color
+  border-bottom: $size solid $shadow
+  border-right:  $size solid $shadow
 
 @mixin blue-border($size)
   @include borders($size, $color-medium-blue, $color-dark-blue)
 
 @mixin cyan-border($size)
   @include borders($size, $color-bright-cyan, $color-bright-cyan)
-
-@mixin transition($speed)
-  -o-transition:      $speed ease-in-out
-  -moz-transition:    $speed ease-in-out
-  -webkit-transition: $speed ease-in-out
 
 @mixin img-bg($file)
   background-image: url('/assets/imgs/geo/#{$file}')
@@ -46,6 +42,15 @@ body
   color: black
   font-size: 17px
 
+strong
+  color: $color-bright-cyan
+
+em
+  color: $color-bright-yellow
+
+u
+  text-decoration: underline
+
 ul li
   background-image: url('/assets/imgs/geo/point.gif')
   background-repeat: no-repeat
@@ -58,10 +63,9 @@ li
   text-align: left
 
 a
-  @include transition(0.2s)
+  transition: all 0.3s ease-in-out
   color: $color-bright-pink
   font-weight: bold
-  text-shadow: 0 0 3px black
   text-decoration: none
 
   &:hover
@@ -69,6 +73,7 @@ a
     text-shadow: 0 0 2px black, 0 0 2px black, 0 1px 0 $color-bright-pink, 0 2px 0 $color-bright-pink, 0 3px 0 $color-bright-pink, 0 4px 0 $color-bright-pink, 0 5px 0 $color-bright-pink, 0 6px 0 $color-bright-pink
 
 .custom h1
+  transition: all 0.3s ease-in-out
   background: black url('/assets/imgs/geo/space.gif')
   color: $color-bright-pink
   margin: auto
@@ -76,32 +81,18 @@ a
   text-shadow: 1px 1px 3px black
 
   &:hover
-    @include transition(0.4s)
     color: $color-bright-cyan
     margin: auto
     text-align: center
     text-shadow: 1px 1px 7px $color-bright-cyan
 
-strong
-  color: $color-bright-cyan
-
-em
-  color: #fff400
-
-u
-  text-decoration: underline
-
 .menu a
   @include blue-border(2px)
+  transition: all 0.1s ease-in-out
   background-color: black
-  color: white
   color: $color-bright-pink
   padding: 4px
   text-decoration: none
-  transition-duration: 0s
-  -o-transition-duration: 0s
-  -moz-transition-duration: 0s
-  -webkit-transition-duration: 0s
   text-shadow: -1px 0 transparent, 0 1px transparent, 1px 0 transparent, 0 -1px transparent
 
   &:hover
@@ -162,7 +153,17 @@ u
 
 .collapse
   @include div-content-collapse
-  color: black
+  transition: all 0.2s ease-in-out
+  color: white
+  font-weight: bold
+  font-size: 24px
+  background: black
+  padding: 5px
+
+  &:hover
+    color: black
+    letter-spacing: 3px
+    background: $color-bright-pink
 
 @keyframes shake
   0%

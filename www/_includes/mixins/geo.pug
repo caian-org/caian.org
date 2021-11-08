@@ -3,9 +3,11 @@ mixin site(url, title)
     a(href=`https://${url}`) #{ title }
 
 mixin pic(title, name)
-  h4 #{ title }
+  p.
+    #{ title }, #[em circa 2021]
   p
     img.wiggle(src=`/assets/imgs/geo/photos/${name}.gif`)
+  br
 
 mixin yt(id, artist, title)
   li.
@@ -17,5 +19,6 @@ mixin img(file, w=false, h=false)
 mixin category(title)
   - const id = _func.fmt('category_%s', _func.slugify(title, { replacement: '_', lower: true }))
 
+  br
   label.collapse(for=id) #{ title }
   input(id=id, type='checkbox')
