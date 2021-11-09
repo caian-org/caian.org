@@ -31,7 +31,8 @@
     "dist",
     "vendor",
     "report",
-    "node_modules"
+    "node_modules",
+    "www/assets/js"
   ],
   "prettier": {
     "semi": false,
