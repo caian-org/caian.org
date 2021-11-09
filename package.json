@@ -73,7 +73,6 @@
   "devDependencies": {
     "@jscpd/finder": "^3.3.26",
     "@prettier/plugin-pug": "^1.17.1",
-    "@prettier/plugin-ruby": "^2.0.0",
     "@types/gulp": "^4.0.9",
     "@types/lodash": "^4.14.176",
     "@types/luxon": "^2.0.5",
