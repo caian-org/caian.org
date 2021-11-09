@@ -2,14 +2,15 @@ mixin header(title, sheet='themes/main/bright', isPost=false)
   | {% seo title=false %}
 
   - const fullTitle = _func.fmt('%s | %s', _site.title, _func.strFallback(title))
-  - const feed = _func.fmt('%s/feed.xml', _site.url)
+  - const feed = _site.url + _site.rss
 
   meta(name='viewport', content='width=device-width, initial-scale=1')
+
+  link(rel='icon', type='image/png', href='/assets/imgs/favicon.ico')
+  link(rel='alternate', type='application/rss+xml', title=_site.title, href=feed)
   link#theme(rel='stylesheet', href=_func.fmt('/assets/css/%s.css', sheet))
 
   if isPost
     link#syntax(rel='stylesheet', href='/assets/css/themes/main/syntax/bright.css')
 
-  link(rel='icon', type='image/png', href='/favicon.ico')
-  link(rel='alternate', type='application/rss+xml', title=_site.title, href=feed)
   title= fullTitle

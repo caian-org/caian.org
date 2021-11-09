@@ -1,10 +1,11 @@
 /* standard */
 const fs = require('fs')
-const { basename, dirname, join } = require('path')
+const { basename, dirname, join, resolve } = require('path')
 const { exec } = require('child_process')
 
 /* 3rd-party */
 const slugify = require('slugify')
+const yaml = require('yaml')
 const { DateTime } = require('luxon')
 
 const header = require('gulp-header')
@@ -17,15 +18,23 @@ const { strFallback, getNumberSuffix, now, fmt, log } = require('./util')
 
 const yamlStart = ['---', '---', '', ''].join('\n')
 
+const siteConfig = (() => {
+  const d = fs.readFileSync(resolve(join(__dirname, '..', '_config.yml')), 'utf-8')
+  const c = yaml.parse(d)
+
+  if (process.env.JEKYLL_ENV !== 'production') {
+    c.url = 'http://localhost:4000'
+  }
+
+  return c
+})()
+
 const pug = (basedir, extras) =>
   require('gulp-pug')({
     basedir,
     locals: {
       _data: Object.assign({}, extras),
-      _site: {
-        title: 'caian.org',
-        url: 'https://caian.org'
-      },
+      _site: siteConfig,
       _func: { now, fmt, strFallback, slugify }
     }
   })

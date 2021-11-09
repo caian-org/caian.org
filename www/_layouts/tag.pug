@@ -1,0 +1,25 @@
+include /_includes/head
+
+doctype html
+html
+  +header('blog')
+
+  body
+    .main
+      a(href='/blog') Back to all posts
+
+      h1 Tag: {{ page.tag }}
+      ul
+        | {% for p in site.posts %}
+        |   {% if p.tags contains page.tag %}
+        |     {% assign d = p.date | date: '%Y-%m-%d' %}
+        li
+          span.lighter {{ d }}
+          |
+          | &nbsp;
+          a(href='{{ p.url }}') {{ p.title }}
+        |   {% endif %}
+        | {% endfor %}
+      hr
+      footer.
+        #[a(href='/') Home] | #[a(href=_site.rss) Subscribe with RSS]

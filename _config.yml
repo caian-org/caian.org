@@ -1,8 +1,8 @@
 title: caian.org
 email: hi@caian.org
 url: https://caian.org
-description: >
-  Personal page, blog, portfolio etc
+description: Personal page, blog, portfolio etc
+rss: /blog/feed.xml
 
 source: dist/intermediate
 destination: dist/public

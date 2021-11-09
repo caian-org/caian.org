@@ -3,7 +3,7 @@
 span.tag-list
   | {% for t in tags %}
   |   {% assign tslug = t | slugify: 'raw' %}
-  |   {% assign turl = site.url | append: '/tags/' | append: tslug %}
+  |   {% assign turl = site.url | append: '/blog/tags/' | append: tslug %}
   a(href='{{ turl }}') {{ t }}
   | {% endfor %}
 | {% endif %}

@@ -68,11 +68,12 @@
       "www/files/"
     ],
     "ext": "*",
-    "exec": "gulp prepare && JEKYLL_ENV=production bundle exec jekyll serve"
+    "exec": "gulp prepare && bundle exec jekyll serve"
   },
   "devDependencies": {
     "@jscpd/finder": "^3.3.26",
     "@prettier/plugin-pug": "^1.17.1",
+    "@prettier/plugin-ruby": "^2.0.0",
     "@types/gulp": "^4.0.9",
     "@types/lodash": "^4.14.176",
     "@types/luxon": "^2.0.5",
@@ -106,11 +107,12 @@
     "gulp-pug": "^5.0.0",
     "gulp-tap": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "luxon": "^2.1.1",
     "lodash": "^4.17.21",
+    "luxon": "^2.1.1",
     "merge-stream": "^2.0.0",
     "mustache": "^4.2.0",
     "readable-stream": "^3.6.0",
-    "slugify": "^1.6.2"
+    "slugify": "^1.6.2",
+    "yaml": "^1.10.2"
   }
 }

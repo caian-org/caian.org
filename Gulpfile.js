@@ -25,7 +25,6 @@ const intermediateDir = (...f) => joinSafe(p.intermediate, ...f)
 
 const publicFiles = globAll(join(p.dist, 'public'))
 
-const copy = (f, d) => pipe(from(join(p.src, f)), to(intermediateDir(d)))
 const copyAll = (...d) => pipe(from(sourceDir(...d)), to(intermediateDir(...d)))
 
 const e = {
@@ -62,8 +61,6 @@ task('clean:left-overs', () =>
 
 task('copy:all', () =>
   merge(
-    copy('feed.xml'),
-    copy('favicon.ico'),
     copyAll('blog'),
     copyAll('assets', 'css'),
     copyAll('assets', 'fonts'),
