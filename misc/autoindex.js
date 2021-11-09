@@ -4,7 +4,7 @@ const { dirname, join } = require('path')
 
 /* 3rd-party */
 const _ = require('lodash')
-const ejs = require('ejs')
+const mustache = require('mustache')
 
 const { DateTime } = require('luxon')
 const { fromEnv } = require('@aws-sdk/credential-providers')
@@ -12,6 +12,22 @@ const { S3 } = require('@aws-sdk/client-s3')
 
 /* modules */
 const { fmtFileSize, fmt, len, log } = require('./util')
+
+/* ................................................. */
+
+mustache.escape = (t) => t
+
+const pugFileListItem = `
+tr
+  td(style='text-align: right')
+    img.middle(src='/assets/imgs/autoindex/file.svg', height='16px', width='16px')
+  td
+  td
+    a.fw-{{ idx }}(href='{{ publicUrl }}')
+      | {{ name }}
+  td {{ size }}
+  td {{ lastModified }}
+`
 
 /* ................................................. */
 
@@ -71,10 +87,20 @@ const objectsToFiles = (bucket, objs) =>
 const create = async ({ rootdir, dest, template, files }) => {
   await fs.mkdir(dest, { recursive: true })
 
-  const l = dest.replace(rootdir, '')
-  const d = { files, directoryLevel: l.startsWith('/') ? l : '/'.concat(l) }
+  let dirLevel = dest.replace(rootdir, '')
+  if (!dirLevel.startsWith('/')) {
+    dirLevel = '/'.concat(dirLevel)
+  }
 
-  const c = ejs.render(template, d)
+  const indented = pugFileListItem
+    .split('\n')
+    .map((a) => ' '.repeat(8).concat(a))
+    .join('\n')
+
+  const renderedFileList = files
+    .map((file, i) => mustache.render(indented, Object.assign({ idx: (i % 4) + 1 }, file))).join('')
+
+  const c = mustache.render(template, { dirLevel, renderedFileList })
   const f = join(dest, 'index.pug')
 
   log('Writing "%s"', f.replace(dest, ''))

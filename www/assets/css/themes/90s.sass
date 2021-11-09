@@ -10,6 +10,9 @@ $color-medium-blue:   #0c02ff
 $color-dark-blue:     #0800af
 $color-bright-yellow: #fff400
 
+@function geo-img-url($filename)
+  @return url('/assets/imgs/geo/#{$filename}')
+
 @mixin borders($size, $color, $shadow)
   border-top:    $size solid $color
   border-left:   $size solid $color
@@ -23,7 +26,7 @@ $color-bright-yellow: #fff400
   @include borders($size, $color-bright-cyan, $color-bright-cyan)
 
 @mixin img-bg($file)
-  background-image: url('/assets/imgs/geo/#{$file}')
+  background-image: geo-img-url($file)
   background-repeat: repeat
   background-attachment: fixed
 
@@ -52,7 +55,7 @@ u
   text-decoration: underline
 
 ul li
-  background-image: url('/assets/imgs/geo/point.gif')
+  background-image: geo-img-url('point.gif')
   background-repeat: no-repeat
   line-height: 10px
   padding-left: 65px
@@ -74,7 +77,7 @@ a
 
 .custom h1
   transition: all 0.3s ease-in-out
-  background: black url('/assets/imgs/geo/space.gif')
+  background: black geo-imgurl('space.gif')
   color: $color-bright-pink
   margin: auto
   text-align: center
@@ -101,6 +104,20 @@ a
     background: $color-bright-pink
     letter-spacing: 2px
     text-shadow: -1px 0 transparent, 0 1px transparent, 1px 0 transparent, 0 -1px transparent
+
+.collapse
+  @include div-content-collapse
+  transition: all 0.2s ease-in-out
+  color: white
+  font-weight: bold
+  font-size: 24px
+  background: black
+  padding: 5px
+
+  &:hover
+    color: black
+    letter-spacing: 3px
+    background: $color-bright-pink
 
 .wrapperp
   @include bg-base
@@ -150,20 +167,6 @@ a
 .wiggle:hover
   animation: shake 0.5s
   animation-iteration-count: infinite
-
-.collapse
-  @include div-content-collapse
-  transition: all 0.2s ease-in-out
-  color: white
-  font-weight: bold
-  font-size: 24px
-  background: black
-  padding: 5px
-
-  &:hover
-    color: black
-    letter-spacing: 3px
-    background: $color-bright-pink
 
 @keyframes shake
   0%

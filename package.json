@@ -91,9 +91,7 @@
     "svgo": "^2.8.0"
   },
   "dependencies": {
-    "luxon": "^2.0.2",
-    "lodash": "^4.17.21",
-    "@aws-sdk/client-s3": "^3.40.0",
+    "@aws-sdk/client-s3": "^3.40.1",
     "@aws-sdk/credential-providers": "^3.40.0",
     "@aws-sdk/signature-v4-crt": "^3.40.0",
     "@babel/core": "^7.16.0",
@@ -107,9 +105,11 @@
     "gulp-pug": "^5.0.0",
     "gulp-tap": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "readable-stream": "^3.6.0",
-    "slugify": "^1.6.2",
+    "luxon": "^2.1.1",
+    "lodash": "^4.17.21",
     "merge-stream": "^2.0.0",
-    "mustache": "^4.2.0"
+    "mustache": "^4.2.0",
+    "readable-stream": "^3.6.0",
+    "slugify": "^1.6.2"
   }
 }

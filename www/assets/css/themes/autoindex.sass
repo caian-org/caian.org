@@ -3,6 +3,14 @@
 
 @import 'mixins/smooth-font'
 
+@mixin flashing-words($c)
+  @for $i from 1 through $c
+    .fw-#{$i}
+      animation: aix 2s ease-in-out infinite
+      animation-delay: $i * 0.4s
+
+@include flashing-words(4)
+
 $f: '/assets/fonts/pixel-mplus-12-regular'
 $font-family-pixel: 'PixelMplus12'
 

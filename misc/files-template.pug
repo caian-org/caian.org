@@ -1,13 +1,17 @@
 include /_includes/head.pug
 
-- const t = 'caian.org&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;'
+- const pic = '/assets/imgs/autoindex/'
 
 doctype html
 html
-  +header(t, 'themes/autoindex')
+  head
+    link#theme(rel='stylesheet', href='/assets/css/themes/autoindex.css')
+
+    title
+      | caian.org&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;
 
   body
-    .sugoi &#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9; of <%= directoryLevel %>
+    .sugoi &#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9; of {{ dirLevel }}
     .box
       table#list(cellpadding='0.1em', cellspacing='0')
         colgroup
@@ -26,17 +30,7 @@ html
           a(href='#') &#x30B5;&#x30A4;&#x30BA;
         th(height='30px')
           a(href='#') &#x6700;&#x7D42;&#x66F4;&#x65B0;&#x65E5;
-        <% files.forEach((f, i) => { %>
-        tr
-          td(style='text-align: right')
-            img.middle(src='/assets/imgs/autoindex/file.svg', height='16px', width='16px')
-          td
-          td
-            a.wdel<%= (i % 3) + 1 %>s(href='<%= f.publicUrl %>')
-              | <%= f.name %>
-          td <%= f.size %>
-          td <%= f.lastModified %>
-        <% }) %>
+        {{ renderedFileList }}
         tr.sep
           td
           td
@@ -48,12 +42,12 @@ html
           td
           td(style='padding-top: 10px')
             a(href='/')
-              img.middle(src='/assets/imgs/autoindex/left-arrow.png', height='16px', width='16px')
+              img.middle(src=pic + 'left-arrow.png', height='16px', width='16px')
               |
               | Home&#x5BB6;&#x306B;&#x5E30;&#x308B;
           td
           td(style='padding-top: 10px; color: #fff')
-            img.middle(src='/assets/imgs/autoindex/navi-16px.gif')
+            img.middle(src=pic + 'navi-16px.gif')
             |
             | Navi&#x3092;&#x642D;&#x8F09;
             |
