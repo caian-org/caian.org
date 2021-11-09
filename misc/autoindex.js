@@ -98,7 +98,8 @@ const create = async ({ rootdir, dest, template, files }) => {
     .join('\n')
 
   const renderedFileList = files
-    .map((file, i) => mustache.render(indented, Object.assign({ idx: (i % 4) + 1 }, file))).join('')
+    .map((file, i) => mustache.render(indented, Object.assign({ idx: (i % 4) + 1 }, file)))
+    .join('')
 
   const c = mustache.render(template, { dirLevel, renderedFileList })
   const f = join(dest, 'index.pug')
