@@ -1,4 +1,4 @@
-name: build
+name: build-and-push
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -53,8 +53,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           user-email: hi@caian.org
-          commit-message: caian-org/caian.org @ $GITHUB_REF
+          commit-message: caian-org/caian.org @ $GITHUB_SHA
           source-directory: dist/public
-          destination-github-username: upsetbit
+          destination-github-username: caian-org
           destination-repository-name: caian.org-dist
           target-branch: master
