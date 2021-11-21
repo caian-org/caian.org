@@ -18,7 +18,21 @@ jobs:
           node-version: '16.13'
           cache: npm
 
+      - name: Cache Node modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Install NodeJS dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm i
 
       - name: Setup Ruby
@@ -29,3 +43,6 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secret.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_SECRET_ACCESS_KEY }}
