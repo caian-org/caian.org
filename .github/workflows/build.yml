@@ -46,3 +46,15 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Push dist
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          user-email: hi@caian.org
+          commit-message: caian-org/caian.org @ $GITHUB_REF
+          source-directory: dist/public
+          destination-github-username: upsetbit
+          destination-repository-name: caian.org-dist
+          target-branch: master
