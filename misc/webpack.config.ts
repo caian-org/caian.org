@@ -34,7 +34,7 @@ const config: Configuration = {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   optimization: {
-    minimize: false,
+    minimize: true,
     minimizer: [new TerserPlugin()]
   }
 }

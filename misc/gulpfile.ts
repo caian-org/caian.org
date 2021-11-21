@@ -9,9 +9,9 @@ import del from 'del'
 import yaml from 'yaml'
 import slugify from 'slugify'
 import merge from 'merge-stream'
+import Vinyl from 'vinyl'
 import { DateTime } from 'luxon'
 
-import Vinyl from 'vinyl'
 import tap from 'gulp-tap'
 import babel from 'gulp-babel'
 import uglify from 'gulp-uglify'
@@ -51,7 +51,7 @@ interface IPugRenderExtra {
 
 /* ................................................. */
 
-const rootDir = resolve(__dirname, '..')
+const rootDir = resolve(__dirname, '..', '..')
 
 const siteConfig = (() => {
   const d = fs.readFileSync(join(rootDir, '_config.yml'), 'utf-8')
@@ -116,7 +116,7 @@ const readPostDir = (location: string): IBlogPostFiles[] =>
 const run =
   (cmd: string, showOutput = true) =>
     (callback: (e: any) => void) =>
-      exec(cmd, (err, stdout, stderr) => {
+      exec(cmd, { cwd: rootDir }, (err, stdout, stderr) => {
         if (showOutput || err != null) {
           log('STDOUT')
           log('  %s', stdout)
@@ -156,6 +156,14 @@ const preJekyllBuildSteps = [
 const copyAll = (...d: string[]): Transform =>
   pipe(from(sourceDir(...d)), to(intermediateDir(...d)))
 
+task('debug', async () => {
+  log('src: "%s"', p.src)
+  log('dist: "%s"', p.dist)
+  log('intermediate: "%s"', p.intermediate)
+  log('files: "%s"', p.files)
+  log('publicFiles: "%s"', publicFiles)
+})
+
 task('clean:dist', async () => await del(p.dist, { force: true }))
 task('clean:files', async () => await del(p.files, { force: true }))
 
@@ -165,7 +173,7 @@ task('clean:left-overs', () =>
     tap((file) => {
       switch (extname(file.path).substring(1).toLowerCase()) {
         case 'sass':
-          del.sync(file.path)
+          del.sync(file.path, { force: true })
           log('Deleted "%s"', file.path.replace(p.dist, ''))
           break
       }
