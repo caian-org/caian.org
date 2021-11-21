@@ -1,7 +1,7 @@
 /* standard */
 import fs from 'fs'
-import { extname, basename, dirname, join, resolve } from 'path'
 import { exec } from 'child_process'
+import { extname, basename, dirname, join, resolve } from 'path'
 import { Stream, Transform } from 'stream'
 
 /* 3rd-party */
