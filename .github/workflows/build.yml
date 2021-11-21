@@ -28,4 +28,4 @@ jobs:
           bundler-cache: true
 
       - name: Build site
-        run: npx gulp --gulpfile /build/gulpfile.ts build
+        run: npm run build
