@@ -1,29 +1,27 @@
 /* standard */
-const { join } = require('path')
-const { format: fmt } = require('util')
+import { join } from 'path'
+import { format as fmt } from 'util'
 
 /* 3rd-party */
-const flog = require('fancy-log')
-const { DateTime } = require('luxon')
+import flog from 'fancy-log'
+import { DateTime } from 'luxon'
 
 /* ................................................. */
 
-const len = (a) => a.length
+export { fmt }
 
-module.exports.len = len
+export const len = (a: any[] | string): number => a.length
 
-module.exports.fmt = fmt
+export const log = (m: string, ...p: string[]): void => { flog(fmt('  '.concat(m), ...p)) }
 
-module.exports.log = (m, ...p) => flog(fmt('  '.concat(m), ...p))
+export const now = (): string => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
 
-module.exports.now = () => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
+export const strFallback = (s: string | undefined): string => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
 
-module.exports.strFallback = (s) => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
-
-module.exports.globAll = (d, ext = null) =>
+export const globAll = (d: string, ext: string | null = null): string =>
   join(d, '**', '*'.concat(ext === null ? '' : '.'.concat(ext)))
 
-module.exports.fmtFileSize = (bytes, decimals = 2) => {
+export const fmtFileSize = (bytes: number, decimals = 2): string => {
   if (bytes === 0) {
     return '0 Bytes'
   }
@@ -36,17 +34,17 @@ module.exports.fmtFileSize = (bytes, decimals = 2) => {
   return fmt('%s %s', parseFloat((bytes / Math.pow(k, i)).toFixed(dm)).toString(), sizes[i])
 }
 
-module.exports.getNumberSuffix = (num) => {
+export const getNumberSuffix = (n: number): string => {
   const th = 'th'
   const rd = 'rd'
   const nd = 'nd'
   const st = 'st'
 
-  if (num === 11 || num === 12 || num === 13) {
+  if (n === 11 || n === 12 || n === 13) {
     return th
   }
 
-  switch (num.toString().slice(-1)) {
+  switch (n.toString().slice(-1)) {
     case '1': return st
     case '2': return nd
     case '3': return rd
@@ -54,7 +52,7 @@ module.exports.getNumberSuffix = (num) => {
   }
 }
 
-module.exports.joinSafe = (...s) =>
+export const joinSafe = (...s: string[]): string =>
   join(
     ...s.map((v) => {
       switch (typeof v) {

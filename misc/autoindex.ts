@@ -1,17 +1,45 @@
 /* standard */
-const { promises: fs } = require('fs')
-const { dirname, join } = require('path')
+import { promises as fs } from 'fs'
+import { dirname, join } from 'path'
 
 /* 3rd-party */
-const _ = require('lodash')
-const mustache = require('mustache')
-
-const { DateTime } = require('luxon')
-const { fromEnv } = require('@aws-sdk/credential-providers')
-const { S3 } = require('@aws-sdk/client-s3')
+import _ from 'lodash'
+import mustache from 'mustache'
+import { DateTime } from 'luxon'
+import { fromEnv } from '@aws-sdk/credential-providers'
+import { S3, ListObjectsV2Request, _Object as S3Object } from '@aws-sdk/client-s3'
 
 /* modules */
-const { fmtFileSize, fmt, len, log } = require('./util')
+import { fmtFileSize, fmt, len, log } from './util'
+
+/* ................................................. */
+
+interface IObject {
+  key: string
+  size: string
+  lastModified: string
+}
+
+interface IFile {
+  name: string
+  size: string
+  lastModified: string
+  publicUrl: string
+}
+
+interface IStructure {
+  [n: string]: {
+    directoryName: string | null
+    items: IFile[]
+  }
+}
+
+interface IAutoIndexCreationParams {
+  autoindexBaseDir: string
+  dest: string
+  template: string
+  files: IFile[]
+}
 
 /* ................................................. */
 
@@ -31,11 +59,11 @@ tr
 
 /* ................................................. */
 
-const listAllObjects = async (bucket) => {
+const listAllObjects = async (bucket: string): Promise<S3Object[]> => {
   const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })
 
-  const f = []
-  const r = {
+  const f: S3Object[] = []
+  const r: ListObjectsV2Request = {
     Bucket: bucket,
     ContinuationToken: undefined
   }
@@ -56,14 +84,14 @@ const listAllObjects = async (bucket) => {
   return f
 }
 
-const processObjects = (objs) =>
+const processObjects = (objs: S3Object[]): IObject[] =>
   objs
     .filter((obj) => obj.Key !== undefined)
     .map((obj) => {
       const d = obj.LastModified ?? new Date()
 
       return {
-        key: obj.Key,
+        key: obj.Key!,
         size: obj.Size === undefined ? '-' : fmtFileSize(obj.Size),
         lastModified: DateTime.fromJSDate(d, { zone: 'UTC' })
           .setZone('America/Sao_Paulo')
@@ -71,12 +99,10 @@ const processObjects = (objs) =>
       }
     })
 
-const uniqueDirsOf = (objs) =>
-  [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))].sort(
-    (a, b) => len(b) - len(a)
-  )
+const uniqueDirsOf = (objs: IObject[]): string[] =>
+  [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))].sort((a, b) => len(b) - len(a))
 
-const objectsToFiles = (bucket, objs) =>
+const objectsToFiles = (bucket: string, objs: IObject[]): IFile[] =>
   objs.map((f) => ({
     name: f.key,
     size: f.size,
@@ -84,10 +110,10 @@ const objectsToFiles = (bucket, objs) =>
     publicUrl: fmt('https://%s.s3.amazonaws.com/%s', bucket, f.key)
   }))
 
-const create = async ({ rootdir, dest, template, files }) => {
-  await fs.mkdir(dest, { recursive: true })
+const create = async (p: IAutoIndexCreationParams): Promise<void> => {
+  await fs.mkdir(p.dest, { recursive: true })
 
-  let dirLevel = dest.replace(rootdir, '')
+  let dirLevel = p.dest.replace(p.autoindexBaseDir, '')
   if (!dirLevel.startsWith('/')) {
     dirLevel = '/'.concat(dirLevel)
   }
@@ -97,34 +123,34 @@ const create = async ({ rootdir, dest, template, files }) => {
     .map((a) => ' '.repeat(8).concat(a))
     .join('\n')
 
-  const renderedFileList = files
+  const renderedFileList = p.files
     .map((file, i) => mustache.render(indented, Object.assign({ idx: (i % 4) + 1 }, file)))
     .join('')
 
-  const c = mustache.render(template, { dirLevel, renderedFileList })
-  const f = join(dest, 'index.pug')
+  const c = mustache.render(p.template, { dirLevel, renderedFileList })
+  const f = join(p.dest, 'index.pug')
 
-  log('Writing "%s"', f.replace(dest, ''))
+  log('Writing "%s"', f.replace(p.dest, ''))
   await fs.writeFile(f, c)
 }
 
 /* ................................................. */
 
-module.exports.build = async (rootdir, bucket) => {
+export const build = async (autoindexBaseDir: string, bucket: string): Promise<void> => {
   /* ... */
   const objs = processObjects(await listAllObjects(bucket))
   const dirs = uniqueDirsOf(objs)
   let files = objs.filter((obj) => !obj.key.endsWith('/'))
-  log('Got %s objects from bucket "%s"', files.length, bucket)
+  log('Got %s objects from bucket "%s"', files.length.toString(), bucket)
 
   /* ... */
-  const structure = {}
+  const structure: IStructure = {}
   for (const d of dirs) {
     const f = files.filter((file) => file.key.startsWith(d))
     files = _.xor(files, f)
 
     structure[d] = {
-      directoryName: _.last(d.split('/')),
+      directoryName: _.last(d.split('/'))!,
       items: objectsToFiles(bucket, f)
     }
   }
@@ -133,9 +159,9 @@ module.exports.build = async (rootdir, bucket) => {
 
   /* ... */
   const template = await fs.readFile(join(__dirname, 'files-template.pug'), 'utf-8')
-  await create({ rootdir, template, dest: rootdir, files: objectsToFiles(bucket, files) })
+  await create({ autoindexBaseDir, template, dest: autoindexBaseDir, files: objectsToFiles(bucket, files) })
 
   for (const d of dirs) {
-    await create({ rootdir, template, dest: join(rootdir, d), files: structure[d].items })
+    await create({ autoindexBaseDir, template, dest: join(autoindexBaseDir, d), files: structure[d].items })
   }
 }
