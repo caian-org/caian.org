@@ -82,6 +82,8 @@ const publicFiles = globAll(join(p.dist, 'public'))
 
 const yamlStart = ['---', '---', '', ''].join('\n')
 
+process.env.JEKYLL_ENV = 'production'
+
 /* ................................................. */
 
 const buildPug = (basedir: string, extras: IPugRenderExtra): Transform =>
@@ -181,6 +183,8 @@ task('clean:left-overs', () =>
   )
 )
 
+task('clean:all', series('clean:dist', 'clean:files', 'clean:left-overs'))
+
 task('copy:all', () =>
   merge(
     copyAll('blog'),
@@ -214,4 +218,4 @@ task('build:pug', () =>
 )
 
 task('prepare', series(...preJekyllBuildSteps))
-task('default', series(...preJekyllBuildSteps, 'build:jekyll', 'clean:left-overs'))
+task('build', series(...preJekyllBuildSteps, 'build:jekyll', 'clean:left-overs'))

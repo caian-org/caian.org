@@ -15,13 +15,15 @@
   },
   "scripts": {
     "init": "mkdir -p vendor && bundle install --path vendor && npm install && husky install",
-    "build": "JEKYLL_ENV=production gulp",
+    "compile-build-components": "webpack build --config build/webpack.config.ts",
+    "gulp": "gulp --gulpfile build/dist",
+    "clean:all": "npm run gulp clean:all",
+    "build": "npm run gulp build",
     "serve": "nodemon",
-    "clean": "gulp clean:dist && gulp clean:files",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
     "bump:all": "npm run bump:dev && npm run bump:prod && bundle update",
-    "check:lint": "eslint --format=codeframe '**/*.js'",
+    "check:lint": "eslint --format=codeframe '**/*.ts'",
     "check:style": "standardx",
     "check:duplicated": "jscpd",
     "check:all": "npm run check:lint && npm run check:style && npm run check:duplicated",
@@ -68,7 +70,7 @@
       "www/files/"
     ],
     "ext": "*",
-    "exec": "gulp prepare && bundle exec jekyll serve"
+    "exec": "npm run gulp prepare && bundle exec jekyll serve"
   },
   "devDependencies": {
     "@jscpd/finder": "^3.4.1",

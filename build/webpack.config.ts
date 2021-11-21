@@ -11,7 +11,7 @@ const config: Configuration = {
   externalsPresets: {
     node: true
   },
-  entry: './misc/gulpfile.ts',
+  entry: './build/gulpfile.ts',
   output: {
     path: join(__dirname, 'dist'),
     filename: 'index.js'
