@@ -53,7 +53,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           user-email: hi@caian.org
-          commit-message: caian-org/caian.org @ $GITHUB_SHA
+          commit-message: caian-org/caian.org @ ${{ github.sha }}
           source-directory: dist/public
           destination-github-username: caian-org
           destination-repository-name: caian.org-dist
