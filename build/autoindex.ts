@@ -160,7 +160,7 @@ export const build = async (autoindexBaseDir: string, bucket: string): Promise<v
   log('File structure generated')
 
   /* ... */
-  const template = await fs.readFile(join(__dirname, '..', 'files-template.pug'), 'utf-8')
+  const template = await fs.readFile(join(__dirname, 'files-template.pug'), 'utf-8')
 
   const c = async (dest: string, files: IFile[]): Promise<void> =>
     await create({ autoindexBaseDir, template, dest, files })

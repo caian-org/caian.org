@@ -1,6 +1,5 @@
 /* standard */
 import fs from 'fs'
-import { exec } from 'child_process'
 import { extname, basename, dirname, join, resolve } from 'path'
 import { Stream, Transform } from 'stream'
 
@@ -27,7 +26,7 @@ import { pipeline as pipe } from 'readable-stream'
 
 /* modules */
 import { build as autoindex } from './autoindex'
-import { joinSafe, globAll, strFallback, getNumberSuffix, now, fmt, log } from './util'
+import { fmt, log, now, joinSafe, globAll, strFallback, getNumberSuffix, runCmd } from './util'
 
 /* ................................................. */
 
@@ -51,7 +50,7 @@ interface IPugRenderExtra {
 
 /* ................................................. */
 
-const rootDir = resolve(__dirname, '..', '..')
+const rootDir = resolve(__dirname, '..')
 
 const siteConfig = (() => {
   const d = fs.readFileSync(join(rootDir, '_config.yml'), 'utf-8')
@@ -114,20 +113,6 @@ const readPostDir = (location: string): IBlogPostFiles[] =>
       }
     })
     .sort((a, b) => b._d.toMillis() - a._d.toMillis())
-
-const run =
-  (cmd: string, showOutput = true) =>
-    (callback: (e: any) => void) =>
-      exec(cmd, { cwd: rootDir }, (err, stdout, stderr) => {
-        if (showOutput || err != null) {
-          log('STDOUT')
-          log('  %s', stdout)
-          log('STDERR')
-          log('  %s', stderr)
-        }
-
-        callback(err)
-      })
 
 const renderPugFiles = (basedir: string, extras: IPugRenderExtra): Transform =>
   flatmap((stream: Stream, file: Vinyl) => {
@@ -194,7 +179,14 @@ task('copy:all', () =>
   )
 )
 
-task('build:jekyll', run('bundle exec jekyll build --trace', false))
+task(
+  'build:jekyll',
+  runCmd({
+    cmd: 'bundle exec jekyll build --trace',
+    cwd: resolve(__dirname, '..'),
+    showOutput: true
+  })
+)
 
 task('build:autoindex', async () => await autoindex(p.files, 'caian-org'))
 

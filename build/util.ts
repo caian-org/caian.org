@@ -1,22 +1,40 @@
 /* standard */
 import { join } from 'path'
-import { format as fmt } from 'util'
+import { format as fmt, promisify } from 'util'
+import { exec } from 'child_process'
 
 /* 3rd-party */
 import flog from 'fancy-log'
+import chalk from 'chalk'
 import { DateTime } from 'luxon'
 
 /* ................................................. */
 
-export { fmt }
+interface ICommandRun {
+  cmd: string
+  showOutput?: boolean
+  cwd?: string
+}
+
+const execAsync = promisify(exec)
+
+export { fmt, promisify }
 
 export const len = (a: any[] | string): number => a.length
 
+export const now = (): string => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
+
 export const log = (m: string, ...p: string[]): void => {
-  flog(fmt('  '.concat(m), ...p))
+  flog(fmt(indent(m, 2), ...p))
 }
 
-export const now = (): string => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
+export const prepend = (text: string, val: string): string =>
+  text
+    .split('\n')
+    .map((t) => val.concat(t))
+    .join('\n')
+
+export const indent = (text: string, level: number): string => prepend(text, ' '.repeat(level))
 
 export const strFallback = (s: string | undefined): string =>
   typeof s === 'string' && len(s.trim()) > 0 ? s : '???'
@@ -48,10 +66,14 @@ export const getNumberSuffix = (n: number): string => {
   }
 
   switch (n.toString().slice(-1)) {
-    case '1': return st
-    case '2': return nd
-    case '3': return rd
-    default: return th
+    case '1':
+      return st
+    case '2':
+      return nd
+    case '3':
+      return rd
+    default:
+      return th
   }
 }
 
@@ -70,3 +92,23 @@ export const joinSafe = (...s: string[]): string =>
       }
     })
   )
+
+export const runCmd =
+  (c: ICommandRun) =>
+    async (cb: (e: any) => void): Promise<void> => {
+      const cwd = typeof c.cwd === 'string' ? c.cwd : __dirname
+      const { stdout, stderr } = await execAsync(c.cmd, { cwd })
+      const err = len(stderr) > 0 ? new Error(stderr) : undefined
+
+      const p = chalk.dim('|  ')
+
+      if (c.showOutput === true) {
+        log(fmt('Output of "%s":', chalk.yellowBright(c.cmd)))
+        log(p)
+        prepend(stdout, p)
+          .split('\n')
+          .forEach((t) => log(t))
+      }
+
+      cb(err)
+    }
