@@ -117,7 +117,7 @@ const run =
   (cmd: string, showOutput = true) =>
     (callback: (e: any) => void) =>
       exec(cmd, (err, stdout, stderr) => {
-        if (showOutput || (err != null)) {
+        if (showOutput || err != null) {
           log('STDOUT')
           log('  %s', stdout)
           log('STDERR')
@@ -195,12 +195,14 @@ task('build:js', () =>
   )
 )
 
-task('build:pug', () => pipe(
-  from(globAll(p.src, 'pug')),
-  renderPugFiles(p.src, {
-    thoughts: readPostDir(join(p.src, 'geo', 'thoughts'))
-  }),
-  to(p.intermediate))
+task('build:pug', () =>
+  pipe(
+    from(globAll(p.src, 'pug')),
+    renderPugFiles(p.src, {
+      thoughts: readPostDir(join(p.src, 'geo', 'thoughts'))
+    }),
+    to(p.intermediate)
+  )
 )
 
 task('prepare', series(...preJekyllBuildSteps))

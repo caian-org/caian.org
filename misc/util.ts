@@ -12,11 +12,14 @@ export { fmt }
 
 export const len = (a: any[] | string): number => a.length
 
-export const log = (m: string, ...p: string[]): void => { flog(fmt('  '.concat(m), ...p)) }
+export const log = (m: string, ...p: string[]): void => {
+  flog(fmt('  '.concat(m), ...p))
+}
 
 export const now = (): string => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
 
-export const strFallback = (s: string | undefined): string => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
+export const strFallback = (s: string | undefined): string =>
+  typeof s === 'string' && len(s.trim()) > 0 ? s : '???'
 
 export const globAll = (d: string, ext: string | null = null): string =>
   join(d, '**', '*'.concat(ext === null ? '' : '.'.concat(ext)))

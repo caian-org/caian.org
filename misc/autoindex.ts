@@ -100,7 +100,9 @@ const processObjects = (objs: S3Object[]): IObject[] =>
     })
 
 const uniqueDirsOf = (objs: IObject[]): string[] =>
-  [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))].sort((a, b) => len(b) - len(a))
+  [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))].sort(
+    (a, b) => len(b) - len(a)
+  )
 
 const objectsToFiles = (bucket: string, objs: IObject[]): IFile[] =>
   objs.map((f) => ({
@@ -159,9 +161,13 @@ export const build = async (autoindexBaseDir: string, bucket: string): Promise<v
 
   /* ... */
   const template = await fs.readFile(join(__dirname, 'files-template.pug'), 'utf-8')
-  await create({ autoindexBaseDir, template, dest: autoindexBaseDir, files: objectsToFiles(bucket, files) })
+
+  const c = async (dest: string, files: IFile[]): Promise<void> =>
+    await create({ autoindexBaseDir, template, dest, files })
+
+  await c(autoindexBaseDir, objectsToFiles(bucket, files))
 
   for (const d of dirs) {
-    await create({ autoindexBaseDir, template, dest: join(autoindexBaseDir, d), files: structure[d].items })
+    await c(join(autoindexBaseDir, d), structure[d].items)
   }
 }
