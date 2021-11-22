@@ -1,18 +1,13 @@
+[![Tests][gh-tc-shield]][gh-tc-url]
+
 # caian.org
 
 <img src="icon.svg" height="240px" align="right"/>
 
 Personal website, blog et cetera.
 
-
-## Environment
-
-| Variable                | Value     |
-| ----------------------- | --------- |
-| `AWS_ACCESS_KEY_ID`     | `...`     |
-| `AWS_SECRET_ACCESS_KEY` | `...`     |
-| `NODE_VERSION`          | `16.13.0` |
-| `RUBY_VERSION`          | `2.7.1`   |
+[gh-tc-shield]: https://img.shields.io/github/workflow/status/caian-org/caian.org/build-and-push?label=deploy&logo=github&style=flat-square
+[gh-tc-url]: https://github.com/caian-org/caian.org/actions/workflows/build-and-push.yml
 
 
 ## License
