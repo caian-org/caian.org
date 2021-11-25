@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Starting again
-tags: dev
+tags: development updates
 ---
 
 This project is alive once again. Last time I've poured energy into this, the
