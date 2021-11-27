@@ -6,7 +6,7 @@
 
 Personal website, blog et cetera.
 
-[gh-tc-shield]: https://img.shields.io/github/workflow/status/caian-org/caian.org/build-and-push?label=deploy&logo=github&style=flat-square
+[gh-tc-shield]: https://img.shields.io/github/workflow/status/caian-org/caian.org/build-and-push?label=deploy&logo=github&style=for-the-badge
 [gh-tc-url]: https://github.com/caian-org/caian.org/actions/workflows/build-and-push.yml
 
 
