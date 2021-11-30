@@ -22,3 +22,10 @@ mixin category(title)
   br
   label.collapse(for=id) #{ title }
   input(id=id, type='checkbox')
+
+mixin category-list-hint(file, w=false, h=false)
+  br
+  +img(file, w, h)
+
+  p.
+    To expand a list, hover the cursor over the category name and #[em click with the left button] of your mouse.

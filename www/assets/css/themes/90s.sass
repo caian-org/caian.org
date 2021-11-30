@@ -107,7 +107,7 @@ a
 
 .collapse
   @include div-content-collapse
-  transition: all 0.2s ease-in-out
+  transition: all 0.3s ease-in-out
   color: white
   font-weight: bold
   font-size: 24px
@@ -115,9 +115,10 @@ a
   padding: 5px
 
   &:hover
-    color: black
-    letter-spacing: 3px
-    background: $color-bright-pink
+    color: $color-bright-pink
+    letter-spacing: 4px
+    background: geo-img-url('sparkle.gif') 20% 50% no-repeat, geo-img-url('sparkle.gif') 80% 50% no-repeat;
+    background-size: 30px 30px
 
 .wrapperp
   @include bg-base

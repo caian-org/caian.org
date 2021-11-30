@@ -1,4 +1,5 @@
 include /_includes/head
+include /_includes/mixins/geo
 
 block vars
 
@@ -16,14 +17,16 @@ html
           if isPost
             br
             a(href='/geo/thoughts/')
-              img(src='/assets/imgs/geo/back.gif')
+              +img('back.gif')
 
           br
           block content
     .wrappersi
       .sidebar
         p
-          img(src='/assets/imgs/geo/menu.gif')
+          +img('menu.gif')
+          br
+          br
         .menu
           p
             a(href='/geo/') home
@@ -58,25 +61,25 @@ html
 
       div(align='center')
         a(href='https://spyware.neocities.org')
-          img(src='/assets/imgs/geo/privacy.gif')
+          +img('privacy.gif')
 
         a(href='https://digdeeper.neocities.org')
-          img(src='/assets/imgs/geo/nocookie.gif')
+          +img('nocookie.gif')
 
-        img(src='/assets/imgs/geo/ie.gif')
+        +img('ie.gif')
 
         a(href='https://ssd.eff.org')
-          img(src='/assets/imgs/geo/aol.gif')
+          +img('aol.gif')
 
-        img(src='/assets/imgs/geo/hicolor.gif')
+        +img('hicolor.gif')
 
         a(href='https://neovim.io')
-          img(src='/assets/imgs/geo/notepad.gif')
+          +img('notepad.gif')
 
         a(href='https://conficturaindustries.com')
-          img(src='/assets/imgs/geo/aponow.gif')
+          +img('aponow.gif')
 
         a(href='https://stanleyparable.com')
-          img(src='/assets/imgs/geo/deep.gif')
+          +img('deep.gif')
 
-        img(src='/assets/imgs/geo/hc.gif')
+        +img('hc.gif')
