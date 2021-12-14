@@ -9,6 +9,7 @@ import yaml from 'yaml'
 import slugify from 'slugify'
 import merge from 'merge-stream'
 import Vinyl from 'vinyl'
+import autoprefixer from 'autoprefixer'
 import { DateTime } from 'luxon'
 
 import tap from 'gulp-tap'
@@ -16,6 +17,7 @@ import babel from 'gulp-babel'
 import uglify from 'gulp-uglify'
 import pug from 'gulp-pug'
 import header from 'gulp-header'
+import postcss from 'gulp-postcss'
 import { task, series, src as from, dest as to } from 'gulp'
 
 // @ts-expect-error
@@ -25,7 +27,7 @@ import flatmap from 'gulp-flatmap'
 import { pipeline as pipe } from 'readable-stream'
 
 /* modules */
-import { build as autoindex } from './autoindex'
+import autoindex from './autoindex'
 import { fmt, log, now, joinSafe, globAll, strFallback, getNumberSuffix, runCmd } from './util'
 
 /* ................................................. */
@@ -34,6 +36,7 @@ interface IRelevantDirs {
   src: string
   dist: string
   intermediate: string
+  pub: string
   files: string
 }
 
@@ -71,13 +74,14 @@ const p = ((): IRelevantDirs => {
     src,
     dist,
     intermediate: join(dist, 'intermediate'),
+    pub: join(dist, 'public'),
     files: join(src, 'files')
   }
 })()
 
-const sourceDir = (...f: string[]): string => globAll(joinSafe(p.src, ...f))
 const intermediateDir = (...f: string[]): string => joinSafe(p.intermediate, ...f)
-const publicFiles = globAll(join(p.dist, 'public'))
+const sourceDirFiles = (...f: string[]): string => globAll(joinSafe(p.src, ...f))
+const publicDirFiles = (...f: string[]): string => globAll(joinSafe(p.pub, ...f))
 
 const yamlStart = ['---', '---', '', ''].join('\n')
 
@@ -114,11 +118,11 @@ const readPostDir = (location: string): IBlogPostFiles[] =>
     })
     .sort((a, b) => b._d.toMillis() - a._d.toMillis())
 
-const renderPugFiles = (basedir: string, extras: IPugRenderExtra): Transform =>
+const renderPugFiles = (extras: IPugRenderExtra): Transform =>
   flatmap((stream: Stream, file: Vinyl) => {
-    log('Writing "%s"', file.path.replace(basedir, '').replace('.pug', '.html'))
+    log('Writing "%s"', file.path.replace(p.src, '').replace('.pug', '.html'))
 
-    const htmlContent = stream.pipe(buildPug(basedir, extras))
+    const htmlContent = stream.pipe(buildPug(p.src, extras))
     switch (basename(dirname(file.path))) {
       case '_includes':
       case '_layouts':
@@ -129,26 +133,25 @@ const renderPugFiles = (basedir: string, extras: IPugRenderExtra): Transform =>
     }
   })
 
-/* ................................................. */
+const processCSS = (): Transform =>
+  flatmap((stream: Stream, file: Vinyl) => {
+    const plugins = [autoprefixer()]
 
-const preJekyllBuildSteps = [
-  'clean:dist',
-  'clean:files',
-  'build:autoindex',
-  'build:pug',
-  'build:js',
-  'copy:all'
-]
+    log('Transforming "%s"', file.path.replace(p.pub, ''))
+    return stream.pipe(postcss(plugins))
+  })
 
 const copyAll = (...d: string[]): Transform =>
-  pipe(from(sourceDir(...d)), to(intermediateDir(...d)))
+  pipe(from(sourceDirFiles(...d)), to(intermediateDir(...d)))
+
+/* ................................................. */
 
 task('debug', async () => {
   log('src: "%s"', p.src)
   log('dist: "%s"', p.dist)
   log('intermediate: "%s"', p.intermediate)
   log('files: "%s"', p.files)
-  log('publicFiles: "%s"', publicFiles)
+  log('public: "%s"', p.pub)
 })
 
 task('clean:dist', async () => await del(p.dist, { force: true }))
@@ -156,19 +159,19 @@ task('clean:files', async () => await del(p.files, { force: true }))
 
 task('clean:left-overs', () =>
   pipe(
-    from(publicFiles),
+    from(publicDirFiles()),
     tap((file) => {
       switch (extname(file.path).substring(1).toLowerCase()) {
         case 'sass':
+        case 'pug':
+        case 'ts':
           del.sync(file.path, { force: true })
-          log('Deleted "%s"', file.path.replace(p.dist, ''))
+          log('Deleted "%s"', file.path.replace(p.pub, ''))
           break
       }
     })
   )
 )
-
-task('clean:all', series('clean:dist', 'clean:files', 'clean:left-overs'))
 
 task('copy:all', () =>
   merge(
@@ -188,11 +191,9 @@ task(
   })
 )
 
-task('build:autoindex', async () => await autoindex(p.files, 'caian-org'))
-
 task('build:js', () =>
   pipe(
-    from(sourceDir('assets', 'js')),
+    from(sourceDirFiles('assets', 'js')),
     babel({ presets: ['@babel/preset-env'] }),
     uglify(),
     to(intermediateDir('assets', 'js'))
@@ -202,12 +203,24 @@ task('build:js', () =>
 task('build:pug', () =>
   pipe(
     from(globAll(p.src, 'pug')),
-    renderPugFiles(p.src, {
-      thoughts: readPostDir(join(p.src, 'geo', 'thoughts'))
-    }),
+    renderPugFiles({ thoughts: readPostDir(join(p.src, 'geo', 'thoughts')) }),
     to(p.intermediate)
   )
 )
 
-task('prepare', series(...preJekyllBuildSteps))
-task('build', series(...preJekyllBuildSteps, 'build:jekyll', 'clean:left-overs'))
+task('postcss', () =>
+  pipe(
+    from(globAll(p.pub, 'css')),
+    processCSS(),
+    to(joinSafe(p.pub, 'assets', 'css'))
+  )
+)
+
+task('clean:all', series('clean:dist', 'clean:files', 'clean:left-overs'))
+
+task('build:autoindex', async () => await autoindex(p.files, 'caian-org'))
+
+task('prebuild', series('clean:dist', 'clean:files', 'build:autoindex', 'build:pug', 'build:js', 'copy:all'))
+task('postbuild', series('clean:left-overs', 'postcss'))
+
+task('build', series('prebuild', 'build:jekyll', 'postbuild'))

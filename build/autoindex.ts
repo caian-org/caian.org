@@ -138,7 +138,7 @@ const create = async (p: IAutoIndexCreationParams): Promise<void> => {
 
 /* ................................................. */
 
-export const build = async (autoindexBaseDir: string, bucket: string): Promise<void> => {
+export default async (autoindexBaseDir: string, bucket: string): Promise<void> => {
   /* ... */
   const objs = processObjects(await listAllObjects(bucket))
   const dirs = uniqueDirsOf(objs)
