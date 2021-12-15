@@ -1,19 +1,36 @@
 /* standard */
-import { join } from 'path'
+import fs from 'fs'
+import { basename, join } from 'path'
 import { format as fmt, promisify } from 'util'
 import { exec } from 'child_process'
 
 /* 3rd-party */
+import yaml from 'yaml'
 import flog from 'fancy-log'
 import chalk from 'chalk'
 import { DateTime } from 'luxon'
 
-/* ................................................. */
+/* ............................................................................ */
+
+interface IBlogPostFiles {
+  _d: DateTime
+  title: string
+  date: string
+  url: string
+}
 
 interface ICommandRun {
   cmd: string
   showOutput?: boolean
   cwd?: string
+}
+
+interface IRelevantDirs {
+  src: string
+  dist: string
+  intermediate: string
+  pub: string
+  files: string
 }
 
 const execAsync = promisify(exec)
@@ -112,3 +129,47 @@ export const runCmd =
 
       cb(err)
     }
+
+export const readPostDir = (location: string): IBlogPostFiles[] =>
+  fs
+    .readdirSync(location)
+    .filter((f) => basename(f) !== 'index.pug')
+    .map((f) => {
+      const name = basename(f).replace('.pug', '')
+
+      const date = DateTime.fromISO(name.substring(0, 10))
+      const dfmt = fmt("MMMM d'%s,' yyyy", getNumberSuffix(date.day))
+
+      return {
+        _d: date,
+        title: name.substring(10).replaceAll('-', ' '),
+        date: date.toFormat(dfmt),
+        url: name.concat('.html')
+      }
+    })
+    .sort((a, b) => b._d.toMillis() - a._d.toMillis())
+
+export const readSiteConfig = (rootDir: string): any => {
+  const d = fs.readFileSync(join(rootDir, '_config.yml'), 'utf-8')
+  const c = yaml.parse(d)
+
+  if (process.env.JEKYLL_ENV !== 'production') {
+    c.url = 'http://localhost:4000'
+  }
+
+  return c
+}
+
+export const getRelevantDirectories = (rootDir: string): IRelevantDirs => {
+  const src = join(rootDir, 'www')
+  const dist = join(rootDir, 'dist')
+  const intermediate = join(dist, 'intermediate')
+
+  return {
+    src,
+    dist,
+    intermediate,
+    pub: join(dist, 'public'),
+    files: join(src, 'files')
+  }
+}

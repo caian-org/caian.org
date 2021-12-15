@@ -12,7 +12,7 @@ import { S3, ListObjectsV2Request, _Object as S3Object } from '@aws-sdk/client-s
 /* modules */
 import { fmtFileSize, fmt, len, log } from './util'
 
-/* ................................................. */
+/* ............................................................................ */
 
 interface IObject {
   key: string
@@ -41,7 +41,7 @@ interface IAutoIndexCreationParams {
   files: IFile[]
 }
 
-/* ................................................. */
+/* ............................................................................ */
 
 mustache.escape = (t) => t
 
@@ -57,7 +57,7 @@ tr
   td {{ lastModified }}
 `
 
-/* ................................................. */
+/* ............................................................................ */
 
 const listAllObjects = async (bucket: string): Promise<S3Object[]> => {
   const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })
@@ -136,7 +136,7 @@ const create = async (p: IAutoIndexCreationParams): Promise<void> => {
   await fs.writeFile(f, c)
 }
 
-/* ................................................. */
+/* ............................................................................ */
 
 export default async (autoindexBaseDir: string, bucket: string): Promise<void> => {
   /* ... */
