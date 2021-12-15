@@ -212,7 +212,7 @@ task('postcss', () =>
   pipe(
     from(globAll(p.pub, 'css')),
     processCSS(),
-    to(joinSafe(p.pub, 'assets', 'css'))
+    to(joinSafe(p.pub))
   )
 )
 
