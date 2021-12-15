@@ -1,0 +1,73 @@
+.header
+  position: fixed
+  width: 100%
+  z-index: 1000
+  background: black
+  background: white
+  box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1)
+
+  &--content
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 1rem 5rem
+    @include respond(tab-port)
+      padding: 0 2rem
+
+  &--logo-container
+    display: flex
+    align-items: center
+    cursor: pointer
+    color: #333
+    transition: color .3s
+
+    &:hover
+      color: $primary-color
+
+  &--logo-img-cont
+    width: 5rem
+    height: 5rem
+    border-radius: 50px
+    overflow: hidden
+    margin-right: 1.5rem
+    background: $primary-color
+
+    @include respond(tab-port)
+      width: 4.5rem
+      height: 4.5rem
+      margin-right: 1.2rem
+
+  &--logo-img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center
+    display: block
+
+  &--logo-sub
+    font-size: 1.8rem
+    text-transform: uppercase
+    font-weight: 700
+    letter-spacing: 1px
+
+  &--links
+    display: flex
+    @include respond(phone)
+      display: none
+
+  &--link
+    padding: 2.2rem 3rem
+    display: inline-block
+    font-size: 1.6rem
+    color: #333
+    text-transform: uppercase
+    letter-spacing: 1px
+    font-weight: 700
+    transition: color .3s
+
+    &:hover
+      color: $primary-color
+
+    @include respond(tab-port)
+      padding: 3rem 1.8rem
+      font-size: 1.5rem
