@@ -1,0 +1,129 @@
+mixin social-hero(file, url)
+  .hero--social
+    a.hero--social-icon-link.hero--social-icon-link--bd-none(href=url)
+      img.hero--social-icon(src=`/assets/imgs/boring/${file}-ico.svg`)
+
+mixin skill(name)
+  .skills--item #{ name }
+
+- const skills = 'Lorem Ipsum Dolor Sit Amet Adipisicing Elit His Facilis Praesent Quis Sem At Urna Ut Dui Ultrices Blandit'.split(' ')
+
+
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+
+    link(rel='stylesheet', href='/assets/css/themes/boring.css')
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap', rel='stylesheet')
+
+    title My boring dev landing page
+
+  body
+    header.header
+      .header--content
+        .header--logo-container
+          .header--logo-img-cont
+            img.header--logo-img(src='/assets/imgs/boring/avatar.png')
+          a(href='#')
+            span.header--logo-sub the boring dev
+
+        .header--main
+          ul.header--links
+            li.header--link-wrapper
+              a.header--link(href='#') home
+            li.header--link-wrapper
+              a.header--link(href='#about') about
+            li.header--link-wrapper
+              a.header--link(href='#projects') projects
+
+    section.hero
+      .hero--content
+        h1.heading-primary Greetings, stranger
+        .hero--info
+          p.text-primary
+            | I'm not surprised to see your kind here. Many adventurers have
+            | traveled this way since the recent troubles began. No doubt you've
+            | heard about the tragedy that befell the town of Tristram.
+
+        .hero--cta
+          a.btn.btn--bg(href='#projects') projects
+      .hero--socials
+        +social-hero('github', '#')
+        +social-hero('instagram', '#')
+        +social-hero('linkedin', '#')
+        +social-hero('medium', '#')
+        +social-hero('patreon', '#')
+        +social-hero('reddit', '#')
+        +social-hero('stack-overflow', '#')
+        +social-hero('twitter', '#')
+        +social-hero('youtube', '#')
+      .hero--mouse-scroll-cont
+        .mouse
+
+    section#about.about.sec-pad
+      .main-container
+        h2.heading.sec.sec--mb-med
+          span.sec--main about me
+          span.sec--sub.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic facilis
+            tempora explicabo quae quod deserunt eius sapiente
+        .about--content
+          .about--content-main
+            h3.about--content-title Biography
+            .about--content-details
+              p.about--content-details-para.
+                Suspendisse sit amet ornare enim. Integer consequat luctus
+                dapibus. Vestibulum iaculis, neque quis feugiat semper, augue
+                tellus consectetur ante, eget tempus enim metus sed est.
+                Pellentesque in placerat nunc. Vestibulum ante ipsum primis in
+                faucibus orci luctus et ultrices posuere cubilia curae.
+              p.about--content-details-para.
+                Praesent quis dignissim sem. Suspendisse at urna ut dui ultrices
+                blandit. Donec vitae mauris vulputate, cursus ligula nec,
+                porttitor neque. Praesent eu ullamcorper erat.
+            a.btn.btn--med.btn--theme.dynamicBgClr(href='#contact') Contact
+          .about--content-skills
+            h3.about--content-title Skills
+            .skills
+              each s in skills
+                +skill(s)
+
+    section#projects.projects.sec-pad
+      .main-container
+        h2.heading.sec.sec--mb-bg
+          span.sec--main Projects
+          span.sec--sub
+            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic facilis
+            | tempora explicabo quae quod deserunt eius sapiente
+        .projects--content
+          .projects--row
+            .projects--row-img-cont
+              img.projects--row-img(src='/assets/imgs/boring/project-mockup-example.jpeg')
+            .projects--row-content
+              h3.projects--row-content-title Project 1
+              p.projects--row-content-desc
+                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                | facilis tempora, explicabo quae quod deserunt eius sapiente
+                | praesentium.
+              a.btn.btn--med.btn--theme.dynamicBgClr(href='#') see more
+
+          .projects--row
+            .projects--row-img-cont
+              img.projects--row-img(src='/assets/imgs/boring/project-mockup-example.jpeg')
+            .projects--row-content
+              h3.projects--row-content-title Project 2
+              p.projects--row-content-desc
+                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                | facilis tempora, explicabo quae quod deserunt eius sapiente
+                | praesentium.
+              a.btn.btn--med.btn--theme.dynamicBgClr(href='#') see more
+
+    footer.footer
+      .main-container
+        .footer--lower.
+          &copy; Copyright $CURRENT_YEAR. Made with hatred in California.
