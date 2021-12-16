@@ -5,12 +5,11 @@ import { format as fmt, promisify } from 'util'
 import { exec } from 'child_process'
 
 /* 3rd-party */
+import del from 'del'
 import yaml from 'yaml'
 import flog from 'fancy-log'
 import chalk from 'chalk'
 import { DateTime } from 'luxon'
-
-/* ............................................................................ */
 
 interface IBlogPostFiles {
   _d: DateTime
@@ -35,15 +34,13 @@ interface IRelevantDirs {
 
 const execAsync = promisify(exec)
 
-export { fmt, promisify }
+/* ............................................................................ */
+
+export type TaskCallback = (e: any) => void
 
 export const len = (a: any[] | string): number => a.length
 
 export const now = (): string => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
-
-export const log = (m: string, ...p: string[]): void => {
-  flog(fmt(indent(m, 2), ...p))
-}
 
 export const prepend = (text: string, val: string): string =>
   text
@@ -53,11 +50,22 @@ export const prepend = (text: string, val: string): string =>
 
 export const indent = (text: string, level: number): string => prepend(text, ' '.repeat(level))
 
+export const log = (m: string, ...p: string[]): void => {
+  flog(fmt(indent(m, 2), ...p))
+}
+
 export const strFallback = (s: string | undefined): string =>
   typeof s === 'string' && len(s.trim()) > 0 ? s : '???'
 
 export const globAll = (d: string, ext: string | null = null): string =>
   join(d, '**', '*'.concat(ext === null ? '' : '.'.concat(ext)))
+
+export const rm = (f: string | string[]) =>
+  (cb: TaskCallback) => {
+    del(f, { force: true })
+      .then(() => cb(undefined))
+      .catch((e) => cb(e))
+  }
 
 export const fmtFileSize = (bytes: number, decimals = 2): string => {
   if (bytes === 0) {
@@ -112,7 +120,7 @@ export const joinSafe = (...s: string[]): string =>
 
 export const runCmd =
   (c: ICommandRun) =>
-    async (cb: (e: any) => void): Promise<void> => {
+    async (cb: TaskCallback): Promise<void> => {
       const cwd = typeof c.cwd === 'string' ? c.cwd : __dirname
       const { stdout, stderr } = await execAsync(c.cmd, { cwd })
       const err = len(stderr) > 0 ? new Error(stderr) : undefined
@@ -173,3 +181,5 @@ export const getRelevantDirectories = (rootDir: string): IRelevantDirs => {
     files: join(src, 'files')
   }
 }
+
+export { fmt, promisify }

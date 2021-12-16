@@ -1,5 +1,5 @@
 /* standard */
-import { extname, basename, dirname, join, resolve } from 'path'
+import { basename, dirname, join, resolve } from 'path'
 import { Stream, Transform } from 'stream'
 
 /* 3rd-party */
@@ -27,6 +27,7 @@ import { pipeline as pipe } from 'readable-stream'
 /* modules */
 import autoindex from './autoindex'
 import {
+  rm,
   fmt,
   log,
   now,
@@ -39,11 +40,11 @@ import {
   getRelevantDirectories
 } from './util'
 
-/* ............................................................................ */
-
 interface IHash {
   [k: string]: any
 }
+
+/* ............................................................................ */
 
 process.env.JEKYLL_ENV = 'production'
 
@@ -63,7 +64,21 @@ const sourceDirFiles = (...f: string[]): string => globAll(joinSafe(p.src, ...f)
 
 const publicDirFiles = (...f: string[]): string => globAll(joinSafe(p.pub, ...f))
 
+const logP = (): void => {
+  log('src: "%s"', p.src)
+  log('dist: "%s"', p.dist)
+  log('intermediate: "%s"', p.intermediate)
+  log('files: "%s"', p.files)
+  log('public: "%s"', p.pub)
+}
+
 /* ............................................................................ */
+
+const leftOvers = [
+  fmt('%s.{sass,pug,ts}', publicDirFiles()),
+  joinSafe(p.pub, 'assets', 'css', 'boring'),
+  joinSafe(p.pub, 'assets', 'css', 'mixins')
+]
 
 const copyAll = (...d: string[]): Transform =>
   pipe(from(sourceDirFiles(...d)), to(intermediateDir(...d)))
@@ -92,7 +107,7 @@ const buildPugFiles = (): Transform =>
     flatmap((stream: Stream, file: Vinyl) => {
       log('Writing "%s"', file.path.replace(p.src, '').replace('.pug', '.html'))
 
-      const htmlContent = stream.pipe(buildPug(p.src, { thoughts: geoThoughts }))
+      const htmlContent = pipe(stream, buildPug(p.src, { thoughts: geoThoughts }))
 
       switch (basename(dirname(file.path))) {
         case '_includes':
@@ -100,7 +115,7 @@ const buildPugFiles = (): Transform =>
           return htmlContent
 
         default:
-          return htmlContent.pipe(header(yamlStart))
+          return pipe(htmlContent, header(yamlStart))
       }
     }),
     to(p.intermediate)
@@ -113,7 +128,7 @@ const transformCSS = (): Transform =>
       const plugins = [autoprefixer()]
 
       log('Transforming "%s"', file.path.replace(p.pub, ''))
-      return stream.pipe(postcss(plugins))
+      return pipe(stream, postcss(plugins))
     }),
     to(joinSafe(p.pub))
   )
@@ -123,23 +138,17 @@ const transformSVG = (): Transform =>
     from(globAll(p.src, 'svg')),
     flatmap((stream: Stream, file: Vinyl) => {
       log('Minifying "%s"', file.path.replace(p.src, ''))
-      return stream.pipe(minifySVG())
+      return pipe(stream, minifySVG())
     }),
     to(p.src)
   )
 
-const cleanLeftOvers = (): Transform =>
+const cleanLeftOvers = (): NodeJS.ReadWriteStream =>
   pipe(
-    from(publicDirFiles()),
+    from(leftOvers),
     tap((file) => {
-      switch (extname(file.path).substring(1).toLowerCase()) {
-        case 'sass':
-        case 'pug':
-        case 'ts':
-          del.sync(file.path, { force: true })
-          log('Deleted "%s"', file.path.replace(p.pub, ''))
-          break
-      }
+      del.sync(file.path, { force: true })
+      log('Deleted "%s"', file.path.replace(p.pub, ''))
     })
   )
 
@@ -153,13 +162,7 @@ const cleanLeftOvers = (): Transform =>
 
    ................................................. */
 
-task('debug', () => {
-  log('src: "%s"', p.src)
-  log('dist: "%s"', p.dist)
-  log('intermediate: "%s"', p.intermediate)
-  log('files: "%s"', p.files)
-  log('public: "%s"', p.pub)
-})
+task('debug', logP)
 
 task('copy:all', () =>
   merge(
@@ -180,9 +183,9 @@ task('transform:svg', transformSVG)
 
 task('clean:left-overs', cleanLeftOvers)
 
-task('clean:dist', async () => await del(p.dist, { force: true }))
+task('clean:dist', rm(p.dist))
 
-task('clean:files', async () => await del(p.files, { force: true }))
+task('clean:files', rm(p.files))
 
 task('clean:all', series('clean:dist', 'clean:files', 'clean:left-overs'))
 
