@@ -14,8 +14,9 @@ import babel from 'gulp-babel'
 import uglify from 'gulp-uglify'
 import pug from 'gulp-pug'
 import header from 'gulp-header'
-import postcss from 'gulp-postcss'
 import minifySVG from 'gulp-svgmin'
+import postCSS from 'gulp-postcss'
+import purgeCSS from 'gulp-purgecss'
 import { task, series, src as from, dest as to } from 'gulp'
 
 // @ts-expect-error
@@ -125,10 +126,11 @@ const transformCSS = (): Transform =>
   pipe(
     from(globAll(p.pub, 'css')),
     flatmap((stream: Stream, file: Vinyl) => {
-      const plugins = [autoprefixer()]
+      const postPlugins = [autoprefixer()]
+      const purgeOptions = { content: [fmt('%s.html', publicDirFiles())] }
 
       log('Transforming "%s"', file.path.replace(p.pub, ''))
-      return pipe(stream, postcss(plugins))
+      return pipe(stream, purgeCSS(purgeOptions), postCSS(postPlugins))
     }),
     to(joinSafe(p.pub))
   )
@@ -162,6 +164,17 @@ const cleanLeftOvers = (): NodeJS.ReadWriteStream =>
 
    ................................................. */
 
+const jekyllBuild = 'bundle exec jekyll build --trace'
+
+const prebuild = [
+  'clean:file:dist',
+  'clean:file:autoindex',
+  'build:autoindex',
+  'build:pug',
+  'build:js',
+  'copy:all'
+]
+
 task('debug', logP)
 
 task('copy:all', () =>
@@ -181,13 +194,13 @@ task('transform:svg', transformSVG)
 
 /* clean tasks */
 
-task('clean:left-overs', cleanLeftOvers)
+task('clean:file:left-overs', cleanLeftOvers)
 
-task('clean:dist', rm(p.dist))
+task('clean:file:dist', rm(p.dist))
 
-task('clean:files', rm(p.files))
+task('clean:file:autoindex', rm(p.files))
 
-task('clean:all', series('clean:dist', 'clean:files', 'clean:left-overs'))
+task('clean:file:all', series('clean:file:dist', 'clean:file:autoindex', 'clean:file:left-overs'))
 
 /* clean tasks */
 
@@ -197,10 +210,10 @@ task('build:pug', buildPugFiles)
 
 task('build:autoindex', async () => await autoindex(p.files, 'caian-org'))
 
-task('build:jekyll', runCmd({ cmd: 'bundle exec jekyll build --trace', cwd: rootDir, showOutput: true }))
+task('build:jekyll', runCmd({ cmd: jekyllBuild, cwd: rootDir, showOutput: true }))
 
-task('prebuild', series('clean:dist', 'clean:files', 'build:autoindex', 'build:pug', 'build:js', 'copy:all'))
+task('prebuild', series(...prebuild))
 
-task('postbuild', series('clean:left-overs', 'transform:css'))
+task('postbuild', series('clean:file:left-overs', 'transform:css'))
 
 task('build', series('prebuild', 'build:jekyll', 'postbuild'))

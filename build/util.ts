@@ -60,12 +60,11 @@ export const strFallback = (s: string | undefined): string =>
 export const globAll = (d: string, ext: string | null = null): string =>
   join(d, '**', '*'.concat(ext === null ? '' : '.'.concat(ext)))
 
-export const rm = (f: string | string[]) =>
-  (cb: TaskCallback) => {
-    del(f, { force: true })
-      .then(() => cb(undefined))
-      .catch((e) => cb(e))
-  }
+export const rm = (f: string | string[]) => (cb: TaskCallback) => {
+  del(f, { force: true })
+    .then(() => cb(undefined))
+    .catch((e) => cb(e))
+}
 
 export const fmtFileSize = (bytes: number, decimals = 2): string => {
   if (bytes === 0) {
