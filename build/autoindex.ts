@@ -164,7 +164,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
         directories: [],
         files: objectsToFiles(
           bucket,
-          files.filter((file) => file.key.startsWith(dir.key))
+          files.filter((file) => file.key.startsWith(dir.key) && countChar(file.key.replace(dir.key, ''), '/') === 1)
         )
       }
     ])
@@ -209,7 +209,6 @@ export default async (baseDir: string, bucket: string): Promise<void> => {
   const structure: IStructure = buildStructure(bucket, uniqueDirectories, uniqueFiles)
   log('File structure generated')
 
-  console.log(JSON.stringify(structure, null, 2))
   const build = await newBuilder(baseDir)
 
   /* nested directories */
