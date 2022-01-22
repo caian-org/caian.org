@@ -130,20 +130,17 @@ const newBuilder = async (baseDir: string): Promise<BuilderFunc> => {
       dirLevel = '/'.concat(dirLevel)
     }
 
-    const renderedFile = mustache.render(
-      template,
-      {
-        dirLevel,
-        renderedList: [...dirs, ...files]
-          .map((j, i) =>
-            mustache.render(
-              indent(indexItem.replace('@filename', j.size === '-' ? 'dir' : 'file'), 8),
-              Object.assign({ idx: (i % 4) + 1 }, j)
-            )
+    const renderedFile = mustache.render(template, {
+      dirLevel,
+      renderedList: [...dirs, ...files]
+        .map((j, i) =>
+          mustache.render(
+            indent(indexItem.replace('@filename', j.size === '-' ? 'dir' : 'file'), 8),
+            Object.assign({ idx: (i % 4) + 1 }, j)
           )
-          .join('')
-      }
-    )
+        )
+        .join('')
+    })
 
     const f = join(dest, 'index.pug')
     log('Writing "%s"', f.replace(wwwD, ''))
@@ -164,7 +161,10 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
         directories: [],
         files: objectsToFiles(
           bucket,
-          files.filter((file) => file.key.startsWith(dir.key) && countChar(file.key.replace(dir.key, ''), '/') === 1)
+          files.filter(
+            (file) =>
+              file.key.startsWith(dir.key) && countChar(file.key.replace(dir.key, ''), '/') === 1
+          )
         )
       }
     ])
