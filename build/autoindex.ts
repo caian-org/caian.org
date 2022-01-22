@@ -1,6 +1,6 @@
 /* standard */
 import { promises as fs } from 'fs'
-import { dirname, join } from 'path'
+import { basename, dirname, join, resolve } from 'path'
 
 /* 3rd-party */
 import _ from 'lodash'
@@ -10,48 +10,43 @@ import { fromEnv } from '@aws-sdk/credential-providers'
 import { S3, ListObjectsV2Request, _Object as S3Object } from '@aws-sdk/client-s3'
 
 /* modules */
-import { fmtFileSize, fmt, len, log } from './util'
+import { indent, fmtFileSize, countChar, fmt, len, log } from './util'
 
 /* ............................................................................ */
 
 interface IObject {
+  name: string
   key: string
   size: string
   lastModified: string
+  url: string
 }
 
-interface IFile {
-  name: string
-  size: string
-  lastModified: string
-  publicUrl: string
-}
+interface IFile extends IObject {}
+
+interface IDirectory extends IObject {}
 
 interface IStructure {
   [n: string]: {
-    directoryName: string | null
-    items: IFile[]
+    directoryName: string
+    files: IFile[]
+    directories: IDirectory[]
   }
 }
 
-interface IAutoIndexCreationParams {
-  autoindexBaseDir: string
-  dest: string
-  template: string
-  files: IFile[]
-}
+type BuilderFunc = (s: string, d: IDirectory[], f: IFile[]) => Promise<void>
 
 /* ............................................................................ */
 
 mustache.escape = (t) => t
 
-const pugFileListItem = `
+const indexItem = `
 tr
   td(style='text-align: right')
-    img.middle(src='/assets/imgs/autoindex/file.svg', height='16px', width='16px')
+    img.middle(src='/assets/imgs/autoindex/@filename.svg', height='16px', width='16px')
   td
   td
-    a.fw-{{ idx }}(href='{{ publicUrl }}')
+    a.fw-{{ idx }}(href='{{ url }}')
       | {{ name }}
   td {{ size }}
   td {{ lastModified }}
@@ -91,83 +86,135 @@ const processObjects = (objs: S3Object[]): IObject[] =>
       const d = obj.LastModified ?? new Date()
 
       return {
+        name: basename(obj.Key!),
         key: obj.Key!,
         size: obj.Size === undefined ? '-' : fmtFileSize(obj.Size),
         lastModified: DateTime.fromJSDate(d, { zone: 'UTC' })
           .setZone('America/Sao_Paulo')
-          .toFormat('MMMM dd, yyyy hh:mm a')
+          .toFormat('MMMM dd, yyyy hh:mm a'),
+        url: '#'
       }
     })
 
-const uniqueDirsOf = (objs: IObject[]): string[] =>
-  [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))].sort(
-    (a, b) => len(b) - len(a)
+const objectsToFiles = (bucket: string, objs: IObject[]): IFile[] =>
+  objs
+    .filter((obj) => !obj.key.endsWith('/'))
+    .map((f) => {
+      const n = _.cloneDeep(f)
+      n.url = fmt('https://%s.s3.amazonaws.com/%s', bucket, f.key)
+
+      return n
+    })
+
+const objectsToDirectories = (objs: IObject[]): IDirectory[] =>
+  [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))]
+    .filter((d) => !d.endsWith('/'))
+    .sort((a, b) => len(b) - len(a))
+    .map((d) => ({
+      name: basename(d),
+      key: d,
+      size: '-',
+      lastModified: '-',
+      url: join('/files', d)
+    }))
+
+const newBuilder = async (baseDir: string): Promise<BuilderFunc> => {
+  const template = await fs.readFile(join(__dirname, 'files-template.pug'), 'utf-8')
+  const wwwD = resolve(baseDir, '..')
+
+  return async (dest: string, dirs: IDirectory[], files: IFile[]) => {
+    await fs.mkdir(dest, { recursive: true })
+
+    let dirLevel = dest.replace(baseDir, '')
+    if (!dirLevel.startsWith('/')) {
+      dirLevel = '/'.concat(dirLevel)
+    }
+
+    const renderedFile = mustache.render(
+      template,
+      {
+        dirLevel,
+        renderedList: [...dirs, ...files]
+          .map((j, i) =>
+            mustache.render(
+              indent(indexItem.replace('@filename', j.size === '-' ? 'dir' : 'file'), 8),
+              Object.assign({ idx: (i % 4) + 1 }, j)
+            )
+          )
+          .join('')
+      }
+    )
+
+    const f = join(dest, 'index.pug')
+    log('Writing "%s"', f.replace(wwwD, ''))
+
+    await fs.writeFile(f, renderedFile)
+  }
+}
+
+const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): IStructure => {
+  const rootDirectories = dirs.filter((d) => !d.key.includes('/'))
+  const rootFiles = files.filter((f) => !f.key.includes('/'))
+
+  const s: IStructure = Object.fromEntries(
+    dirs.map((dir) => [
+      dir.key,
+      {
+        directoryName: _.last(dir.key.split('/'))!,
+        directories: [],
+        files: objectsToFiles(
+          bucket,
+          files.filter((file) => file.key.startsWith(dir.key))
+        )
+      }
+    ])
   )
 
-const objectsToFiles = (bucket: string, objs: IObject[]): IFile[] =>
-  objs.map((f) => ({
-    name: f.key,
-    size: f.size,
-    lastModified: f.lastModified,
-    publicUrl: fmt('https://%s.s3.amazonaws.com/%s', bucket, f.key)
-  }))
+  const nestedDirectories = _.xor(dirs, rootDirectories)
 
-const create = async (p: IAutoIndexCreationParams): Promise<void> => {
-  await fs.mkdir(p.dest, { recursive: true })
+  while (true) {
+    const nd = nestedDirectories.pop()
+    if (nd === undefined) {
+      break
+    }
 
-  let dirLevel = p.dest.replace(p.autoindexBaseDir, '')
-  if (!dirLevel.startsWith('/')) {
-    dirLevel = '/'.concat(dirLevel)
+    for (const level of Object.keys(s)) {
+      if (level === nd.key || !nd.key.startsWith(level + '/') || countChar(nd.key, '/') > 1) {
+        continue
+      }
+
+      s[level].directories.push(nd)
+    }
   }
 
-  const indented = pugFileListItem
-    .split('\n')
-    .map((a) => ' '.repeat(8).concat(a))
-    .join('\n')
+  s[''] = {
+    directoryName: '',
+    directories: rootDirectories,
+    files: rootFiles
+  }
 
-  const renderedFileList = p.files
-    .map((file, i) => mustache.render(indented, Object.assign({ idx: (i % 4) + 1 }, file)))
-    .join('')
-
-  const c = mustache.render(p.template, { dirLevel, renderedFileList })
-  const f = join(p.dest, 'index.pug')
-
-  log('Writing "%s"', f.replace(p.dest, ''))
-  await fs.writeFile(f, c)
+  return s
 }
 
 /* ............................................................................ */
 
-export default async (autoindexBaseDir: string, bucket: string): Promise<void> => {
+export default async (baseDir: string, bucket: string): Promise<void> => {
   /* ... */
-  const objs = processObjects(await listAllObjects(bucket))
-  const dirs = uniqueDirsOf(objs)
-  let files = objs.filter((obj) => !obj.key.endsWith('/'))
-  log('Got %s objects from bucket "%s"', files.length.toString(), bucket)
+  const objects = processObjects(await listAllObjects(bucket))
+  const uniqueDirectories = objectsToDirectories(objects)
+  const uniqueFiles = objectsToFiles(bucket, objects)
+  log('Got %s objects from bucket "%s"', uniqueFiles.length.toString(), bucket)
 
   /* ... */
-  const structure: IStructure = {}
-  for (const d of dirs) {
-    const f = files.filter((file) => file.key.startsWith(d))
-    files = _.xor(files, f)
-
-    structure[d] = {
-      directoryName: _.last(d.split('/'))!,
-      items: objectsToFiles(bucket, f)
-    }
-  }
-
+  const structure: IStructure = buildStructure(bucket, uniqueDirectories, uniqueFiles)
   log('File structure generated')
 
-  /* ... */
-  const template = await fs.readFile(join(__dirname, 'files-template.pug'), 'utf-8')
+  console.log(JSON.stringify(structure, null, 2))
+  const build = await newBuilder(baseDir)
 
-  const c = async (dest: string, files: IFile[]): Promise<void> =>
-    await create({ autoindexBaseDir, template, dest, files })
-
-  await c(autoindexBaseDir, objectsToFiles(bucket, files))
-
-  for (const d of dirs) {
-    await c(join(autoindexBaseDir, d), structure[d].items)
+  /* nested directories */
+  for (const d of Object.keys(structure)) {
+    const { directories, files } = structure[d]
+    await build(join(baseDir, d), directories, files)
   }
 }

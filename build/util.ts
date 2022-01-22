@@ -5,6 +5,7 @@ import { format as fmt, promisify } from 'util'
 import { exec } from 'child_process'
 
 /* 3rd-party */
+import _ from 'lodash'
 import del from 'del'
 import yaml from 'yaml'
 import flog from 'fancy-log'
@@ -180,5 +181,7 @@ export const getRelevantDirectories = (rootDir: string): IRelevantDirs => {
     files: join(src, 'files')
   }
 }
+
+export const countChar = (t: string, c: string): number => _.countBy(t)[c]
 
 export { fmt, promisify }
