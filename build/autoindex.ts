@@ -36,15 +36,18 @@ interface IFile extends IObject {}
 
 interface IDirectory extends IObject {}
 
-interface IStructure {
-  [n: string]: {
-    directoryName: string
-    files: IFile[]
-    directories: IDirectory[]
-  }
+interface IStructureLevel {
+  directoryName: string
+  files: IFile[]
+  directories: IDirectory[]
+  isRootLevel: boolean
 }
 
-type BuilderFunc = (s: string, d: IDirectory[], f: IFile[]) => Promise<void>
+interface IStructure {
+  [n: string]: IStructureLevel
+}
+
+type BuilderFunc = (d: string, s: IStructureLevel) => Promise<void>
 
 /* ............................................................................ */
 
@@ -63,6 +66,9 @@ tr
 `
 
 /* ............................................................................ */
+
+const getBackLabel = (isRootLevel: boolean): string =>
+  isRootLevel ? 'Home&#x5BB6;&#x306B;&#x5E30;&#x308B;' : 'Back&#x623B;&#x308B;'
 
 const listAllObjects = async (bucket: string): Promise<S3Object[]> => {
   const client = new S3({ credentials: fromEnv(), region: 'us-east-1' })
@@ -128,11 +134,11 @@ const objectsToDirectories = (objs: IObject[]): IDirectory[] =>
       url: '/files/' + safeURIEncode(d)
     }))
 
-const newBuilder = async (baseDir: string): Promise<BuilderFunc> => {
+const createWriter = async (baseDir: string): Promise<BuilderFunc> => {
   const template = await fs.readFile(join(__dirname, 'files-template.pug'), 'utf-8')
   const wwwD = resolve(baseDir, '..')
 
-  return async (dest: string, dirs: IDirectory[], files: IFile[]) => {
+  return async (dest: string, sl: IStructureLevel) => {
     await fs.mkdir(dest, { recursive: true })
 
     let dirLevel = dest.replace(baseDir, '')
@@ -142,7 +148,8 @@ const newBuilder = async (baseDir: string): Promise<BuilderFunc> => {
 
     const renderedFile = mustache.render(template, {
       dirLevel,
-      renderedList: [...dirs, ...files]
+      backLabel: getBackLabel(sl.isRootLevel),
+      renderedList: [...sl.directories, ...sl.files]
         .map((j, i) =>
           mustache.render(
             indent(indexItem.replace('@filename', j.size === '-' ? 'dir' : 'file'), 8),
@@ -168,6 +175,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
       dir.key,
       {
         directoryName: _.last(dir.key.split('/'))!,
+        isRootLevel: false,
         directories: [],
         files: objectsToFiles(
           bucket,
@@ -198,6 +206,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
 
   structure[''] = {
     directoryName: '',
+    isRootLevel: true,
     directories: rootDirectories,
     files: rootFiles
   }
@@ -207,7 +216,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
 
 /* ............................................................................ */
 
-const build = async (baseDir: string, bucket: string): Promise<void> => {
+const generate = async (baseDir: string, bucket: string): Promise<void> => {
   /* ... */
   const objects = processObjects(await listAllObjects(bucket))
   const uniqueDirectories = objectsToDirectories(objects)
@@ -218,25 +227,17 @@ const build = async (baseDir: string, bucket: string): Promise<void> => {
   const structure: IStructure = buildStructure(bucket, uniqueDirectories, uniqueFiles)
   log('File structure generated')
 
-  const build = await newBuilder(baseDir)
+  const write = await createWriter(baseDir)
 
   /* nested directories */
   for (const d of Object.keys(structure)) {
-    const { directories, files } = structure[d]
-    await build(join(baseDir, d), directories, files)
+    await write(join(baseDir, d), structure[d])
   }
 }
 
 if (process.env.NO_GULP !== undefined) {
-  void (async () => {
-    const { files: filesDir } = getRelevantDirectories(rootDir)
-
-    try {
-      await build(filesDir, 'caian-org')
-    } catch (e) {
-      console.error(e)
-    }
-  })()
+  const { files: filesDir } = getRelevantDirectories(rootDir)
+  generate(filesDir, 'caian-org').catch((e) => console.error(e))
 }
 
-export default build
+export default generate
