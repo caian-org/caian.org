@@ -10,7 +10,17 @@ import { fromEnv } from '@aws-sdk/credential-providers'
 import { S3, ListObjectsV2Request, _Object as S3Object } from '@aws-sdk/client-s3'
 
 /* modules */
-import { indent, fmtFileSize, countChar, fmt, len, log } from './util'
+import {
+  indent,
+  fmtFileSize,
+  countChar,
+  fmt,
+  len,
+  log,
+  rootDir,
+  getRelevantDirectories,
+  safeURIEncode
+} from './util'
 
 /* ............................................................................ */
 
@@ -101,7 +111,7 @@ const objectsToFiles = (bucket: string, objs: IObject[]): IFile[] =>
     .filter((obj) => !obj.key.endsWith('/'))
     .map((f) => {
       const n = _.cloneDeep(f)
-      n.url = fmt('https://%s.s3.amazonaws.com/%s', bucket, f.key)
+      n.url = fmt('https://%s.s3.amazonaws.com/%s', bucket, safeURIEncode(f.key))
 
       return n
     })
@@ -115,7 +125,7 @@ const objectsToDirectories = (objs: IObject[]): IDirectory[] =>
       key: d,
       size: '-',
       lastModified: '-',
-      url: join('/files', d)
+      url: '/files/' + safeURIEncode(d)
     }))
 
 const newBuilder = async (baseDir: string): Promise<BuilderFunc> => {
@@ -153,7 +163,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
   const rootDirectories = dirs.filter((d) => !d.key.includes('/'))
   const rootFiles = files.filter((f) => !f.key.includes('/'))
 
-  const s: IStructure = Object.fromEntries(
+  const structure: IStructure = Object.fromEntries(
     dirs.map((dir) => [
       dir.key,
       {
@@ -178,27 +188,26 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
       break
     }
 
-    for (const level of Object.keys(s)) {
-      if (level === nd.key || !nd.key.startsWith(level + '/') || countChar(nd.key, '/') > 1) {
-        continue
+    const d = nd.key
+    for (const s of Object.keys(structure)) {
+      if (s !== d && d.startsWith(s + '/') && countChar(d.replace(s, ''), '/') === 1) {
+        structure[s].directories.push(nd)
       }
-
-      s[level].directories.push(nd)
     }
   }
 
-  s[''] = {
+  structure[''] = {
     directoryName: '',
     directories: rootDirectories,
     files: rootFiles
   }
 
-  return s
+  return structure
 }
 
 /* ............................................................................ */
 
-export default async (baseDir: string, bucket: string): Promise<void> => {
+const build = async (baseDir: string, bucket: string): Promise<void> => {
   /* ... */
   const objects = processObjects(await listAllObjects(bucket))
   const uniqueDirectories = objectsToDirectories(objects)
@@ -217,3 +226,17 @@ export default async (baseDir: string, bucket: string): Promise<void> => {
     await build(join(baseDir, d), directories, files)
   }
 }
+
+if (process.env.NO_GULP !== undefined) {
+  void (async () => {
+    const { files: filesDir } = getRelevantDirectories(rootDir)
+
+    try {
+      await build(filesDir, 'caian-org')
+    } catch (e) {
+      console.error(e)
+    }
+  })()
+}
+
+export default build

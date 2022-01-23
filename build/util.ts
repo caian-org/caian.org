@@ -1,6 +1,6 @@
 /* standard */
 import fs from 'fs'
-import { basename, join } from 'path'
+import { basename, join, resolve } from 'path'
 import { format as fmt, promisify } from 'util'
 import { exec } from 'child_process'
 
@@ -182,6 +182,15 @@ export const getRelevantDirectories = (rootDir: string): IRelevantDirs => {
   }
 }
 
+export const safeURIEncode = (resource: string): string =>
+  resource
+    .split('/')
+    .filter((seg) => seg.length > 0)
+    .map((seg) => encodeURIComponent(seg))
+    .join('/')
+
 export const countChar = (t: string, c: string): number => _.countBy(t)[c]
+
+export const rootDir = resolve(__dirname, '..')
 
 export { fmt, promisify }

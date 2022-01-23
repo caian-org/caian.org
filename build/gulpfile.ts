@@ -1,5 +1,5 @@
 /* standard */
-import { basename, dirname, join, resolve } from 'path'
+import { basename, dirname, join } from 'path'
 import { Stream, Transform } from 'stream'
 
 /* 3rd-party */
@@ -38,7 +38,8 @@ import {
   runCmd,
   readPostDir,
   readSiteConfig,
-  getRelevantDirectories
+  getRelevantDirectories,
+  rootDir
 } from './util'
 
 interface IHash {
@@ -50,8 +51,6 @@ interface IHash {
 process.env.JEKYLL_ENV = 'production'
 
 const yamlStart = ['---', '---', '', ''].join('\n')
-
-const rootDir = resolve(__dirname, '..')
 
 const siteConfig = readSiteConfig(rootDir)
 
