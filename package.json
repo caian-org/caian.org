@@ -74,8 +74,8 @@
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.48.0",
     "@aws-sdk/credential-providers": "^3.48.0",
-    "@aws-sdk/signature-v4-crt": "^3.47.0",
-    "@babel/core": "^7.16.10",
+    "@aws-sdk/signature-v4-crt": "^3.47.2",
+    "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@jscpd/finder": "^3.4.5",
     "@prettier/plugin-pug": "^1.19.2",
