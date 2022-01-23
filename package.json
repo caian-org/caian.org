@@ -16,6 +16,7 @@
   "scripts": {
     "init": "mkdir -p vendor && bundle config set --local path vendor && bundle install && npm install && husky install",
     "gulp": "gulp --gulpfile build/gulpfile.ts",
+    "autoindex": "NO_GULP=1 ts-node build/autoindex.ts",
     "clean:all": "npm run gulp clean:all",
     "build": "npm run gulp build",
     "serve": "nodemon",
