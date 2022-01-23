@@ -38,6 +38,7 @@ interface IDirectory extends IObject {}
 
 interface IStructureLevel {
   directoryName: string
+  parentDirectory: string
   files: IFile[]
   directories: IDirectory[]
   isRootLevel: boolean
@@ -148,6 +149,7 @@ const createWriter = async (baseDir: string): Promise<BuilderFunc> => {
 
     const renderedFile = mustache.render(template, {
       dirLevel,
+      parentDirectory: sl.parentDirectory,
       backLabel: getBackLabel(sl.isRootLevel),
       renderedList: [...sl.directories, ...sl.files]
         .map((j, i) =>
@@ -175,6 +177,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
       dir.key,
       {
         directoryName: _.last(dir.key.split('/'))!,
+        parentDirectory: resolve(dir.url, '..'),
         isRootLevel: false,
         directories: [],
         files: objectsToFiles(
@@ -206,6 +209,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
 
   structure[''] = {
     directoryName: '',
+    parentDirectory: '/',
     isRootLevel: true,
     directories: rootDirectories,
     files: rootFiles
