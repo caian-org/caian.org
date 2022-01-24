@@ -15,7 +15,6 @@ import {
   fmtFileSize,
   countChar,
   fmt,
-  len,
   log,
   rootDir,
   getRelevantDirectories,
@@ -67,6 +66,18 @@ tr
 `
 
 /* ............................................................................ */
+
+const sortByName = (a: IObject, b: IObject): number => {
+  if (a.name < b.name) {
+    return -1
+  }
+
+  if (a.name > b.name) {
+    return 1
+  }
+
+  return 0
+}
 
 const getBackLabel = (isRootLevel: boolean): string =>
   isRootLevel ? 'Home&#x5BB6;&#x306B;&#x5E30;&#x308B;' : 'Back&#x623B;&#x308B;'
@@ -126,7 +137,6 @@ const objectsToFiles = (bucket: string, objs: IObject[]): IFile[] =>
 const objectsToDirectories = (objs: IObject[]): IDirectory[] =>
   [...new Set(objs.map((o) => dirname(o.key)).filter((n) => n !== '.'))]
     .filter((d) => !d.endsWith('/'))
-    .sort((a, b) => len(b) - len(a))
     .map((d) => ({
       name: basename(d),
       key: d,
@@ -151,7 +161,7 @@ const createWriter = async (baseDir: string): Promise<BuilderFunc> => {
       dirLevel,
       parentDirectory: sl.parentDirectory,
       backLabel: getBackLabel(sl.isRootLevel),
-      renderedList: [...sl.directories, ...sl.files]
+      renderedList: [...sl.directories.sort(sortByName), ...sl.files.sort(sortByName)]
         .map((j, i) =>
           mustache.render(
             indent(indexItem.replace('@filename', j.size === '-' ? 'dir' : 'file'), 8),
