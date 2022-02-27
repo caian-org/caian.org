@@ -15,28 +15,36 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup NodeJS
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.0
+        with:
+          version: 6.32.x
+
+      - name: Setup NodeJS ${{ matrix.nodejs-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: '16.13'
-          cache: npm
+          node-version: ${{ matrix.nodejs-version }}
+          cache: pnpm
 
-      - name: Cache Node modules
+      - name: Cache pnpm store
         id: cache-node-modules
         uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
         with:
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            ./node_modules
+            ~/.pnpm-store
+          key: ${{ env.preffix }}-cache-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ env.preffix }}-cache-${{ env.cache-name }}-
+            ${{ env.preffix }}-cache-
+            ${{ env.preffix }}-
+        env:
+          cache-name: code-check
+          preffix: ${{ runner.os }}
 
-      - name: Install NodeJS dependencies
+      - name: Install udependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm i
+        run: pnpm i
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
