@@ -10,16 +10,7 @@ import { fromEnv } from '@aws-sdk/credential-providers'
 import { S3, ListObjectsV2Request, _Object as S3Object } from '@aws-sdk/client-s3'
 
 /* modules */
-import {
-  indent,
-  fmtFileSize,
-  countChar,
-  fmt,
-  log,
-  rootDir,
-  getRelevantDirectories,
-  safeURIEncode
-} from './util'
+import { indent, fmtFileSize, countChar, fmt, log, rootDir, getRelevantDirectories, safeURIEncode } from './util'
 
 /* ............................................................................ */
 
@@ -192,10 +183,7 @@ const buildStructure = (bucket: string, dirs: IDirectory[], files: IObject[]): I
         directories: [],
         files: objectsToFiles(
           bucket,
-          files.filter(
-            (file) =>
-              file.key.startsWith(dir.key) && countChar(file.key.replace(dir.key, ''), '/') === 1
-          )
+          files.filter((file) => file.key.startsWith(dir.key) && countChar(file.key.replace(dir.key, ''), '/') === 1)
         )
       }
     ])

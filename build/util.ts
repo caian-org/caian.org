@@ -43,20 +43,19 @@ export const len = (a: any[] | string): number => a.length
 
 export const now = (): string => DateTime.fromJSDate(new Date(), { zone: 'UTC' }).toISO()
 
+export const indent = (text: string, level: number): string => prepend(text, ' '.repeat(level))
+
+export const strFallback = (s: string | undefined): string => (typeof s === 'string' && len(s.trim()) > 0 ? s : '???')
+
 export const prepend = (text: string, val: string): string =>
   text
     .split('\n')
     .map((t) => val.concat(t))
     .join('\n')
 
-export const indent = (text: string, level: number): string => prepend(text, ' '.repeat(level))
-
 export const log = (m: string, ...p: string[]): void => {
   flog(fmt(indent(m, 2), ...p))
 }
-
-export const strFallback = (s: string | undefined): string =>
-  typeof s === 'string' && len(s.trim()) > 0 ? s : '???'
 
 export const globAll = (d: string, ext: string | null = null): string =>
   join(d, '**', '*'.concat(ext === null ? '' : '.'.concat(ext)))
@@ -118,25 +117,24 @@ export const joinSafe = (...s: string[]): string =>
     })
   )
 
-export const runCmd =
-  (c: ICommandRun) =>
-    async (cb: TaskCallback): Promise<void> => {
-      const cwd = typeof c.cwd === 'string' ? c.cwd : __dirname
-      const { stdout, stderr } = await execAsync(c.cmd, { cwd })
-      const err = len(stderr) > 0 ? new Error(stderr) : undefined
+export const runCmd = (c: ICommandRun) =>
+  async (cb: TaskCallback): Promise<void> => {
+    const cwd = typeof c.cwd === 'string' ? c.cwd : __dirname
+    const { stdout, stderr } = await execAsync(c.cmd, { cwd })
+    const err = len(stderr) > 0 ? new Error(stderr) : undefined
 
-      const p = chalk.dim('|  ')
+    const p = chalk.dim('|  ')
 
-      if (c.showOutput === true) {
-        log(fmt('Output of "%s":', chalk.yellowBright(c.cmd)))
-        log(p)
-        prepend(stdout, p)
-          .split('\n')
-          .forEach((t) => log(t))
-      }
-
-      cb(err)
+    if (c.showOutput === true) {
+      log(fmt('Output of "%s":', chalk.yellowBright(c.cmd)))
+      log(p)
+      prepend(stdout, p)
+        .split('\n')
+        .forEach((t) => log(t))
     }
+
+    cb(err)
+  }
 
 export const readPostDir = (location: string): IBlogPostFiles[] =>
   fs

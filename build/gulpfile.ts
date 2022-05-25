@@ -74,14 +74,13 @@ const logP = (): void => {
 
 /* ............................................................................ */
 
+const copyAll = (...d: string[]): Transform => pipe(from(sourceDirFiles(...d)), to(intermediateDir(...d)))
+
 const leftOvers = [
   fmt('%s.{sass,pug,ts}', publicDirFiles()),
   joinSafe(p.pub, 'assets', 'css', 'boring'),
   joinSafe(p.pub, 'assets', 'css', 'mixins')
 ]
-
-const copyAll = (...d: string[]): Transform =>
-  pipe(from(sourceDirFiles(...d)), to(intermediateDir(...d)))
 
 const buildJS = (): Transform =>
   pipe(
@@ -165,14 +164,7 @@ const cleanLeftOvers = (): NodeJS.ReadWriteStream =>
 
 const jekyllBuild = 'bundle exec jekyll build --trace'
 
-const prebuild = [
-  'clean:file:dist',
-  'clean:file:autoindex',
-  'build:autoindex',
-  'build:pug',
-  'build:js',
-  'copy:all'
-]
+const prebuild = ['clean:file:dist', 'clean:file:autoindex', 'build:autoindex', 'build:pug', 'build:js', 'copy:all']
 
 task('debug', logP)
 
