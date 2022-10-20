@@ -14,18 +14,18 @@
     "url": "https://github.com/caian-org/caian.org/issues"
   },
   "scripts": {
-    "init": "mkdir -p vendor && bundle config set --local path vendor && bundle install && pnpm install && husky install",
+    "init": "mkdir -p vendor && bundle config set --local path vendor && bundle install && npm install && husky install",
     "gulp": "gulp --gulpfile build/gulpfile.ts",
     "autoindex": "NO_GULP=1 ts-node build/autoindex.ts",
-    "clean:all": "pnpm run gulp clean:all",
-    "build": "pnpm run gulp build",
+    "clean:all": "npm run gulp clean:all",
+    "build": "npm run gulp build",
     "serve": "nodemon",
     "bump:dev": "ncu --upgrade --dep dev --target minor",
     "bump:prod": "ncu --upgrade --dep prod --target minor",
-    "bump:all": "pnpm run bump:dev && pnpm run bump:prod && bundle update",
+    "bump:all": "npm run bump:dev && npm run bump:prod && bundle update",
     "check:style": "ts-standard",
     "check:duplicated": "jscpd",
-    "check:all": "pnpm run check:style && pnpm run check:duplicated",
+    "check:all": "npm run check:style && npm run check:duplicated",
     "fix:style": "prettier --ignore-path .gitignore --write . '**/*.{ts,pug,md}' && ts-standard --fix '**/*.ts'"
   },
   "eslintIgnore": [
@@ -69,7 +69,7 @@
       "www/files/"
     ],
     "ext": "*",
-    "exec": "pnpm run build && bundle exec jekyll serve"
+    "exec": "npm run build && bundle exec jekyll serve"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.95.0",
