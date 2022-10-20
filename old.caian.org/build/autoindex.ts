@@ -42,6 +42,7 @@ type BuilderFunc = (d: string, s: IStructureLevel) => Promise<void>
 
 /* ............................................................................ */
 
+// @ts-ignore
 mustache.escape = (t) => t
 
 const indexItem = `
