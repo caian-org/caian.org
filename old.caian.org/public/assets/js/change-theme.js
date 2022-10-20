@@ -1,0 +1,1 @@
+"use strict";function changeTheme(){var e="/assets/css/themes/main",t=document.getElementById("theme"),n=document.getElementById("syntax"),c=document.getElementById("change-theme"),s=t.href.endsWith("bright.css")?"dark":"bright";t.href=[e,s].join("/").concat(".css"),n.href=[e,"syntax",s].join("/").concat(".css"),c.innerHTML=("bright"===s?"Dark":"Bright").concat(" theme")}
