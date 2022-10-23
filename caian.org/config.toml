@@ -1,34 +1,41 @@
-baseURL = 'http://example.org/'
+baseURL      = 'https://caian.org'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'cactus'
+title        = 'caian.org'
+theme        = 'cactus'
+copyright    = 'kopimi'
 
 [[menu.main]]
-name = "Home"
-url = "/"
-weight = 1
+
+    name   = 'Home'
+    url    = '/'
+    weight = 1
 
 [[menu.main]]
-name = "Writings"
-url = "/posts"
-weight = 2
+
+    name   = 'Writings'
+    url    = '/posts'
+    weight = 2
 
 [[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 3
+
+    name   = 'Tags'
+    url    = '/tags'
+    weight = 3
 
 [[menu.main]]
-name = "About"
-url = "/about"
-weight = 4
+
+    name   = 'About'
+    url    = '/about'
+    weight = 4
+
 
 [params]
 
-rss = true
+    rss = true
 
-description = 'lorem ipsum sit dolor amet'
+    description = 'lorem ipsum sit dolor amet'
+    showReadTime = true
 
-[params.comments]
+    [params.comments]
 
-enabled = false
+        enabled = false
