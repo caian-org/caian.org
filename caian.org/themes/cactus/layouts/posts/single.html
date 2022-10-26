@@ -15,9 +15,9 @@
         {{ if (or (isset .Site "author") (isset .Site "title"))}}
         <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <span itemprop="name">
-            {{ if isset .Site "author" }}
+            {{ if (isset .Site "author") }}
               {{ .Site.Author }}
-            {{ else if isset .Site "title" }}
+            {{ else if (isset .Site "title") }}
               {{ .Site.Title }}
             {{ end }}
           </span>
@@ -92,9 +92,9 @@
 <script src={{ "js/code-copy.js"  | relURL }}></script>
 {{ end }}
 {{ $mathjax := false }}
-{{ if isset .Params "mathjax" }}
+{{ if (isset .Params "mathjax") }}
   {{ $mathjax = .Params.mathjax }}
-{{ else if isset .Site.Params "mathjax" }}
+{{ else if (isset .Site.Params "mathjax") }}
   {{ $mathjax = .Site.Params.mathjax }}
 {{ end }}
 {{ if $mathjax }}
