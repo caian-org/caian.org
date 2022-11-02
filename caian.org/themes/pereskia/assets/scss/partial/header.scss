@@ -5,7 +5,7 @@
   h1,
   .h1 {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     color: $color-text;
     letter-spacing: .01em;
     font-weight: 700;
@@ -104,7 +104,7 @@
       }
       li.icon {
         position: absolute;
-        top: 77px;
+        top: 87px;
         right: 1rem;
         display: inline-block;
       }
