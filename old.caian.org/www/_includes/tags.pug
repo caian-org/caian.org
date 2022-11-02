@@ -1,9 +1,0 @@
-| {% assign tags = include.tags | strip | split: ' ' | uniq | sort %}
-| {% if tags.size > 0 %}
-span.tag-list
-  | {% for t in tags %}
-  |   {% assign tslug = t | slugify: 'raw' %}
-  |   {% assign turl = site.url | append: '/blog/tags/' | append: tslug %}
-  a(href='{{ turl }}') {{ t }}
-  | {% endfor %}
-| {% endif %}
