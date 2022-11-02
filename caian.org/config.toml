@@ -1,7 +1,7 @@
 baseURL      = 'https://caian.org'
 languageCode = 'en-us'
 title        = 'caian.org'
-theme        = 'cactus'
+theme        = 'pereskia'
 copyright    = 'kopimi'
 
 [[menu.main]]
@@ -12,14 +12,14 @@ copyright    = 'kopimi'
 
 [[menu.main]]
 
-    name   = 'Writings'
+    name   = 'Posts'
     url    = '/posts'
     weight = 2
 
 [[menu.main]]
 
-    name   = 'Tags'
-    url    = '/tags'
+    name   = 'Contact'
+    url    = '/contact'
     weight = 3
 
 [[menu.main]]
@@ -31,10 +31,13 @@ copyright    = 'kopimi'
 
 [params]
 
-    rss = true
+    rss = false
 
-    description = 'lorem ipsum sit dolor amet'
+    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a urna placerat, sollicitudin sapien eu, pellentesque metus. Nulla vel libero tincidunt sapien mollis lobortis sit amet sit amet libero. Suspendisse ut tellus sit amet elit placerat venenatis ut sit amet tellus. Nulla orci mauris, cursus in turpis sed, dictum lobortis ipsum. Vivamus eleifend imperdiet mauris et efficitur. Aenean et mauris at purus tincidunt interdum. Quisque consectetur facilisis leo, ac luctus nisl tempor at. sum sit dolor amet'
+
     showReadTime = true
+
+    logo = 'images/nike-2.svg'
 
     [params.comments]
 
