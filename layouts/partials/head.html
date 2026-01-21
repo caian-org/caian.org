@@ -1,0 +1,20 @@
+{{- $title := .Title | default .Site.Title -}}
+{{- $theme := .Params.theme | default "/css/themes/main/bright.css" -}}
+{{- $isPost := .Params.isPost | default false -}}
+
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ .Site.Params.description }}">
+
+<link rel="icon" type="image/png" href="/imgs/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.Params.rss }}">
+<link id="theme" rel="stylesheet" href="{{ $theme }}">
+
+{{- if $isPost }}
+<link id="syntax" rel="stylesheet" href="/css/themes/main/syntax/bright.css">
+{{- end }}
+
+<title>{{ $title }} | {{ .Site.Title }}</title>

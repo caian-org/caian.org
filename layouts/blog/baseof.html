@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{- $isPost := false -}}
+  {{- if eq .Kind "page" }}{{ $isPost = true }}{{ end -}}
+  {{- $.Scratch.Set "isPost" $isPost -}}
+
+  {{- $title := .Title | default "Blog" -}}
+  {{- $theme := "/css/themes/main/bright.css" -}}
+
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Site.Params.description }}">
+
+  <link rel="icon" type="image/png" href="/imgs/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.Params.rss }}">
+  <link id="theme" rel="stylesheet" href="{{ $theme }}">
+
+  {{- if $isPost }}
+  <link id="syntax" rel="stylesheet" href="/css/themes/main/syntax/bright.css">
+  {{- end }}
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme') || 'bright';
+      var base = '/css/themes/main';
+      document.getElementById('theme').href = base + '/' + theme + '.css';
+      var syntax = document.getElementById('syntax');
+      if (syntax) syntax.href = base + '/syntax/' + theme + '.css';
+    })();
+  </script>
+
+  <title>{{ $title }} | {{ .Site.Title }}</title>
+</head>
+<body>
+  {{- block "main" . }}{{- end }}
+  <script src="/js/change-theme.js"></script>
+</body>
+</html>

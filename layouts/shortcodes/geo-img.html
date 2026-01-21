@@ -1,0 +1,4 @@
+{{- $file := .Get 0 -}}
+{{- $w := .Get 1 -}}
+{{- $h := .Get 2 -}}
+<img src="/imgs/geo/{{ $file }}"{{ with $w }} width="{{ . }}"{{ end }}{{ with $h }} height="{{ . }}"{{ end }}>

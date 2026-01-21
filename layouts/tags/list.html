@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="main">
+  <a href="/tags/">Back to tags</a>
+  |
+  <a href="/blog/">Blog</a>
+  |
+  <a id="change-theme" href="#" onclick="changeTheme()">Dark theme</a>
+
+  <h1>Tag: {{ .Title | lower }}</h1>
+
+  <ul>
+    {{- range .Pages.ByDate.Reverse }}
+    <li>
+      <span class="lighter">{{ .Date.Format "2006-01-02" }}</span>
+      &nbsp;
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{- end }}
+  </ul>
+
+  <hr>
+  <footer>
+    <a href="/">Home</a> | <a href="{{ .Site.Params.rss }}">Subscribe with RSS</a>
+  </footer>
+</div>
+{{ end }}

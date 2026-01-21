@@ -1,0 +1,14 @@
+{{ define "main" }}
+<br>
+<img src="/imgs/geo/thinker.gif">
+
+<p>
+  <ul>
+    {{- range .Pages.ByDate.Reverse }}
+    <li>
+      <em>{{ .Date.Format "2006-01-02" }}</em>, <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{- end }}
+  </ul>
+</p>
+{{ end }}

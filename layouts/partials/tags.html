@@ -1,0 +1,6 @@
+{{- if .Params.tags -}}
+{{- range .Params.tags }}
+{{- $tag := . | lower -}}
+<a href="/tags/{{ $tag | urlize }}/">{{ $tag }}</a>&nbsp;
+{{- end -}}
+{{- end -}}

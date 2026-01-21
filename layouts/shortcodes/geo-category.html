@@ -1,0 +1,5 @@
+{{- $title := .Get 0 -}}
+{{- $id := printf "category_%s" ($title | urlize) -}}
+<br>
+<label class="collapse" for="{{ $id }}">{{ $title }}</label>
+<input id="{{ $id }}" type="checkbox">

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{- partial "head-90s.html" . -}}
+</head>
+<body>
+  <div class="wrapperp">
+    <div class="cont">
+      <div class="custom">
+        <h1>{{ .Params.heading | default .Title }}</h1>
+      </div>
+      <div align="center">
+        {{- if .Params.isPost }}
+        <br>
+        <a href="/geo/thoughts/">
+          <img src="/imgs/geo/back.gif">
+        </a>
+        {{- end }}
+        <br>
+        {{- block "main" . }}{{- end }}
+      </div>
+    </div>
+  </div>
+  {{- partial "geo/sidebar.html" . -}}
+  {{- partial "geo/footer.html" . -}}
+</body>
+</html>

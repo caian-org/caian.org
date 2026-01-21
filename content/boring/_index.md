@@ -1,0 +1,4 @@
+---
+title: "boring"
+type: "boring"
+---

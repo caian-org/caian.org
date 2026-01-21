@@ -1,0 +1,4 @@
+{{- $id := .Get 0 -}}
+{{- $artist := .Get 1 -}}
+{{- $title := .Get 2 -}}
+<li><em>{{ $artist }}</em>, <a href="https://www.youtube.com/watch?v={{ $id }}">{{ $title }}</a></li>

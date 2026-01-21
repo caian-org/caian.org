@@ -1,0 +1,46 @@
+baseURL = "https://caian.org"
+languageCode = "en-us"
+title = "caian.org"
+
+# Build settings
+enableRobotsTXT = true
+enableGitInfo = false
+
+[taxonomies]
+  tag = "tags"
+
+# URL settings
+[permalinks]
+  [permalinks.section]
+    blog = "/blog/"
+  [permalinks.page]
+    blog = "/blog/:year/:month/:day/:slug/"
+
+# Markup configuration
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+    noClasses = false
+
+# Output formats
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+# RSS configuration
+[outputFormats.RSS]
+  mediatype = "application/rss+xml"
+  baseName = "feed"
+
+# Site parameters
+[params]
+  description = "Personal page, blog, portfolio etc"
+  author = "Caian R. Ertl"
+  email = "hi@caian.org"
+  rss = "/blog/feed.xml"

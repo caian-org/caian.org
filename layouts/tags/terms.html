@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="main">
+  <a href="/blog/">Back to all posts</a>
+  |
+  <a id="change-theme" href="#" onclick="changeTheme()">Dark theme</a>
+
+  <h1>Tags</h1>
+
+  <ul>
+    {{- range .Data.Terms.Alphabetical }}
+    <li>
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.Title | lower }}</a>
+      <span class="lighter">({{ .Count }})</span>
+    </li>
+    {{- end }}
+  </ul>
+
+  <hr>
+  <footer>
+    <a href="/">Home</a> | <a href="{{ .Site.Params.rss }}">Subscribe with RSS</a>
+  </footer>
+</div>
+{{ end }}

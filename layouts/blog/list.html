@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="main">
+  <a href="/">Back</a>
+  <h1>Blog</h1>
+
+  {{- $allTags := slice -}}
+  {{- range .Site.Taxonomies.tags -}}
+    {{- $allTags = $allTags | append .Page -}}
+  {{- end -}}
+
+  {{- if gt (len $allTags) 0 }}
+  <div id="all-blog-tags">
+    <p class="aleft">
+      {{- range $allTags }}
+      <a href="{{ .RelPermalink }}">{{ .Title | lower }}</a>&nbsp;
+      {{- end }}
+    </p>
+    <div class="aclear"></div>
+  </div>
+  {{- end }}
+
+  <ul>
+    {{- range .Pages.ByDate.Reverse }}
+    <li>
+      <span class="lighter">{{ .Date.Format "2006-01-02" }}</span>
+      &nbsp;
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{- end }}
+  </ul>
+
+  <hr>
+  <a href="{{ .Site.Params.rss }}">Subscribe with RSS</a>
+</div>
+{{ end }}

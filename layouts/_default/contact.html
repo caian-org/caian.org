@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Site.Params.description }}">
+
+  <link rel="icon" type="image/png" href="/imgs/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.Params.rss }}">
+  <link id="theme" rel="stylesheet" href="/css/themes/contact.css">
+
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+</head>
+<body>
+  <div class="centered">
+    <table>
+      <colgroup>
+        <col width="180px">
+        <col width="500px">
+        <col width="180px">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>
+            <img src="/imgs/venus-right.png">
+          </th>
+          <th>
+            <div class="content">
+              <p><a href="/">Back</a></p>
+              <h1>Contact</h1>
+              <p>
+                Don't search me at facebook, instagram, linkedin et caterva. I'm not there.
+                If you wish to talk with me, arrange a party or buy me a cup of coffee, reach out by email.
+              </p>
+              <p>
+                <a href="mailto:hi@caian.org">hi@caian.org</a> or <a href="mailto:caianrais@pm.me">caianrais@pm.me</a>
+              </p>
+              <p>
+                For naughty stuff:<br>
+                $ curl pgp.caian.org | gpg --import
+              </p>
+              <p class="lighter">E5D5 34DA ECBA 5209 3C44 F13E 6374 3190 E0AF 7A6B</p>
+              <p>---</p>
+              <p>
+                Code projects are publicly available at <a href="https://github.com/caian-org">GitHub</a>.
+                My curriculum vitae is <a href="https://caian-org.s3.amazonaws.com/cv-en_US.pdf">here</a>.
+                Em português, <a href="https://caian-org.s3.amazonaws.com/cv-pt_BR.pdf">aqui</a>.
+              </p>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </th>
+          <th>
+            <img src="/imgs/venus-left.png">
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

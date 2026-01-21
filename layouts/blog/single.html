@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{- $words := countwords .Content -}}
+{{- $readTime := div $words 200 -}}
+{{- if lt $readTime 1 }}{{ $readTime = 1 }}{{ end -}}
+
+<div class="main">
+  <a href="/blog/">Back</a>
+  |
+  <a id="change-theme" href="#" onclick="changeTheme()">Dark theme</a>
+
+  <h1>{{ .Title }}</h1>
+
+  <div id="meta">
+    <p class="aleft">
+      {{- partial "tags.html" . -}}
+    </p>
+    <p class="aright">
+      <span class="lighter">
+        ~{{ $readTime }} min read
+        &nbsp;
+        {{ .Date.Format "2006-01-02" }}
+      </span>
+    </p>
+    <div class="aclear"></div>
+  </div>
+
+  {{ .Content }}
+
+  <hr>
+  <footer>
+    <a href="/">Home</a> | <a href="{{ .Site.Params.rss }}">Subscribe with RSS</a>
+  </footer>
+</div>
+{{ end }}
