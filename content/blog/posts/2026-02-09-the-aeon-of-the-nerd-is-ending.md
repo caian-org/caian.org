@@ -1,0 +1,18 @@
+---
+title: "The aeon of the nerd is ending"
+date: 2026-02-09
+tags: ["ai", "thoughts"]
+slug: "the-aeon-of-the-nerd-is-ending"
+---
+
+Remember the movie [Revenge of the Nerds][rotn]? Remember when people used to tell their shy and introverted kids (like my family did) that the nerds would inherit the earth and make the jocks seethe late in life? That was a cope, a convenient lie, wishful thinking perhaps. The market rewards people who are attractive and friendly all the time. Being funny and making people feel good might be the greatest skills you can have, actually. One thing is true, though: in the information age, post-dialup internet world, the nerd got a serious edge. And that edge, I believe, is heading towards the end.
+
+Intelligence is the main driver of civilization because it allows the creation and mastery of technica, which reduces or removes human limitations and weaknesses. Technica is a compound substance that expands exponentially, as well as its maintenance complexity: in the 70s, a computer scientist could understand how an operating system worked in its entirety; in 2026, that's impossible; there's just too much going on. To tame a beast (tools, languages, protocols, cloud infra, networking, ...) in `current_year` is in the same realm of complexity, time and effort as that of a discovery/novelty in the 70s. That is, today, the edge of the nerd: to keep floating in their heads all these systems that talk to each other, and in each system, endless subsystems; to be able to manage context and act accordingly; to translate something as ambiguous and imprecise as human language to the perfection and precision of the silicon; to be the bridge between the material and the digital.
+
+There are other bridges now. They don't break as easily anymore. Some can actually transport thousands of kilos without shaking, the question now being "for how long?". Some engineers and bridge makers are mourning the craft already. Some still don't see a world where safe bridges can be made in hours. It doesn't matter, really. The edge is getting smaller every day. Translation (English, to Spanish, to German, back to English) is largely a solved problem; why would people assume that programming could not also be (largely) solved? Software engineering will always exist, that is sure, but how many would be required to harvest the field 3 or 4 years ahead? The edge is getting smaller. Right now the sound is so loud, one can only be deaf to it if one is actively trying to suppress or flee from the sound, either consciously or not.
+
+What remains for a bridge maker, when the act of making bridges is removed from him? A human. What remains valuable of a bridge maker when their logical faculties and engineering knowledge are no longer scarce? With luck: emotion, intuition and subtlety. No luck? Then nothing. When the production of something is simplified to the lowest common denominator, and the product is not complete rubbish, then the sale and post-sale is what remains. I don't think it is irrational to believe that given a million lawyers and personal trainers with more or less the same level of expertise, one would pick one solely based on aesthetics and "I-feel-good-around-him/her" traits. That's what remains. Ironically, the subjective/sensitive is the complete opposite of what bridge makers have been learning their entire careers.
+
+Change is a function of time, and we won't see the tower collapse next Friday night; rather, there'll be a shift in the air, a vibe change, a mood swing, like the smell of rain that hasn't yet produced any raindrops. May God help us all.
+
+[rotn]: https://en.wikipedia.org/wiki/Revenge_of_the_Nerds
